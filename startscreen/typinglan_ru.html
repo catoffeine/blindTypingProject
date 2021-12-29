@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="../js/storinginfo.js" defer></script>
+    <link rel="stylesheet" href="../css/startscreen.css"> -->
+    <title>Язык печати</title>
+</head>
+    <body class="dark">
+        <div class="container">
+            <button class="themeSwitcher"></button>
+            <div class="chooseLan">
+                <h4 class="chooseLan__title">Выберите язык для обучения слепой печати</h4>
+                <div class="chooseLan languageChooseFlex">
+                    <button class="languageChooseFlex__item languageChooseFlex__item-en"></button>
+                    <button class="languageChooseFlex__item languageChooseFlex__item-ru"></button>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        if (localStorage.getItem("typingLan", "EN") != null) {
+            window.location.href = "/index_en.html";
+        } else if (localStorage.getItem("typingLan", "RU") != null) {
+            window.location.href = "/index_ru.html";
+        } else {
+            window.location.href = "/startscreen/typinglan_ru.html";
+        }
+    </script>
+</html>
