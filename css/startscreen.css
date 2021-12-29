@@ -214,9 +214,11 @@ html {
     
     text-align: center;
     width: 170px;
+
+    font-weight: 600;
+    font-family: consolas;
+    letter-spacing: 0.6px;
     
-    /* width: 100px;
-    height: 200px; */
     vertical-align: text-top;
     transition: 0.4s all ease-in-out;
 }
@@ -227,9 +229,7 @@ html {
 
 .bright .chooseLanAbsolute__confirm-span {
     color: #7a7d81;
-    font-weight: 500;
-    font-family: consolas;
-    letter-spacing: 0.6px;
+    
 }
 
 .chooseLanAbsolute__confirm-liquid {
