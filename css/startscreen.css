@@ -211,14 +211,11 @@ html {
     font-weight: 600;
     top: 0;
     z-index: 1;
-    
     text-align: center;
     width: 170px;
-
     font-weight: 600;
     font-family: consolas;
     letter-spacing: 0.6px;
-    
     vertical-align: text-top;
     transition: 0.4s all ease-in-out;
 }
