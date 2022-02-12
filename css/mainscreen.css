@@ -1,10 +1,50 @@
 /*#727375  dark theme less*/
+
+@font-face {
+    font-family: 'RobotoLight';
+    src: url(../fonts/Roboto-Light.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    transition: background-color 0.4s ease-in-out;
+    position: relative;
+}
+
+html {
+    height: 100%;
+}
+
+.dark {
+    background-color: #282932;
+}
+
+.bright {
+    background-color: #ECF0F3;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1440px;
+    min-width: 690px;
+    height: 100%;
+}
+
 :root {
     --darkSilent: #727375;
     --darkBright: rgb(209, 209, 209);
     --brightMain: #747474;
 }
 
+
+/* selection start */
 .dark *::selection {
     color: rgb(185, 171, 87); 
 }
@@ -12,6 +52,44 @@
 .bright *::selection {
     color: rgb(108, 185, 179);
 }
+/* selection end */
+
+
+/* THEME SWITCHER START */
+.themeSwitcher {
+    position: absolute;
+    border: none;
+    right: 20px;
+    width: 49px;
+    height: 49px;
+    bottom: 28px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: 50%;
+    cursor: pointer;
+    transition: 0.4s all ease-in-out;
+}
+
+.dark .themeSwitcher {
+    background-color: rgba(34, 35, 43, 0.5);
+    box-shadow: inset 6px 6px 7px rgba(31, 32, 39, 0.96), inset -6px -6px 7px rgba(45, 46, 57, 0.62);
+    background-image: url("../images/ThemesSwitcher/moonTheme.svg");
+    opacity: 0.5;
+}
+
+.bright .themeSwitcher {
+    background-color: rgba(236, 240, 243, 0.5);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1), -2px -2px 6px rgba(255, 255, 255, 0.94);
+    background-image: url("../images/ThemesSwitcher/sunTheme.svg");
+    opacity: 0.5;
+}
+
+.themeSwitcher:hover {
+    opacity: 1;
+}
+/* THEME SWITCHER END */
 
 .mainSectionContainer {
     display: flex;
