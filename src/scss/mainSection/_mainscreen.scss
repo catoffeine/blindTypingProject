@@ -1,0 +1,1130 @@
+/*#727375  dark theme less*/
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    transition: background-color 0.4s ease-in-out;
+    position: relative;
+}
+
+html {
+    height: 100%;
+}
+
+.dark {
+    background-color: #282932;
+}
+
+.bright {
+    background-color: #ECF0F3;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1440px;
+    min-width: 690px;
+    height: 100%;
+}
+
+:root {
+    --darkSilent: #727375;
+    --darkBright: rgb(209, 209, 209);
+    --brightMain: #747474;
+}
+
+
+/* selection start */
+.dark *::selection {
+    color: rgb(185, 171, 87); 
+}
+
+.bright *::selection {
+    color: rgb(108, 185, 179);
+}
+/* selection end */
+
+
+/* THEME SWITCHER START */
+.themeSwitcher {
+    position: absolute;
+    border: none;
+    right: 20px;
+    width: 49px;
+    height: 49px;
+    bottom: 28px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: 50%;
+    cursor: pointer;
+    transition: 0.4s all ease-in-out;
+}
+
+.dark .themeSwitcher {
+    background-color: rgba(34, 35, 43, 0.5);
+    box-shadow: inset 6px 6px 7px rgba(31, 32, 39, 0.96), inset -6px -6px 7px rgba(45, 46, 57, 0.62);
+    background-image: url("../images/ThemesSwitcher/moonTheme.svg");
+    opacity: 0.5;
+}
+
+.bright .themeSwitcher {
+    background-color: rgba(236, 240, 243, 0.5);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1), -2px -2px 6px rgba(255, 255, 255, 0.94);
+    background-image: url("../images/ThemesSwitcher/sunTheme.svg");
+    opacity: 0.5;
+}
+
+.themeSwitcher:hover {
+    opacity: 1;
+}
+/* THEME SWITCHER END */
+
+.mainSectionContainer {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    flex-wrap: wrap;
+    border: 2px solid black;
+}
+
+.mainSectionContainer__mainSectionFlex {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    align-content: flex-start;
+    height: 70%;
+    min-height: 350px;
+    width: 100%;
+    min-width: 690px;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+    border: 2px solid black;
+}
+
+.mainSectionContainer__lessons {
+    width: 20%;
+    min-width: 140px;
+    height: 100%;
+    border: 2px solid black;
+}
+
+.mainSectionContainer__keyboard {
+    width: 60%;
+    min-width: 440px;
+    height: 100%;
+    border: 2px solid black;
+}
+
+.mainSectionContainer__settings {
+    position: relative;
+    width: 16%;
+    min-width: 105px;
+    height: 100%;
+    border: 2px solid black; 
+}
+
+.keyboardSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    
+    width: 100%;
+    height: 100%;
+}
+
+.keyboardSection__showingText {
+    width: 95%;
+    padding: 4px;
+    padding-left: 20px;
+    text-align: left;
+    /* line-height: 1.5; */
+    letter-spacing: 1px;
+    line-height: 44px;
+    min-height: 55px;
+    font-family: RobotoLight;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 25px;
+    transition: 0.4s all ease-in-out;
+}
+
+.dark .keyboardSection__showingText {
+    color: rgb(210, 210, 210);
+}
+
+.bright .keyboardSection__showingText {
+    color: #747474;
+}
+
+.dark .keyboardSection__showingText {
+    background: #282932;
+    box-shadow: 6px 6px 16px #1B1C23, -2px -2px 5px rgba(74, 75, 81, 0.48);
+}
+
+.bright .keyboardSection__showingText {
+    background: #ECF0F3;
+    box-shadow: -2px -2px 5px #FFFFFF, 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.keyboardSection__writeText {
+    text-align: center;
+    vertical-align: center;
+    line-height: 50px;
+    width: 95%;
+    min-height: 50px;
+    margin-top: 20px;
+    border-radius: 25px;
+    transition: 0.4s all ease-in-out;
+}
+
+.dark .keyboardSection__writeText {
+    background: #282932;
+    box-shadow: inset 6px 6px 16px #1B1C23, inset -2px -2px 5px rgba(74, 75, 81, 0.48);
+}
+
+.bright .keyboardSection__writeText {
+    background: #ECF0F3;
+    box-shadow: inset 5px 5px 8px rgba(0, 0, 0, 0.1), inset -5px -5px 8px rgba(255, 255, 255, 0.48);
+}
+
+.keyboardSection__writeText__input {
+    display: inline-block;
+    font-family: RobotoLight;
+    font-weight: 600;
+    font-size: 15px;
+    width: 95%;
+    height: 100%;
+    border: none;
+    border-radius: 25px;
+    outline: none;
+    letter-spacing: 1px;
+    transition: 0.4s all ease-in-out;
+    background: transparent;
+}
+
+.dark .keyboardSection__writeText__input {
+    color: rgb(209, 209, 209);
+    caret-color: rgb(206, 206, 206);
+}
+
+.bright .keyboardSection__writeText__input {
+    color: #747474;
+    caret-color: rgb(104, 104, 104);
+}
+
+.keyboardSection__keyboard {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.keyboardSection__keyboard__Hands {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 30%;
+}
+
+.keyboardSection__keyboard__Hand {
+    width: 150px;
+    height: 100%;
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.dark .keyboardSection__keyboard__Hand {
+    background-image: url("../images/KeyboardSection/white-hand.svg");
+}
+
+.bright .keyboardSection__keyboard__Hand {
+    background-image: url("../images/KeyboardSection/black_hand.svg");
+}
+
+.keyboardSection__keyboard__leftHand {
+    transform: rotateY(180deg);
+}
+
+.keyboardSection__keyboard__keyboard {
+    /* width: 440px;
+    height: 155px; */
+    /* width: 770px;
+    height: 290px; */
+    width: 540px;
+    height: 180px;
+
+    border-radius: 15px;
+    padding: 5px;
+    font-family: RobotoLight;
+    font-size: 11px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    transition: 0.4s ease-in-out;
+    transition-property: all;
+}
+
+.dark .keyboardSection__keyboard__keyboard {
+    color: white;
+    background: #262730;
+    box-shadow: inset 7px 7px 14px rgba(0, 0, 0, 0.25), inset -7px -7px 14px rgba(59, 61, 65, 0.31);
+}
+
+.bright .keyboardSection__keyboard__keyboard {
+    color: #747474;
+    background: #ECF0F3;
+    box-shadow: inset 5px 5px 8px rgba(0, 0, 0, 0.1), inset -5px -5px 8px rgba(255, 255, 255, 0.74);
+}
+
+.keyboardSection__keyboard__keyboard_row {
+    display: flex;
+    /* justify-content: space-around; */
+    width: 100%;
+    /* justify-items: center;
+    align-content: space-evenly;
+    align-items: space-evenly; */
+    height: 25px;
+}
+
+.keyboardSection__keyboard__keyboard_row div {
+    height: 100%;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 25px;
+    transition: 0.4s all ease-in-out;
+}
+
+.dark .keyboardSection__keyboard__keyboard_row div {
+    background: #2A2B35;
+    box-shadow: 4px 4px 7px rgba(26, 27, 33, 0.72), -1px -1px 4px rgba(119, 120, 130, 0.23);
+}
+
+.bright .keyboardSection__keyboard__keyboard_row div {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 3px 3px 6px rgba(34, 35, 41, 0.37), -3px -3px 6px #FFFFFF;
+}
+
+.keyboardSection__keyboard__keyboard_row .keyboardSection__keyboard__keyboard__specialKey {
+    flex-grow: 1;
+    /* border: 2px black solid; */
+    /* width: 100%; */
+    margin: 0px 4px;
+}
+
+ .keyboardSection__keyboard__keyboard__singleKey {
+    /* flex-basis: 25px; */
+    width: 25px;
+    margin: 0px 4px;
+}
+
+/*
+.keyboardSection__keyboard__keyboard__backspaceKey {
+    width: 52px;
+}
+
+.keyboardSection__keyboard__keyboard__TabKey {
+    width: 38px;
+}
+
+.keyboardSection__keyboard__keyboard__ReverseSlashKey {
+    width: 38px;
+}
+
+.keyboardSection__keyboard__keyboard__EnterKey {
+    width: 50px;
+}
+
+.keyboardSection__keyboard__keyboard__CapsKey {
+    width: 50px;
+}
+
+.keyboardSection__keyboard__keyboard__ShiftKey {
+    width: 65px;
+}
+
+.keyboardSection__keyboard__keyboard__spaceKey {
+    width: 190px;
+} */
+
+.mainSectionContainer__lessons__flexContainer {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    max-height: 80%;
+    transition: 0.4s all ease-in-out;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.mainSectionContainer__lessons__flexContainer::-webkit-scrollbar {
+    background-color: transparent;
+    width: 1px;
+}
+
+.dark .mainSectionContainer__lessons__flexContainer::-webkit-scrollbar-thumb {
+    background-color: #67686F;
+    border-radius: 25px;
+}
+
+.bright .mainSectionContainer__lessons__flexContainer::-webkit-scrollbar-thumb {
+    background-color: #8a8a8a;
+    border-radius: 25px;
+}
+
+.dark .mainSectionContainer__lessons__flexContainer {
+    background: #282932;
+    box-shadow: -4px -4px 10px rgba(255, 255, 255, 0.03), 4px 4px 10px rgba(6, 8, 10, 0.25);
+}
+
+.bright .mainSectionContainer__lessons__flexContainer {
+    background: #ECF0F3;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1), -4px -4px 5px #FFFFFF;
+}
+
+.mainSectionContainer__lessons__flexContainer__menu {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    height: 100%;
+    width: 90%;
+}
+
+.mainSectionContainer__lessons__flexContainer__menu__dropDownItem {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mainSectionContainer__lessons__flexContainer__menu__item {
+    height: 50px;
+    width: 100%;
+    text-align: left;
+    line-height: 50px;
+    font-family: RobotoLight;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.8px;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.25s;
+    transition-property: background-color color box-shadow;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.dark .mainSectionContainer__lessons__flexContainer__menu__item:hover {
+    color: #94959b;
+    border-top: 1px solid #67686F;
+    z-index: 100;
+}
+
+.bright .mainSectionContainer__lessons__flexContainer__menu__item:hover {
+    color: #94959b;
+    border-top: 1px solid #8a8a8a;
+    z-index: 100;
+}
+
+.mainSectionContainer__lessons__flexContainer__menu__item .fa-angle-right {
+    margin-left: 10px;
+    font-size: 25px;
+    margin-right: 10px;
+    transform: translateY(4px);
+    transition: all 0.25s ease-in-out;
+}
+
+.mainSectionContainer__lessons__flexContainer__menu__item:hover .fa-angle-right {
+    transform: translate(6px, 4px) rotate(0);
+}
+
+.mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__menu__item:hover .fa-angle-right {
+    transform: translate(0, 4px) rotate(90deg);
+}
+
+
+.mainSectionContainer__lessons__flexContainer__menu__item_active .fa-angle-right {
+    transform: translateY(4px) rotate(90deg);
+}
+
+.dark .mainSectionContainer__lessons__flexContainer__menu__item {
+    color: #67686F;
+    background: #282932;
+    box-shadow: 4px 0px 5px rgba(0, 0, 0, 0.06), -4px 0px 5px rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid #67686F;
+    transition: 0.4s color ease-in-out, 0.4s background-color ease-in-out;
+}
+
+.dark .mainSectionContainer__lessons__flexContainer__menu__item a {
+    color: #67686F;
+}
+
+.dark .mainSectionContainer__lessons__flexContainer__menu__item:first-child {
+    box-shadow: 4px -4px 5px rgba(0, 0, 0, 0.06), -4px 0 5px rgba(0, 0, 0, 0.06);
+}
+
+.dark .mainSectionContainer__lessons__flexContainer__menu__item:last-child {
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.06), -4px 0 5px rgba(0, 0, 0, 0.06);
+    border-bottom: none;
+}
+
+.bright .mainSectionContainer__lessons__flexContainer__menu__item {
+    color:rgba(116, 116, 116, 0.8);
+    background: #ECF0F3;
+    box-shadow: -4px 0px 4px rgba(0, 0, 0, 0.06), 4px 0px 4px rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid #8a8a8a;
+    transition: 0.4s color ease-in-out, 0.4s background-color ease-in-out;
+}
+
+.bright .mainSectionContainer__lessons__flexContainer__menu__item a {
+    color: rgba(116, 116, 116, 0.8);
+}
+
+.bright .mainSectionContainer__lessons__flexContainer__menu__item:first-child {
+    box-shadow: 4px -4px 5px rgba(0, 0, 0, 0.06), -4px 0 5px rgba(0, 0, 0, 0.06);
+}
+
+.bright .mainSectionContainer__lessons__flexContainer__menu__item:last-child {
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.06), -4px 0 5px rgba(0, 0, 0, 0.06);
+    border-bottom: none;
+}
+
+.mainSectionContainer__lessons__flexContainer__submenu {
+    height: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: 0.25s height ease-in-out;
+    overflow: hidden;
+}
+
+/* .mainSectionContainer__lessons__flexContainer__submenu__active {
+    min-height: 100%;
+    height: auto;
+} */
+
+.mainSectionContainer__lessons__flexContainer__menu__subitem {
+    height: 50px;
+    width: 80%;
+    text-align: left;
+    line-height: 50px;
+    font-family: RobotoLight;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.25s;
+    transition-property: background-color color box-shadow;
+    overflow-y: hidden;
+    overflow-x: all;
+}
+
+.dark .mainSectionContainer__lessons__flexContainer__menu__subitem__active {
+    color: rgb(185, 171, 87);
+}
+
+.bright .mainSectionContainer__lessons__flexContainer__menu__subitem__active {
+    color: rgb(108, 185, 179);
+}
+
+.dark .mainSectionContainer__lessons__flexContainer__menu__subitem:hover {
+    color: #94959b;
+    border-top: 1px solid #67686F;
+    z-index: 100;
+}
+
+.bright .mainSectionContainer__lessons__flexContainer__menu__subitem:hover {
+    color: #4e4e4e;
+    border-top: 1px solid #8a8a8a;
+    z-index: 100;
+}
+
+.mainSectionContainer__lessons__flexContainer__menu__subitem .mainSectionContainer__lessons__flexContainer__menu__subitem__text {
+    margin-left: 15px;
+}
+
+.dark .mainSectionContainer__lessons__flexContainer__menu__subitem {
+    color:rgba(116, 116, 116, 0.8);
+    background-color: #282932;
+    box-shadow: 4px 0px 5px rgba(0, 0, 0, 0.06), -4px 0px 5px rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid #67686F;
+    transition: 0.4s background-color ease-in-out, 0.4s color ease-in-out;
+}
+
+.bright .mainSectionContainer__lessons__flexContainer__menu__subitem {
+    border-bottom: 1px solid #8a8a8a;
+}
+
+.bright .mainSectionContainer__lessons__flexContainer__menu__subitem {
+    color:#808080;
+    background: #ECF0F3;
+    box-shadow: 2px 0px 6px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #8a8a8a;
+    transition: 0.4s background-color ease-in-out, 0.4s color ease-in-out;
+}
+
+.musicSection {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}
+
+.musicSection__control {
+    display: flex;
+    align-items: center;
+}
+
+.musicSection__soundControl {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-image: url("../images/MusicControl/headphonesNoSound.svg");
+    background-size: 55%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.4s box-shadow cubic-bezier(0,1.11,1,1), 0.4s background-color ease-in-out;
+}
+
+/*#71747E*/
+
+.musicSection__pausePlay {
+    margin-left: 15px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.4s box-shadow cubic-bezier(0,1.11,1,1), 0.4s background-color ease-in-out;
+}
+
+.dark .musicSection__pausePlay {
+    background-color: #282932;
+    box-shadow: -2px -2px 6px rgba(255, 242, 242, 0.04), 2px 2px 6px rgba(0, 0, 0, 0.32);
+}
+
+.bright .musicSection__pausePlay {
+    background-color: #ECF0F3;
+    box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.76), 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.musicSection__pauseImage {
+    transform: translate(0, -100%);
+    width: 100%;
+    height: 100%;
+    background-size: 55%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.4s all cubic-bezier(0,1.11,1,1);
+}
+
+.dark .musicSection__pauseImage {
+    background-image: url("../images/MusicControl/pauseMusicDark.svg");
+}
+
+.bright .musicSection__pauseImage {
+    background-image: url("../images/MusicControl/pauseMusicBright.svg");
+}
+
+.musicSection__playImage {
+    transform: translate(0, -100%);
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/MusicControl/playMusic.svg");
+    background-size: 55%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.4s all cubic-bezier(0,1.11,1,1);
+}
+
+.dark .musicSection__playImage {
+    background-image: url("../images/MusicControl/playMusicDark.svg");
+}
+
+.bright .musicSection__playImage {
+    background-image: url("../images/MusicControl/playMusicBright.svg");
+}
+
+.musicSection__pausePlay__isPause .musicSection__pauseImage {
+    transform: translate(0, 0);
+}
+
+.musicSection__pausePlay__isPause .musicSection__playImage {
+    transform: translate(0, 0);
+}
+
+.musicSection__nextTrack {
+    margin-left: 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.4s box-shadow cubic-bezier(0,1.11,1,1), 0.4s background-color ease-in-out;
+    cursor: pointer;
+    border: none;
+}
+
+.dark .musicSection__nextTrack {
+    background-image: url("../images/MusicControl/nextDark.svg");
+}
+
+.bright .musicSection__nextTrack {
+    background-image: url("../images/MusicControl/nextBright.svg");
+}
+
+.musicSection__settings {
+    margin-left: 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-blend-mode: luminosity;
+    background-image: url("../images/MusicControl/settings.svg");
+    transition: 0.4s box-shadow cubic-bezier(0,1.11,1,1), 0.4s background-color ease-in-out;
+}
+
+.dark .musicSection__settings {
+    background-color: #282932;
+    box-shadow: -2px -2px 6px rgba(255, 242, 242, 0.04), 2px 2px 6px rgba(0, 0, 0, 0.32);
+}
+
+.bright .musicSection__settings {
+    background-color: #ECF0F3;
+    box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.76), 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dark .musicSection__nextTrack {
+    background-color: #282932;
+    box-shadow: -2px -2px 6px rgba(255, 242, 242, 0.04), 2px 2px 6px rgba(0, 0, 0, 0.32);
+}
+
+.bright .musicSection__nextTrack {
+    background-color: #ECF0F3;
+    box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.76), 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dark .musicSection__pausePlay__isPause {
+    background-color: #282932;
+    box-shadow: inset -2px -2px 6px rgba(255, 242, 242, 0.04), inset 2px 2px 6px rgba(0, 0, 0, 0.32);
+}
+
+.bright .musicSection__pausePlay__isPause {
+    background-color: #ECF0F3;
+    box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.76), inset 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dark .musicSection__soundControl {
+    background-color: #282932;
+    box-shadow: -2px -2px 6px #fff2f20a, 2px 2px 6px rgba(0, 0, 0, 0.32);
+}
+
+.bright .musicSection__soundControl {
+    background-color: #ECF0F3;
+    box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.76), 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.musicSection__nowPlaying {
+    padding-top: 8px;
+    font-family: RobotoLight;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.dark .musicSection__nowPlaying {
+    color: #94959b;
+}
+
+.bright .musicSection__nowPlaying {
+    color: #747474;
+}
+
+.mainSectionContainer__settings__hamburgerButton {
+    position: relative;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.dark .mainSectionContainer__settings__hamburgerButton {
+    background-color: rgba(34, 35, 43, 0.5);
+    box-shadow: 6px 6px 7px rgba(31, 32, 39, 0.96), -4px -4px 7px rgba(45, 46, 57, 0.89);
+    transition: 0.4s background-color ease-in-out, 0.4s box-shadow ease-in-out; 
+}
+
+.bright .mainSectionContainer__settings__hamburgerButton {
+    background-color: #ECF0F3;
+    box-shadow: -2px -2px 5px #FFFFFF, 2px 2px 6px rgba(0, 0, 0, 0.1);
+    transition: 0.4s background-color ease-in-out, 0.4s box-shadow ease-in-out; 
+}
+
+.mainSectionContainer__settings__hamburgerButton__line {
+    margin: 0 auto;
+    width: 50%;
+    height: 1.5px;
+    transition: all 0.4s ease-in-out;
+}
+
+.dark .mainSectionContainer__settings__hamburgerButton__line {
+    background-color: var(--darkBright);
+    transition: 0.4s all ease-in-out; 
+}
+
+.bright .mainSectionContainer__settings__hamburgerButton__line {
+    background-color: var(--brightMain);
+    transition: 0.4s all ease-in-out;
+}
+
+.dark .mainSectionContainer__settings__hamburgerButton__lineMiddle {
+    transition-duration: 0.2s;
+}
+
+.bright .mainSectionContainer__settings__hamburgerButton__lineMiddle {
+    transition-duration: 0.2s;
+}
+
+.mainSectionContainer__settings__hamburgerButton__active .mainSectionContainer__settings__hamburgerButton__lineMiddle {
+    opacity: 0;
+}
+
+.mainSectionContainer__settings__hamburgerButton__active .mainSectionContainer__settings__hamburgerButton__lineTop {
+    transform: translateY(7px) rotate(45deg);
+    transition: all 0.4s ease-in-out;
+}
+
+.mainSectionContainer__settings__hamburgerButton__active .mainSectionContainer__settings__hamburgerButton__lineBottom {
+    transform: translateY(-8px) rotate(-45deg);
+    transition: all 0.4s ease-in-out;
+}
+
+.mainSectionContainer__settings__container {
+    margin: 10px auto;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    right: -200%;
+    /* height: 80%; */
+    width: 220px;
+    border-radius: 15px;
+    transition: 0.4s all cubic-bezier(.64,.07,.08,.86);
+}
+
+.dark .mainSectionContainer__settings__container {
+    background-color: #282932;
+    box-shadow: inset 4px 4px 10px rgba(6, 8, 10, 0.24), inset -2px -2px 5px rgba(255, 255, 255, 0.02);
+}
+
+.bright .mainSectionContainer__settings__container {
+    background-color: #ECF0F3;
+    box-shadow: inset 4px 4px 10px #B1B2B6, inset -4px -4px 10px rgba(255, 255, 255, 0.58);
+}
+
+.mainSectionContainer__settings__hamburgerButton__active .mainSectionContainer__settings__container {
+    right: 10px;
+    transition: 0.4s right cubic-bezier(.01,1.24,.95,1.02);
+}
+
+.mainSectionContainer__settings__container__item__checkbox {
+    display: flex;
+    height: 35px;
+    width: 90%;
+    margin: 10px auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mainSectionContainer__settings__container__item__checkbox__label {
+    height: 100%;
+    width: 70%;
+    transition: 0.4s all ease-in-out;
+    border-radius: 50px;
+    text-align: center;
+    font-family: RobotoLight;
+    font-size: 12px;
+    line-height: 35px;
+    transition: 0.4s all ease-in-out;
+}
+
+.dark .mainSectionContainer__settings__container__item__checkbox__label {
+    background-color: #282932;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.19), -1px -1px 5px rgba(255, 255, 255, 0.06);
+    color: rgb(210, 210, 210);
+}
+
+.bright .mainSectionContainer__settings__container__item__checkbox__label {
+    background-color: #ECF0F3;
+    box-shadow: 2px 2px 10px #B1B2B6, -4px -4px 10px rgba(255, 255, 255, 0.58);
+    color: #747474;
+}
+
+.mainSectionContainer__settings__container__item__checkbox__button {
+    width: 22%;
+    height: 70%;
+    cursor: pointer;
+}
+
+.dark .mainSectionContainer__settings__container__item__checkbox:hover .mainSectionContainer__settings__container__item__checkbox__button__outerLongPart {
+    border-color: #303775;
+}
+
+.bright .mainSectionContainer__settings__container__item__checkbox:hover .mainSectionContainer__settings__container__item__checkbox__button__outerLongPart {
+    border-color: #545899;
+}
+
+.dark .mainSectionContainer__settings__container__item__checkbox:hover .mainSectionContainer__settings__container__item__checkbox__button__slider {
+    border-color: #343b83;
+}
+
+.bright .mainSectionContainer__settings__container__item__checkbox:hover .mainSectionContainer__settings__container__item__checkbox__button__slider {
+    border-color: #545899;
+}
+
+.mainSectionContainer__settings__container__item__checkbox__button__outerLongPart {
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    transition: 0.4s all ease-in-out;
+}
+
+.dark .mainSectionContainer__settings__container__item__checkbox__button__outerLongPart {
+    background-color: #282932;
+    border: 0.5px solid #35374F;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.04), -2px -2px 6px rgba(52, 52, 52, 0.04), inset 5px 5px 6px rgba(5, 5, 5, 0.09), inset -1px -1px 4px rgba(255, 255, 255, 0.03);
+}
+
+.bright .mainSectionContainer__settings__container__item__checkbox__button__outerLongPart {
+    background-color: #ECF0F3;
+    background: #ECF0F3;
+    border: 0.5px solid #9397C9;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.04), -2px -2px 6px rgba(52, 52, 52, 0.04), inset 4px 4px 6px rgba(5, 5, 5, 0.09), inset -1px -1px 4px rgba(255, 255, 255, 0.03);
+}
+
+
+.mainSectionContainer__settings__container__item__checkbox__button input {
+    display: none;
+}
+
+.mainSectionContainer__settings__container__item__checkbox__button input:checked + .mainSectionContainer__settings__container__item__checkbox__button__outerLongPart span {
+    margin-left: 0;
+    transform: translateX(24px);
+}
+
+.dark .mainSectionContainer__settings__container__item__checkbox__button input:checked + .mainSectionContainer__settings__container__item__checkbox__button__outerLongPart span {
+    border-color: #466130;
+}
+
+.bright .mainSectionContainer__settings__container__item__checkbox__button input:checked + .mainSectionContainer__settings__container__item__checkbox__button__outerLongPart span {
+    border-color: #79b34b;
+}
+
+.dark .mainSectionContainer__settings__container__item__checkbox__button input:checked + .mainSectionContainer__settings__container__item__checkbox__button__outerLongPart {
+    border-color: #466130;
+}
+
+.bright .mainSectionContainer__settings__container__item__checkbox__button input:checked + .mainSectionContainer__settings__container__item__checkbox__button__outerLongPart {
+    border-color: #79b34b;
+}
+
+.mainSectionContainer__settings__container__item__checkbox__button__slider {
+    margin-left: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    transition: 0.4s all ease-in-out;
+}
+
+.dark .mainSectionContainer__settings__container__item__checkbox__button__slider {
+    background-color: #282932;
+    border: 0.5px solid #35374F;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.17);
+}
+
+.bright .mainSectionContainer__settings__container__item__checkbox__button__slider {
+    background-color: #ECF0F3;
+    border: 0.5px solid #9397C9;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.17);
+}
+
+.mainSectionContainer__settings__container__item__dropList {
+    display: flex;
+    height: 35px;
+    width: 90%;
+    margin: 10px auto;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+.mainSectionContainer__settings__container__item__dropList:last-child {
+    margin-bottom: 15px;
+}
+
+.mainSectionContainer__settings__container__item__dropList__label {
+    height: 100%;
+    width: 70%;
+    transition: 0.4s all ease-in-out;
+    border-radius: 2px;
+    text-align: center;
+    font-family: RobotoLight;
+    font-size: 12px;
+    line-height: 35px;
+    transition: 0.4s all ease-in-out;
+}
+
+.dark .mainSectionContainer__settings__container__item__dropList__label {
+    background-color: #282932;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.19), -1px -1px 5px rgba(255, 255, 255, 0.06);
+    color: rgb(210, 210, 210);
+}
+
+.bright .mainSectionContainer__settings__container__item__dropList__label {
+    background-color: #ECF0F3;
+    box-shadow: 2px 2px 10px #B1B2B6, -4px -4px 10px rgba(255, 255, 255, 0.58);
+    color: #747474;
+}
+
+
+.mainSectionContainer__settings__container__item__dropList__button {
+    width: 24%;
+    height: 90%;
+}
+
+.mainSectionContainer__settings__container__item__dropList__button__select {
+    width: 100%;
+    height: 100%;
+}
+
+.mainSectionContainer__settings__container__item__dropList__button__select button {
+    padding: 3px 0;
+    width: 100%;
+    height: 100%;
+}
+
+.dark .mainSectionContainer__settings__container__item__dropList__button__select button {
+    background-color: #282932;
+    border: 1px solid #494850;
+    box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.19), inset -1px -1px 5px rgba(255, 255, 255, 0.06);
+    border-radius: 2px;
+}
+
+.mainSectionContainer__settings__container__item__dropList__button__select button img {
+    width: auto;
+    height: 100%;
+}
+
+.mainSectionContainer__settings__container__item__dropList__button__select ul {
+    position: relative;
+    z-index: 5;
+    list-style-type: none;
+    height: 0;
+    pointer-events: none;
+    transition: 0.2s all ease-in-out;
+    overflow: hidden;
+}
+
+.mainSectionContainer__settings__container__item__dropList__button__select li {
+    height: 100%;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainSectionContainer__settings__container__item__dropList__button__select li img {
+    display: block;
+    width: 65%;
+}
+
+.dark .mainSectionContainer__settings__container__item__dropList__button__select li {
+    background-color: #282932;
+    box-shadow: 3.5px 0 5px rgba(0, 0, 0, 0.29), -3.5px 0 5px rgba(255, 255, 255, 0.06);
+    color: rgb(210, 210, 210);
+}
+ 
+.mainSectionContainer__settings__container__item__dropList__button__select__active ul {
+    pointer-events: all;
+    height: 100%;
+    overflow: visible;
+}
+
+.dark .mainSectionContainer__settings__container__item__dropList__button__select__active button {
+    border: none;
+    box-shadow: 4.5px 0 5px rgba(0, 0, 0, 0.29), -3.5px -3.5px 5px rgba(255, 255, 255, 0.06);
+}
+
+/*
+.mainSectionContainer__settings__container__item__dropList__button select {
+    outline: none;
+    border: none;
+    height: 100%;
+    width: 100%;
+    border-radius: 2px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-align: center;
+    transition: 0.4s background-color ease-in-out;
+}
+
+.dark .mainSectionContainer__settings__container__item__dropList__button select {
+    background-color: #282932;
+    border: 1px solid #494850;
+    box-sizing: border-box;
+    box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.19), inset -1px -1px 5px rgba(255, 255, 255, 0.06);
+    color: rgb(210, 210, 210);
+}
+
+ .mainSectionContainer__settings__container__item__dropList_keyboardLang select {
+    background-image: url("../images/lanChoosing/RULan.svg");
+    background-size: 65%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.dark .mainSectionContainer__settings__container__item__dropList__button option {
+    background-color: #282932;
+    border: none;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.19), -1px -1px 5px rgba(255, 255, 255, 0.06);
+}
+
+.dark .mainSectionContainer__settings__container__item__dropList__button select:focus {
+    background-color: #282932;
+    border: none;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.19), -1px -1px 5px rgba(255, 255, 255, 0.06);
+} */

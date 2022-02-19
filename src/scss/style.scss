@@ -1,0 +1,14 @@
+// Global SCSS-files imports
+@import './vars';
+@import './reset';
+@import './global';
+@import './fonts';
+
+
+//sections styles
+@import './languageChoose/languageChoose';
+@import './mainSection/mainscreen';
+
+// Libs
+@import './fontAwesomePro5/all';
+
