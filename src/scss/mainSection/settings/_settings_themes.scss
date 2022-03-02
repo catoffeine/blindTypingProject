@@ -1,0 +1,172 @@
+.dark {
+    .mainSectionContainer__settings {
+        &__hamburgerButton {
+            background-color: rgba(34, 35, 43, 0.5);
+            box-shadow: 6px 6px 7px rgba(31, 32, 39, 0.96), -4px -4px 7px rgba(45, 46, 57, 0.89);
+            transition: 0.4s background-color ease-in-out, 0.4s box-shadow ease-in-out; 
+            &__line {
+                background-color: var(--darkBright);
+                transition: 0.4s all ease-in-out; 
+            }
+            &__lineMiddle {
+                transition-duration: 0.2s;
+            }
+        } //__hamburgerButton
+        &__container {
+            background-color: #282932;
+            box-shadow: inset 4px 4px 10px rgba(6, 8, 10, 0.24), inset -2px -2px 5px rgba(255, 255, 255, 0.02);
+            &__item__checkbox {
+                &__label {
+                    background-color: #282932;
+                    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.19), -1px -1px 5px rgba(255, 255, 255, 0.06);
+                    color: rgb(210, 210, 210);
+                }
+                &:hover .mainSectionContainer__settings__container__item__checkbox__button {
+                    &__outerLongPart {
+                        border-color: #303775;
+                    }
+                    &__slider {
+                        border-color: #343b83;
+                    }
+                }
+                &__button {
+                    &__outerLongPart {
+                        background-color: #282932;
+                        border: 0.5px solid #35374F;
+                        box-sizing: border-box;
+                        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.04), -2px -2px 6px rgba(52, 52, 52, 0.04), inset 5px 5px 6px rgba(5, 5, 5, 0.09), inset -1px -1px 4px rgba(255, 255, 255, 0.03);
+                    }
+                    input:checked + .mainSectionContainer__settings__container__item__checkbox__button__outerLongPart {
+                        border-color: #466130;
+                        span {
+                            border-color: #466130;
+                        }
+                    }
+                    &__slider {
+                        background-color: #282932;
+                        border: 0.5px solid #35374F;
+                        box-sizing: border-box;
+                        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.17);
+                    }
+                } //__button
+            } //__item_checkbox
+            &__item__dropList {
+                &__label {
+                    background-color: #282932;
+                    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.19), -1px -1px 5px rgba(255, 255, 255, 0.06);
+                    color: rgb(210, 210, 210);
+                }
+                &__button__select {
+                    button {
+                        background-color: #282932;
+                        border: 1px solid #494850;
+                        box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.19), inset -1px -1px 5px rgba(255, 255, 255, 0.06);
+                        border-radius: 2px;
+                    }
+                    li {
+                        background-color: #282932;
+                        box-shadow: 3.5px 0 5px rgba(0, 0, 0, 0.29), -3.5px 0 5px rgba(255, 255, 255, 0.06);
+                        color: rgb(210, 210, 210);
+                    }
+                    &__active button {
+                        border: none;
+                        box-shadow: 4.5px 0 5px rgba(0, 0, 0, 0.29), -3.5px -3.5px 5px rgba(255, 255, 255, 0.06);
+                    }
+                } //__button__select
+            } //__item__dropList
+        } //__container
+
+    } //mainSectionContainer__settings
+}
+//DARK END
+
+
+//BRIGHT START
+.bright {
+    .mainSectionContainer__settings {
+        &__hamburgerButton {
+            background-color: #ECF0F3;
+            box-shadow: -2px -2px 5px #FFFFFF, 2px 2px 6px rgba(0, 0, 0, 0.1);
+            transition: 0.4s background-color ease-in-out, 0.4s box-shadow ease-in-out; 
+            &__line {
+                background-color: var(--brightMain);
+                transition: 0.4s all ease-in-out;
+            }
+            &__lineMiddle {
+                transition-duration: 0.2s;
+            }
+        } //__hamburgerButton
+        &__container {
+            background-color: #ECF0F3;
+            box-shadow: inset 4px 4px 10px #B1B2B6, inset -4px -4px 10px rgba(255, 255, 255, 0.58);
+            &__item__checkbox {
+                &__label {
+                    background-color: #ECF0F3;
+                    box-shadow: 2px 2px 10px #B1B2B6, -4px -4px 10px rgba(255, 255, 255, 0.58);
+                    color: #747474;
+                }
+                &:hover .mainSectionContainer__settings__container__item__checkbox__button {
+                    &__outerLongPart {
+                        border-color: #545899;
+                    }
+                    &__slider {
+                        border-color: #545899;
+                    }
+                }
+                &__button {
+                    &__outerLongPart {
+                        background-color: #ECF0F3;
+                        background: #ECF0F3;
+                        border: 0.5px solid #9397C9;
+                        box-sizing: border-box;
+                        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.04), -2px -2px 6px rgba(52, 52, 52, 0.04), inset 4px 4px 6px rgba(5, 5, 5, 0.09), inset -1px -1px 4px rgba(255, 255, 255, 0.03);
+                    }
+                    input:checked + .mainSectionContainer__settings__container__item__checkbox__button__outerLongPart {
+                        border-color: #79b34b;
+                        span {
+                            border-color: #79b34b;
+                        }
+                    }
+                    &__slider {
+                        background-color: #ECF0F3;
+                        border: 0.5px solid #9397C9;
+                        box-sizing: border-box;
+                        box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.17);
+                    }
+                } //__button
+            } //__item_checkbox
+            &__item__dropList {
+                &__label {
+                    background-color: #ECF0F3;
+                    box-shadow: 2px 2px 10px #B1B2B6, -4px -4px 10px rgba(255, 255, 255, 0.58);
+                    color: #747474;
+                }
+                //TODO
+                /*&__button__select {
+                    button {
+                        background-color: #282932;
+                        border: 1px solid #494850;
+                        box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.19), inset -1px -1px 5px rgba(255, 255, 255, 0.06);
+                        border-radius: 2px;
+                    }
+                    li {
+                        background-color: #282932;
+                        box-shadow: 3.5px 0 5px rgba(0, 0, 0, 0.29), -3.5px 0 5px rgba(255, 255, 255, 0.06);
+                        color: rgb(210, 210, 210);
+                    }
+                    &__active button {
+                        border: none;
+                        box-shadow: 4.5px 0 5px rgba(0, 0, 0, 0.29), -3.5px -3.5px 5px rgba(255, 255, 255, 0.06);
+                    }
+                } //__button__select */
+
+            } //__item__dropList
+        } //__container
+
+    } //mainSectionContainer__settings
+}
+
+//BRIGHT END
+
+
+

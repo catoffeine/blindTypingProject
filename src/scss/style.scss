@@ -19,6 +19,14 @@
 @import './mainSection/keyboard/keyboard';
 @import './mainSection/keyboard/keyboard_themes';
 
+//settings section
+@import './mainSection/settings/settings';
+@import './mainSection/settings/settings_themes';
+
+//music section 
+@import './musicSection/musicSection';
+@import './musicSection/musicSection__themes';
+
 // Libs
 @import './fontAwesomePro6/all';
 

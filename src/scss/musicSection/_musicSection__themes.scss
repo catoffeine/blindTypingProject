@@ -1,0 +1,71 @@
+.dark {
+    .musicSection {
+        &__settings {
+            background-color: #282932;
+            box-shadow: -2px -2px 6px rgba(255, 242, 242, 0.04), 2px 2px 6px rgba(0, 0, 0, 0.32);
+        }
+        &__pausePlay {
+            background-color: #282932;
+            box-shadow: -2px -2px 6px rgba(255, 242, 242, 0.04), 2px 2px 6px rgba(0, 0, 0, 0.32);
+            &__isPause {
+                background-color: #282932;
+                box-shadow: inset -2px -2px 6px rgba(255, 242, 242, 0.04), inset 2px 2px 6px rgba(0, 0, 0, 0.32);
+            }
+        }
+        &__pauseImage {
+            background-image: url("../images/MusicControl/pauseMusicDark.svg");
+        }
+        &__playImage {
+            background-image: url("../images/MusicControl/playMusicDark.svg");
+        }
+        &__nextTrack {
+            background-image: url("../images/MusicControl/nextDark.svg");
+            background-color: #282932;
+            box-shadow: -2px -2px 6px rgba(255, 242, 242, 0.04), 2px 2px 6px rgba(0, 0, 0, 0.32);
+        }
+        &__soundControl {
+            background-color: #282932;
+            box-shadow: -2px -2px 6px #fff2f20a, 2px 2px 6px rgba(0, 0, 0, 0.32);
+        }
+        &__nowPlaying {
+            color: #94959b;
+        }
+    } //musicSection
+}
+//DARK END
+
+.bright {
+    .musicSection {
+        &__settings {
+            background-color: #ECF0F3;
+            box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.76), 2px 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        &__pausePlay {
+            background-color: #ECF0F3;
+            box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.76), 2px 2px 6px rgba(0, 0, 0, 0.1);
+            &__isPause {
+                background-color: #ECF0F3;
+                box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.76), inset 2px 2px 6px rgba(0, 0, 0, 0.1);
+            }
+        }
+        &__pauseImage {
+            background-image: url("../images/MusicControl/pauseMusicBright.svg");
+        }
+        &__playImage {
+            background-image: url("../images/MusicControl/playMusicBright.svg");
+        }
+        &__nextTrack {
+            background-image: url("../images/MusicControl/nextBright.svg");
+            background-color: #ECF0F3;
+            box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.76), 2px 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        &__soundControl {
+            background-color: #ECF0F3;
+            box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.76), 2px 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        &__nowPlaying {
+            color: #747474;
+        }
+    } //musicSection
+}
+//BRIGHT END
