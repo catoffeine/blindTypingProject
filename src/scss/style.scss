@@ -7,11 +7,14 @@
 //sections styles
 @import './languageChoose/languageChoose';
 @import './mainSection/mainscreen';
-//Theme switcher
+
+//theme switcher styles
 @import './mainSection/themeSwitcher';
+
 //lessons section
 @import './mainSection/lessons/lessons';
 @import './mainSection/lessons/lessons_themes';
+
 //keyboard section
 @import './mainSection/keyboard/keyboard';
 @import './mainSection/keyboard/keyboard_themes';
