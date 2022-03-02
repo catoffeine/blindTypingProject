@@ -1,8 +1,3 @@
-
-import {qwertyLayouts, changeTypingLan} from './modules/keyboardLayout/keyboardLayout.js';
-
-changeTypingLan('QWERTY/RU');
-
 let hamburgerSettingsBtn = document.querySelector(".mainSectionContainer__settings__hamburgerButton");
 
 hamburgerSettingsBtn.onclick = function() {

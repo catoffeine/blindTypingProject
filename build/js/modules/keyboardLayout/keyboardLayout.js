@@ -14,14 +14,12 @@ export let qwertyLayouts = {
 };
 //'QWERTY/EN' //FORMAT: 'Layout/Langugage'
 export function changeTypingLan(newLan) {
+    console.log(newLan);
     if (newLan.split('/').length != 2) {
         console.log('error occured in changeTypingLan, maybe data is corrupted');
         return;
     }
     let keysOnLayout = document.querySelectorAll('.keyboard__key-layout');
-    if (localStorage.getItem('typingLan') == newLan) {
-        return;
-    } 
     localStorage.setItem('typingLan', newLan);
     if (newLan.split('/')[0] == 'QWERTY') {
         let lan = newLan.split('/')[1];
@@ -33,7 +31,7 @@ export function changeTypingLan(newLan) {
                 break;
             }
             case 'RU': {
-                
+                console.log('RU input');
                 keysOnLayout.forEach((element, i) => {
                     element.innerHTML = qwertyLayouts.RU[i];
                 });

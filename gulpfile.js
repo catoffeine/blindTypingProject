@@ -153,7 +153,7 @@ function watchFiles(params) {
     gulp.watch([path.watch.html], html)
     gulp.watch([path.watch.css], css)
     gulp.watch([path.watch.js], js)
-    gulp.watch([path.watch.js_module], js_module)
+    // gulp.watch([path.watch.js_module], js_module)
     gulp.watch([path.watch.img], images)
     gulp.watch([path.watch.fonts], fonts)
 }
@@ -166,7 +166,7 @@ function clean(params) {
 // let build = gulp.series(clean, gulp.parallel(html, js, css, images, fonts))
 
 // Without clean build
-let build = gulp.series(gulp.parallel(html, js, js_module, css, images, fonts))
+let build = gulp.series(gulp.parallel(html, js, css, images, fonts))
 let watch = gulp.parallel(build, watchFiles, browserSync)
 
 exports.img = img

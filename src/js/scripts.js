@@ -2,7 +2,13 @@
 @@include('dependentLibs.js')
 
 'use strict';
+//modules
+@@include('modules/keyboardLayout.js')
 
+//OnStart scripts
+@@include('onstart.js')
+
+//Main scripts
 @@include('tiltSettings/tiltSettings.js')
 @@include('main_js/lessonscontrol.js')
 @@include('main_js/musicControl.js')

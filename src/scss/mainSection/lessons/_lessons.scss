@@ -1,0 +1,102 @@
+.mainSectionContainer {
+    &__lessons {
+        width: 20%;
+        min-width: 140px;
+        height: 100%;
+        border: 2px solid black;
+
+        &__flexContainer {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            width: 100%;
+            max-height: 80%;
+            transition: 0.4s all ease-in-out;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            &::-webkit-scrollbar {
+                background-color: transparent;
+                width: 1px;
+            }
+
+            &__menu {
+                margin-top: 15px;
+                margin-bottom: 15px;
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                align-items: flex-start;
+                flex-direction: column;
+                height: 100%;
+                width: 90%;
+                &__item {
+                    height: 50px;
+                    width: 100%;
+                    text-align: left;
+                    line-height: 50px;
+                    font-family: RobotoLight;
+                    font-weight: 600;
+                    font-size: 14px;
+                    letter-spacing: 0.8px;
+                    transition-timing-function: ease-in-out;
+                    transition-duration: 0.25s;
+                    transition-property: background-color color box-shadow;
+                    overflow: hidden;
+                    cursor: pointer;
+                    .fa-angle-right {
+                        margin-left: 10px;
+                        font-size: 25px;
+                        margin-right: 10px;
+                        transform: translateY(4px);
+                        transition: all 0.25s ease-in-out;
+                    }
+                    &:hover .fa-angle-right {
+                        transform: translate(6px, 4px) rotate(0);
+                    }
+                    &_active .fa-angle-right {
+                        transform: translateY(4px) rotate(90deg);
+                    }
+                }
+                &__dropDownItem {
+                    height: 100%;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                }
+                &__subitem {
+                    height: 50px;
+                    width: 80%;
+                    text-align: left;
+                    line-height: 50px;
+                    font-family: RobotoLight;
+                    font-weight: 600;
+                    font-size: 12px;
+                    letter-spacing: 0.8px;
+                    transition-timing-function: ease-in-out;
+                    transition-duration: 0.25s;
+                    transition-property: background-color color box-shadow;
+                    overflow-y: hidden;
+                    overflow-x: all;
+                }
+            } //__menu
+            &__submenu {
+                height: 0;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                transition: 0.25s height ease-in-out;
+                overflow: hidden;
+            } //__submenu
+        } //__flexContainer
+    } //lessons
+}
+
+.mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__menu__item:hover .fa-angle-right {
+    transform: translate(0, 4px) rotate(90deg);
+}
+
+.mainSectionContainer__lessons__flexContainer__menu__subitem .mainSectionContainer__lessons__flexContainer__menu__subitem__text {
+    margin-left: 15px;
+}

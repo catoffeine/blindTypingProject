@@ -1,0 +1,67 @@
+//DARK START
+.dark {
+    .keyboardSection {
+        &__showingText {
+            color: rgb(210, 210, 210);
+            background: #282932;
+            box-shadow: 6px 6px 16px #1B1C23, -2px -2px 5px rgba(74, 75, 81, 0.48);
+        }
+        &__writeText {
+            background: #282932;
+            box-shadow: inset 6px 6px 16px #1B1C23, inset -2px -2px 5px rgba(74, 75, 81, 0.48);
+            &__input {
+                color: rgb(209, 209, 209);
+                caret-color: rgb(206, 206, 206);
+            }
+        }
+        &__keyboard {
+            &__Hand {
+                background-image: url("../images/KeyboardSection/white-hand.svg");
+            }
+            &__keyboard {
+                color: white;
+                background: #262730;
+                box-shadow: inset 7px 7px 14px rgba(0, 0, 0, 0.25), inset -7px -7px 14px rgba(59, 61, 65, 0.31);
+            }
+            &__keyboard_row div {
+                background: #2A2B35;
+                box-shadow: 4px 4px 7px rgba(26, 27, 33, 0.72), -1px -1px 4px rgba(119, 120, 130, 0.23);
+            }
+        }
+    } //keyboardSection
+}
+//DARK END
+
+//BRIGHT START
+.bright {
+    .keyboardSection {
+        &__showingText {
+            color: #747474;
+            background: #ECF0F3;
+            box-shadow: -2px -2px 5px #FFFFFF, 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        &__writeText {
+            background: #ECF0F3;
+            box-shadow: inset 5px 5px 8px rgba(0, 0, 0, 0.1), inset -5px -5px 8px rgba(255, 255, 255, 0.48);
+            &__input {
+                color: #747474;
+                caret-color: rgb(104, 104, 104);
+            }
+        }
+        &__keyboard {
+            &__Hand {
+                background-image: url("../images/KeyboardSection/black_hand.svg");
+            }
+            &__keyboard {
+                color: #747474;
+                background: #ECF0F3;
+                box-shadow: inset 5px 5px 8px rgba(0, 0, 0, 0.1), inset -5px -5px 8px rgba(255, 255, 255, 0.74);
+            }
+            &__keyboard_row div {
+                background: rgba(255, 255, 255, 0.1);
+                box-shadow: 3px 3px 6px rgba(34, 35, 41, 0.37), -3px -3px 6px #FFFFFF;
+            }
+        }
+    } //keyboardSection
+}
+//BRIGHT END
