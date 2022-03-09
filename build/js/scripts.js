@@ -7,18 +7,21 @@
 
 'use strict';
 //modules
+let layoutTypes = [
+    'QWERTY', 'DWORAK'
+]
 let qwertyLayouts = {
     EN: [
         '1 !', '2 @', '3 #', '4 $', '5 %', '6 ^', '7 &', '8 *', '9 (', '0 )',
         'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[ {', '] }',
         'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', '; :', '\' "',
-        'Z', 'X', 'C', 'V', 'B', 'N', 'M', ', <', '. >', '/ ?',
+        'Z', 'X', 'C', 'V', 'B', 'N', 'M', ', <', '. >', '/ ?'
     ],
     RU: [
         '1 !', '2 @', '3 #', '4 $', '5 %', '6 ^', '7 &', '8 *', '9 (', '0 )',
         'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ',
         'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э',
-        'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', '/ ?',
+        'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', '/ ?'
     ]
 };
 //'QWERTY/EN' //FORMAT: 'Layout/Langugage'
@@ -68,7 +71,7 @@ let typingLan;
 if (localStorage.getItem('typingLan') == null) typingLan = 'QWERTY/RU'; //byDefault
 else typingLan = localStorage.getItem('typingLan');
 changeTypingLan(typingLan);
-
+changeTheme();
 
 //Main scripts
 $('.mainSectionContainer__lessons__flexContainer__menu__item').tilt({
@@ -281,50 +284,26 @@ SelectObjects.forEach((item) => item.onclick = function() {
 //main_js/storingInfo.js?
 'use strict';
 
-let themeSwitcher = document.querySelector(".themeSwitcher");
+let mainThemes = {'dark': 0, 'bright': 1};
 let currentTheme = 0;
 
-if (localStorage.getItem("theme") == "bright") {
-    currentTheme = 1;
+function changeTheme() {
+    let theme = localStorage.getItem('theme');
+    if (theme == null) currentTheme = mainThemes['dark'];
+    if (theme != mainThemes[currentTheme]) currentTheme = mainThemes[theme];
     document.querySelector("body").classList = "";
-    document.querySelector("body").classList.add("bright");
-} else if (localStorage.getItem("theme") == "dark") {
-    currentTheme = 0;
-    document.querySelector("body").classList = "";
-    document.querySelector("body").classList.add("dark");
-} else if (localStorage.getItem("theme") == null) {
-    localStorage.setItem("theme", "dark");
+    document.querySelector("body").classList.add(mainThemes[currentTheme]);
+    localStorage.setItem('theme', mainThemes[currentTheme]);
+    currentTheme = (currentTheme + 1) % mainThemes.length;
 }
 
-themeSwitcher.onclick = function() {
-    switch(currentTheme) {
-        case 0: {
-            currentTheme++;
-            document.querySelector("body").classList = "";
-            document.querySelector("body").classList.add("bright");
-            localStorage.removeItem("theme");
-            localStorage.setItem("theme", "bright");
-            break;
-        }
-        case 1: {
-            currentTheme = 0;
-            document.querySelector("body").classList = "";
-            document.querySelector("body").classList.add("dark");
-            localStorage.removeItem("theme");
-            localStorage.setItem("theme", "dark");
-            break;
-        }
-        // case 2: {
-        //     currentTheme = 0;
-        //     document.querySelector("body").classList = "";
-        //     document.querySelector("body").classList.add("dark");
-        //     break;
-        // }
-    }
+document.querySelector(".themeSwitcher").onclick = function() {
+    changeTheme();
 }
 
 
 //Language choose _BEGIN
+
 let languages = ["RU", "EN"];
 let languages_html = {
     "RU": "Русский",
@@ -337,6 +316,7 @@ localStorage.setItem("nativeLan", languages[0]); //setting it by default
 
 async function li_onclick() {
     localStorage.setItem("nativeLan", languages[Number(this.value)]);
+    typingLan = layoutTypes[0] + '/' + languages[Number(this.value)];
     document.querySelector(".language_modal .language").innerHTML = this.innerHTML;
 
     ul.style.display = "none";
@@ -354,7 +334,9 @@ languages.forEach(function(el, i) {
     document.querySelector(".languageList_modal ul li:last-of-type").addEventListener("click", li_onclick);
 });
 
+//Confirm button
 document.querySelector(".language_modal a").addEventListener("click", function() {
     document.querySelector(".language_absolute").classList.toggle("language_absolute_hide");
+    changeTypingLan(typingLan);
 });
 //Language choose _END

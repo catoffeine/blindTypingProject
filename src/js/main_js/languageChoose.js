@@ -1,4 +1,5 @@
 //Language choose _BEGIN
+
 let languages = ["RU", "EN"];
 let languages_html = {
     "RU": "Русский",
@@ -11,6 +12,7 @@ localStorage.setItem("nativeLan", languages[0]); //setting it by default
 
 async function li_onclick() {
     localStorage.setItem("nativeLan", languages[Number(this.value)]);
+    typingLan = layoutTypes[0] + '/' + languages[Number(this.value)];
     document.querySelector(".language_modal .language").innerHTML = this.innerHTML;
 
     ul.style.display = "none";
@@ -28,7 +30,9 @@ languages.forEach(function(el, i) {
     document.querySelector(".languageList_modal ul li:last-of-type").addEventListener("click", li_onclick);
 });
 
+//Confirm button
 document.querySelector(".language_modal a").addEventListener("click", function() {
     document.querySelector(".language_absolute").classList.toggle("language_absolute_hide");
+    changeTypingLan(typingLan);
 });
 //Language choose _END
