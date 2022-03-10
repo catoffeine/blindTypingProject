@@ -1,19 +1,23 @@
 'use strict';
 
-let mainThemes = {'dark': 0, 'bright': 1};
+let mainThemes = ['dark', 'bright'];
 let currentTheme = 0;
 
-function changeTheme() {
-    let theme = localStorage.getItem('theme');
-    if (theme == null) currentTheme = mainThemes['dark'];
-    if (theme != mainThemes[currentTheme]) currentTheme = mainThemes[theme];
+function setTheme() {
+    if (localStorage.getItem("theme") == null) localStorage.setItem("theme", "dark");
+    let newTheme = localStorage.getItem("theme");
+    currentTheme = mainThemes.findIndex(el => el == newTheme);
     document.querySelector("body").classList = "";
-    document.querySelector("body").classList.add(mainThemes[currentTheme]);
-    localStorage.setItem('theme', mainThemes[currentTheme]);
+    document.querySelector("body").classList.add(newTheme);
+    console.log("Current index is ");
+}
+
+function changeThemeForward() {
     currentTheme = (currentTheme + 1) % mainThemes.length;
+    localStorage.setItem("theme", mainThemes[currentTheme]);
+    setTheme();
 }
 
 document.querySelector(".themeSwitcher").onclick = function() {
-    changeTheme();
+    changeThemeForward();
 }
-

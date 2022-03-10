@@ -1,12 +1,12 @@
 .mainSectionContainer {
     &__settings {
-        position: relative;
-        width: 16%;
-        min-width: 105px;
+        // position: relative;
+        width: 9%;
+        min-width: 50px;
         height: 100%;
         border: 2px solid black; 
         &__hamburgerButton {
-            position: relative;
+            // position: relative;
             padding: 10px 0;
             display: flex;
             flex-direction: column;
@@ -39,22 +39,54 @@
                     }
                 }
                 .mainSectionContainer__settings__container {
-                    right: 10px;
-                    transition: 0.4s right cubic-bezier(.01,1.24,.95,1.02);
+                    right: 0;
+                    transition: 0.4s right cubic-bezier(0.165, 0.84, 0.44, 1);
                 }
             } //__active
+            &:hover .mainSectionContainer__settings__button {
+                transform: rotate(-90deg);
+            }
         } //__hamburgerButton
+        &__button {
+            width: 100%;
+            text-align: center;
+            font-size: 20px;
+            transition: 0.4s transform cubic-bezier(0.165, 0.84, 0.44, 1);
+            
+        }
+        &__closeBtn {
+            margin-left: 10px;
+            margin-top: 10px;
+            border-radius: 50px;
+            width: 45px;
+            height: 45px;
+            display: block;
+            align-self: flex-start;
+            i {
+                width: 100%;
+                text-align: center;
+                font-size: 25px;
+                font-weight: 300;
+                transition: 0.4s transform cubic-bezier(0.215, 0.610, 0.355, 1);
+            }
+            &:hover i {
+                transform: rotate(90deg);
+            }
+        }
         &__container {
-            margin: 10px auto;
+            height: 100%;
+            top: 0;
+            margin-top: 0;
+            padding-top: 0;
+            margin: 0 auto;
             position: absolute;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-evenly;
+            justify-content: flex-start;
             right: -200%;
             /* height: 80%; */
-            width: 220px;
-            border-radius: 15px;
+            width: 260px;
             transition: 0.4s all cubic-bezier(.64,.07,.08,.86);
             &__item__checkbox {
                 display: flex;

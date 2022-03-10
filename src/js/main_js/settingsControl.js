@@ -1,6 +1,11 @@
 let hamburgerSettingsBtn = document.querySelector(".mainSectionContainer__settings__hamburgerButton");
+let closeBtnSettings = document.querySelector(".mainSectionContainer__settings__closeBtn");
 
 hamburgerSettingsBtn.onclick = function() {
+    document.querySelector(".mainSectionContainer__settings").classList.toggle("mainSectionContainer__settings__hamburgerButton__active");
+}
+
+closeBtnSettings.onclick = function() {
     document.querySelector(".mainSectionContainer__settings").classList.toggle("mainSectionContainer__settings__hamburgerButton__active");
 }
 

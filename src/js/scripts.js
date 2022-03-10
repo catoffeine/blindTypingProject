@@ -5,9 +5,6 @@
 //modules
 @@include('modules/keyboardLayout.js')
 
-//OnStart scripts
-@@include('onstart.js')
-
 //Main scripts
 @@include('tiltSettings/tiltSettings.js')
 @@include('main_js/lessonscontrol.js')
@@ -16,3 +13,6 @@
 //main_js/storingInfo.js?
 @@include('main_js/themecontrol.js')
 @@include('main_js/languageChoose.js')
+
+//OnStart scripts
+@@include('onstart.js')

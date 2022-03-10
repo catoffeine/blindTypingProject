@@ -8,7 +8,7 @@ let languages_html = {
 
 let ul = document.querySelector(".languageList_modal ul");
 let li_template = document.querySelector("#language_tmpli");
-localStorage.setItem("nativeLan", languages[0]); //setting it by default
+//localStorage.setItem("nativeLan", languages[0]); //setting it by default
 
 async function li_onclick() {
     localStorage.setItem("nativeLan", languages[Number(this.value)]);

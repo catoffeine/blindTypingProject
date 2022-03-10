@@ -12,12 +12,22 @@
                 transition-duration: 0.2s;
             }
         } //__hamburgerButton
+        &__button {
+            color: var(--darkBright);
+        }
+        &__closeBtn {
+            background-color: $backgroundColorDark;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.19), -1px -1px 5px rgba(255, 255, 255, 0.06);
+            i {
+                color: var(--darkBright);
+            }
+        }
         &__container {
-            background-color: #282932;
-            box-shadow: inset 4px 4px 10px rgba(6, 8, 10, 0.24), inset -2px -2px 5px rgba(255, 255, 255, 0.02);
+            background-color: $backgroundColorDark;
+            //box-shadow: inset 4px 4px 10px rgba(6, 8, 10, 0.24), inset -2px -2px 5px rgba(255, 255, 255, 0.02);
             &__item__checkbox {
                 &__label {
-                    background-color: #282932;
+                    background-color: $backgroundColorDark;
                     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.19), -1px -1px 5px rgba(255, 255, 255, 0.06);
                     color: rgb(210, 210, 210);
                 }
@@ -31,8 +41,8 @@
                 }
                 &__button {
                     &__outerLongPart {
-                        background-color: #282932;
-                        border: 0.5px solid #35374F;
+                        background-color: $backgroundColorDark;
+                        border: 0.5px solid $outlineButtonColorDark;
                         box-sizing: border-box;
                         box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.04), -2px -2px 6px rgba(52, 52, 52, 0.04), inset 5px 5px 6px rgba(5, 5, 5, 0.09), inset -1px -1px 4px rgba(255, 255, 255, 0.03);
                     }
@@ -43,8 +53,8 @@
                         }
                     }
                     &__slider {
-                        background-color: #282932;
-                        border: 0.5px solid #35374F;
+                        background-color: $backgroundColorDark;
+                        border: 0.5px solid $outlineButtonColorDark;
                         box-sizing: border-box;
                         box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.17);
                     }
@@ -52,19 +62,19 @@
             } //__item_checkbox
             &__item__dropList {
                 &__label {
-                    background-color: #282932;
+                    background-color: $backgroundColorDark;
                     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.19), -1px -1px 5px rgba(255, 255, 255, 0.06);
                     color: rgb(210, 210, 210);
                 }
                 &__button__select {
                     button {
-                        background-color: #282932;
+                        background-color: $backgroundColorDark;
                         border: 1px solid #494850;
                         box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.19), inset -1px -1px 5px rgba(255, 255, 255, 0.06);
                         border-radius: 2px;
                     }
                     li {
-                        background-color: #282932;
+                        background-color: $backgroundColorDark;
                         box-shadow: 3.5px 0 5px rgba(0, 0, 0, 0.29), -3.5px 0 5px rgba(255, 255, 255, 0.06);
                         color: rgb(210, 210, 210);
                     }

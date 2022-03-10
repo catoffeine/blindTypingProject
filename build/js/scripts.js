@@ -59,20 +59,6 @@ function changeTypingLan(newLan) {
     }
 }
 
-//OnStart scripts
-//Temporary
-if (localStorage.getItem('nativeLan') != null) {
-    document.querySelector(".language_absolute").style.display = 'none';
-    document.querySelector(".language_absolute").classList.toggle("language_absolute_hide");
-}
-//Temporary
-
-let typingLan;
-if (localStorage.getItem('typingLan') == null) typingLan = 'QWERTY/RU'; //byDefault
-else typingLan = localStorage.getItem('typingLan');
-changeTypingLan(typingLan);
-changeTheme();
-
 //Main scripts
 $('.mainSectionContainer__lessons__flexContainer__menu__item').tilt({
     glare: true,
@@ -163,8 +149,13 @@ musicPausePlay.onclick = function() {
     musicPausePlay.classList.toggle("musicSection__pausePlay__isPause");
 }
 let hamburgerSettingsBtn = document.querySelector(".mainSectionContainer__settings__hamburgerButton");
+let closeBtnSettings = document.querySelector(".mainSectionContainer__settings__closeBtn");
 
 hamburgerSettingsBtn.onclick = function() {
+    document.querySelector(".mainSectionContainer__settings").classList.toggle("mainSectionContainer__settings__hamburgerButton__active");
+}
+
+closeBtnSettings.onclick = function() {
     document.querySelector(".mainSectionContainer__settings").classList.toggle("mainSectionContainer__settings__hamburgerButton__active");
 }
 
@@ -284,24 +275,27 @@ SelectObjects.forEach((item) => item.onclick = function() {
 //main_js/storingInfo.js?
 'use strict';
 
-let mainThemes = {'dark': 0, 'bright': 1};
+let mainThemes = ['dark', 'bright'];
 let currentTheme = 0;
 
-function changeTheme() {
-    let theme = localStorage.getItem('theme');
-    if (theme == null) currentTheme = mainThemes['dark'];
-    if (theme != mainThemes[currentTheme]) currentTheme = mainThemes[theme];
+function setTheme() {
+    if (localStorage.getItem("theme") == null) localStorage.setItem("theme", "dark");
+    let newTheme = localStorage.getItem("theme");
+    currentTheme = mainThemes.findIndex(el => el == newTheme);
     document.querySelector("body").classList = "";
-    document.querySelector("body").classList.add(mainThemes[currentTheme]);
-    localStorage.setItem('theme', mainThemes[currentTheme]);
+    document.querySelector("body").classList.add(newTheme);
+    console.log("Current index is ");
+}
+
+function changeThemeForward() {
     currentTheme = (currentTheme + 1) % mainThemes.length;
+    localStorage.setItem("theme", mainThemes[currentTheme]);
+    setTheme();
 }
 
 document.querySelector(".themeSwitcher").onclick = function() {
-    changeTheme();
+    changeThemeForward();
 }
-
-
 //Language choose _BEGIN
 
 let languages = ["RU", "EN"];
@@ -312,7 +306,7 @@ let languages_html = {
 
 let ul = document.querySelector(".languageList_modal ul");
 let li_template = document.querySelector("#language_tmpli");
-localStorage.setItem("nativeLan", languages[0]); //setting it by default
+//localStorage.setItem("nativeLan", languages[0]); //setting it by default
 
 async function li_onclick() {
     localStorage.setItem("nativeLan", languages[Number(this.value)]);
@@ -340,3 +334,17 @@ document.querySelector(".language_modal a").addEventListener("click", function()
     changeTypingLan(typingLan);
 });
 //Language choose _END
+
+//OnStart scripts
+//Temporary
+if (localStorage.getItem('nativeLan') != null) {
+    document.querySelector(".language_absolute").style.display = 'none';
+    document.querySelector(".language_absolute").classList.toggle("language_absolute_hide");
+}
+//Temporary
+
+let typingLan;
+if (localStorage.getItem('typingLan') == null) typingLan = 'QWERTY/RU'; //byDefault
+else typingLan = localStorage.getItem('typingLan');
+changeTypingLan(typingLan);
+setTheme();
