@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Work+Sans:wght@300&display=swap");
+
 :root {
   --darkSilent: #727375;
   --darkBright: rgb(209, 209, 209);
@@ -72,7 +74,7 @@ h6 {
   font-size: inherit;
 }
 
-body.locked {
+body {
   overflow: hidden;
 }
 
@@ -99,6 +101,11 @@ body.locked {
 @font-face {
   font-family: "RobotoLight";
   src: url(../fonts/Roboto-Light.ttf);
+}
+
+@font-face {
+  font-family: "Work Sans";
+  src: url(../fonts/WorkSans/static/WorkSans-Light.ttf);
 }
 
 :root {
@@ -895,21 +902,26 @@ html {
 }
 
 .keyboardSection__showingText {
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 500;
   width: 95%;
   padding: 4px;
   padding-left: 20px;
+  padding-right: 20px;
   text-align: left;
   /* line-height: 1.5; */
-  letter-spacing: 1px;
   line-height: 44px;
-  min-height: 55px;
-  font-family: RobotoLight;
-  font-weight: 600;
-  font-size: 15px;
+  height: 65px;
+  font-size: 18px;
   border-radius: 25px;
   -webkit-transition: 0.4s all ease-in-out;
   -o-transition: 0.4s all ease-in-out;
   transition: 0.4s all ease-in-out;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-indent: 0px;
 }
 
 .keyboardSection__writeText {
@@ -927,15 +939,14 @@ html {
 
 .keyboardSection__writeText__input {
   display: inline-block;
-  font-family: RobotoLight;
-  font-weight: 600;
-  font-size: 15px;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 500;
+  font-size: 18px;
   width: 95%;
   height: 100%;
   border: none;
   border-radius: 25px;
   outline: none;
-  letter-spacing: 1px;
   -webkit-transition: 0.4s all ease-in-out;
   -o-transition: 0.4s all ease-in-out;
   transition: 0.4s all ease-in-out;
@@ -1172,28 +1183,6 @@ html {
   margin: 0 auto;
   width: 50%;
   height: 1.5px;
-  -webkit-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;
-  transition: all 0.4s ease-in-out;
-}
-
-.mainSectionContainer__settings__hamburgerButton__active .mainSectionContainer__settings__hamburgerButton__lineTop {
-  -webkit-transform: translateY(7px) rotate(45deg);
-      -ms-transform: translateY(7px) rotate(45deg);
-          transform: translateY(7px) rotate(45deg);
-  -webkit-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;
-  transition: all 0.4s ease-in-out;
-}
-
-.mainSectionContainer__settings__hamburgerButton__active .mainSectionContainer__settings__hamburgerButton__lineMiddle {
-  opacity: 0;
-}
-
-.mainSectionContainer__settings__hamburgerButton__active .mainSectionContainer__settings__hamburgerButton__lineBottom {
-  -webkit-transform: translateY(-8px) rotate(-45deg);
-      -ms-transform: translateY(-8px) rotate(-45deg);
-          transform: translateY(-8px) rotate(-45deg);
   -webkit-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
@@ -1470,6 +1459,10 @@ html {
   color: var(--darkBright);
 }
 
+.dark .mainSectionContainer__settings__button::after {
+  background-color: transparent;
+}
+
 .dark .mainSectionContainer__settings__closeBtn {
   background-color: #262631;
   -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.19), -1px -1px 5px rgba(255, 255, 255, 0.06);
@@ -1575,6 +1568,14 @@ html {
   -webkit-transition-duration: 0.2s;
        -o-transition-duration: 0.2s;
           transition-duration: 0.2s;
+}
+
+.bright .mainSectionContainer__settings__button {
+  color: var(--brightMain);
+}
+
+.bright .mainSectionContainer__settings__button::after {
+  background-color: transparent;
 }
 
 .bright .mainSectionContainer__settings__container {

@@ -10,6 +10,7 @@
 @@include('main_js/lessonscontrol.js')
 @@include('main_js/musicControl.js')
 @@include('main_js/settingsControl.js')
+@@include('main_js/keyboardEngine.js')
 //main_js/storingInfo.js?
 @@include('main_js/themecontrol.js')
 @@include('main_js/languageChoose.js')

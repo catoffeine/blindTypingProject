@@ -14,6 +14,9 @@
         } //__hamburgerButton
         &__button {
             color: var(--darkBright);
+            &::after {
+                background-color: transparent;
+            }
         }
         &__closeBtn {
             background-color: $backgroundColorDark;
@@ -106,6 +109,12 @@
                 transition-duration: 0.2s;
             }
         } //__hamburgerButton
+        &__button {
+            color: var(--brightMain);
+            &::after {
+                background-color: transparent;
+            }
+        }
         &__container {
             background-color: #ECF0F3;
             box-shadow: inset 4px 4px 10px #B1B2B6, inset -4px -4px 10px rgba(255, 255, 255, 0.58);

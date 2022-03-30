@@ -272,6 +272,12 @@ SelectObjects.forEach((item) => item.onclick = function() {
 // document.querySelector(".mainSectionContainer__settings__container__item__dropList_soundChanger button").onclick = function() {
 //     $(".mainSectionContainer__settings__container__item__dropList__button__select__ulContainer").toggle();
 // }
+let keyboardRunningText = document.querySelector(".keyboardSection__showingText");
+let keyboardInputText = document.querySelector(".keyboardSection__writeText__input");
+
+let width = parseInt(getComputedStyle(keyboardRunningText).getPropertyValue('width'));
+console.log(width / 2 / 18);
+// console.log(width);
 //main_js/storingInfo.js?
 'use strict';
 

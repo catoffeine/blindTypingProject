@@ -25,19 +25,19 @@
                 transition: all 0.4s ease-in-out;
             }
             &__active {
-                .mainSectionContainer__settings__hamburgerButton {
-                    &__lineTop {
-                        transform: translateY(7px) rotate(45deg);
-                        transition: all 0.4s ease-in-out;
-                    }
-                    &__lineMiddle {
-                        opacity: 0;
-                    }
-                    &__lineBottom {
-                        transform: translateY(-8px) rotate(-45deg);
-                        transition: all 0.4s ease-in-out;
-                    }
-                }
+                // .mainSectionContainer__settings__hamburgerButton {
+                //     &__lineTop {
+                //         transform: translateY(7px) rotate(45deg);
+                //         transition: all 0.4s ease-in-out;
+                //     }
+                //     &__lineMiddle {
+                //         opacity: 0;
+                //     }
+                //     &__lineBottom {
+                //         transform: translateY(-8px) rotate(-45deg);
+                //         transition: all 0.4s ease-in-out;
+                //     }
+                // }
                 .mainSectionContainer__settings__container {
                     right: 0;
                     transition: 0.4s right cubic-bezier(0.165, 0.84, 0.44, 1);

@@ -17,7 +17,7 @@ let path = {
         js: source_folder + '/js/scripts.js',
         js_module: source_folder + '/js/modules/**/*.js',
         img: source_folder + '/img/**/*.+(png|jpg|jpeg|ico|svg|webp)',
-        fonts: source_folder + '/fonts/*',
+        fonts: source_folder + '/fonts/**/*',
         webfonts: source_folder + '/webfonts/*',
     },
     watch: {
@@ -26,8 +26,8 @@ let path = {
         js: source_folder + '/js/**/*.js',
         js_module: source_folder + '/js/modules/**/*.js',
         img: source_folder + '/img/**/*.+(png|jpg|jpeg|ico|svg|webp)',
-        fonts: source_folder + '/fonts/*',
-        webfonts: source_folder + '/fonts/*',
+        fonts: source_folder + '/fonts/**/*',
+        webfonts: source_folder + '/fonts/**/*',
     },
     clean: './' + project_folder + '/',
 }
