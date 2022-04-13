@@ -23,7 +23,7 @@ async function li_onclick() {
 
 languages.forEach(function(el, i) {
     ul.append(li_template.content.cloneNode(true));
-    document.querySelector(".languageList_modal ul li:last-of-type img").src = "../images/lanChoosing/" + el + "Lan.svg";
+    document.querySelector(".languageList_modal ul li:last-of-type img").src = "images/lanChoosing/" + el + "Lan.svg";
     document.querySelector(".languageList_modal ul li:last-of-type h4").innerHTML = languages_html[el];
     document.querySelector(".languageList_modal ul li:last-of-type").value = i;
 

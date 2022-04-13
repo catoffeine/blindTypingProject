@@ -26,7 +26,7 @@ let ULNamedObjects = {};
 let BtnObjects = document.querySelectorAll(".mainSectionContainer__settings__container__item__dropList__button__select button");
 let SelectObjects = document.querySelectorAll(".mainSectionContainer__settings__container__item__dropList__button__select");
 let URLObjects = {
-    "language": "/images/lanChoosing/",
+    "language": "images/lanChoosing/",
 }
 
 // /images/lanChoosing/
