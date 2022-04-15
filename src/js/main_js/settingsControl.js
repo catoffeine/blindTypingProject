@@ -86,6 +86,25 @@ SelectObjects.forEach((item) => item.onclick = function() {
 });
 
 
+document.querySelector(".settingsKeysBacklight input").addEventListener("change", function() {
+    if (this.checked) {
+        document.querySelectorAll(".keyboardSection__keyboard__keyboard div").forEach(function(el) {
+            if (el.childNodes.length != 1) return;
+            let elId = el.id;
+            let zone = keycodesZones[elId];
+            let theme = localStorage.getItem("theme");
+
+            el.style.backgroundColor = keyboardBacklightConfig[theme][zone];
+        })
+    } else {
+        document.querySelectorAll(".keyboardSection__keyboard__keyboard div").forEach(function(el) {
+            if (el.childNodes.length != 1) return;
+            el.style.backgroundColor = null;
+        })
+    }
+});
+
+
 
 // document.querySelector(".mainSectionContainer__settings__container__item__dropList_soundChanger ul").innerHTML = langArray;
 

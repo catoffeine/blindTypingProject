@@ -2,6 +2,9 @@
 @@include('dependentLibs.js')
 
 'use strict';
+//configs
+@@include('configs/keyboardBacklight.js')
+
 //modules
 @@include('modules/keyboardLayout.js')
 

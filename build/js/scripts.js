@@ -6,6 +6,101 @@
 "use strict";var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};!function(t){"function"==typeof define&&define.amd?define(["jquery"],t):"object"===("undefined"==typeof module?"undefined":_typeof(module))&&module.exports?module.exports=function(i,s){return void 0===s&&(s="undefined"!=typeof window?require("jquery"):require("jquery")(i)),t(s),s}:t(jQuery)}(function(t){return t.fn.tilt=function(i){var s=function(){this.ticking||(requestAnimationFrame(g.bind(this)),this.ticking=!0)},e=function(){var i=this;t(this).on("mousemove",o),t(this).on("mouseenter",a),this.settings.reset&&t(this).on("mouseleave",l),this.settings.glare&&t(window).on("resize",d.bind(i))},n=function(){var i=this;void 0!==this.timeout&&clearTimeout(this.timeout),t(this).css({transition:this.settings.speed+"ms "+this.settings.easing}),this.settings.glare&&this.glareElement.css({transition:"opacity "+this.settings.speed+"ms "+this.settings.easing}),this.timeout=setTimeout(function(){t(i).css({transition:""}),i.settings.glare&&i.glareElement.css({transition:""})},this.settings.speed)},a=function(i){this.ticking=!1,t(this).css({"will-change":"transform"}),n.call(this),t(this).trigger("tilt.mouseEnter")},r=function(i){return"undefined"==typeof i&&(i={pageX:t(this).offset().left+t(this).outerWidth()/2,pageY:t(this).offset().top+t(this).outerHeight()/2}),{x:i.pageX,y:i.pageY}},o=function(t){this.mousePositions=r(t),s.call(this)},l=function(){n.call(this),this.reset=!0,s.call(this),t(this).trigger("tilt.mouseLeave")},h=function(){var i=t(this).outerWidth(),s=t(this).outerHeight(),e=t(this).offset().left,n=t(this).offset().top,a=(this.mousePositions.x-e)/i,r=(this.mousePositions.y-n)/s,o=(this.settings.maxTilt/2-a*this.settings.maxTilt).toFixed(2),l=(r*this.settings.maxTilt-this.settings.maxTilt/2).toFixed(2),h=Math.atan2(this.mousePositions.x-(e+i/2),-(this.mousePositions.y-(n+s/2)))*(180/Math.PI);return{tiltX:o,tiltY:l,percentageX:100*a,percentageY:100*r,angle:h}},g=function(){return this.transforms=h.call(this),this.reset?(this.reset=!1,t(this).css("transform","perspective("+this.settings.perspective+"px) rotateX(0deg) rotateY(0deg)"),void(this.settings.glare&&(this.glareElement.css("transform","rotate(180deg) translate(-50%, -50%)"),this.glareElement.css("opacity","0")))):(t(this).css("transform","perspective("+this.settings.perspective+"px) rotateX("+("x"===this.settings.disableAxis?0:this.transforms.tiltY)+"deg) rotateY("+("y"===this.settings.disableAxis?0:this.transforms.tiltX)+"deg) scale3d("+this.settings.scale+","+this.settings.scale+","+this.settings.scale+")"),this.settings.glare&&(this.glareElement.css("transform","rotate("+this.transforms.angle+"deg) translate(-50%, -50%)"),this.glareElement.css("opacity",""+this.transforms.percentageY*this.settings.maxGlare/100)),t(this).trigger("change",[this.transforms]),void(this.ticking=!1))},c=function(){var i=this.settings.glarePrerender;if(i||t(this).append('<div class="js-tilt-glare"><div class="js-tilt-glare-inner"></div></div>'),this.glareElementWrapper=t(this).find(".js-tilt-glare"),this.glareElement=t(this).find(".js-tilt-glare-inner"),!i){var s={position:"absolute",top:"0",left:"0",width:"100%",height:"100%"};this.glareElementWrapper.css(s).css({overflow:"hidden","pointer-events":"none"}),this.glareElement.css({position:"absolute",top:"50%",left:"50%","background-image":"linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%)",width:""+2*t(this).outerWidth(),height:""+2*t(this).outerWidth(),transform:"rotate(180deg) translate(-50%, -50%)","transform-origin":"0% 0%",opacity:"0"})}},d=function(){this.glareElement.css({width:""+2*t(this).outerWidth(),height:""+2*t(this).outerWidth()})};return t.fn.tilt.destroy=function(){t(this).each(function(){t(this).find(".js-tilt-glare").remove(),t(this).css({"will-change":"",transform:""}),t(this).off("mousemove mouseenter mouseleave")})},t.fn.tilt.getValues=function(){var i=[];return t(this).each(function(){this.mousePositions=r.call(this),i.push(h.call(this))}),i},t.fn.tilt.reset=function(){t(this).each(function(){var i=this;this.mousePositions=r.call(this),this.settings=t(this).data("settings"),l.call(this),setTimeout(function(){i.reset=!1},this.settings.transition)})},this.each(function(){var s=this;this.settings=t.extend({maxTilt:t(this).is("[data-tilt-max]")?t(this).data("tilt-max"):20,perspective:t(this).is("[data-tilt-perspective]")?t(this).data("tilt-perspective"):300,easing:t(this).is("[data-tilt-easing]")?t(this).data("tilt-easing"):"cubic-bezier(.03,.98,.52,.99)",scale:t(this).is("[data-tilt-scale]")?t(this).data("tilt-scale"):"1",speed:t(this).is("[data-tilt-speed]")?t(this).data("tilt-speed"):"400",transition:!t(this).is("[data-tilt-transition]")||t(this).data("tilt-transition"),disableAxis:t(this).is("[data-tilt-disable-axis]")?t(this).data("tilt-disable-axis"):null,axis:t(this).is("[data-tilt-axis]")?t(this).data("tilt-axis"):null,reset:!t(this).is("[data-tilt-reset]")||t(this).data("tilt-reset"),glare:!!t(this).is("[data-tilt-glare]")&&t(this).data("tilt-glare"),maxGlare:t(this).is("[data-tilt-maxglare]")?t(this).data("tilt-maxglare"):1},i),null!==this.settings.axis&&(console.warn("Tilt.js: the axis setting has been renamed to disableAxis. See https://github.com/gijsroge/tilt.js/pull/26 for more information"),this.settings.disableAxis=this.settings.axis),this.init=function(){t(s).data("settings",s.settings),s.settings.glare&&c.call(s),e.call(s)},this.init()})},t("[data-tilt]").tilt(),!0});
 
 'use strict';
+//configs
+let keycodesZones = {
+    keyCode_001: "Lpinkie",
+    keyCode_002: "Lpinkie",
+    keyCode_003: "Lring",
+    keyCode_004: "Lmiddle",
+    keyCode_005: "Lindex",
+    keyCode_006: "Lindex",
+    keyCode_007: "Rindex",
+    keyCode_008: "Rindex",
+    keyCode_009: "Rmiddle",
+    keyCode_010: "Rring",
+    keyCode_011: "Rpinkie",
+    keyCode_012: "Rpinkie",
+    keyCode_013: "Rpinkie",
+    keyCode_014: "Rpinkie",
+    keyCode_015: "Lpinkie",
+    keyCode_016: "Lring",
+    keyCode_017: "Lmiddle",
+    keyCode_018: "Lindex",
+    keyCode_019: "Lindex",
+    keyCode_020: "Rindex",
+    keyCode_021: "Rindex",
+    keyCode_022: "Rmiddle",
+    keyCode_023: "Rring",
+    keyCode_024: "Rpinkie",
+    keyCode_025: "Rpinkie",
+    keyCode_026: "Rpinkie",
+    keyCode_027: "Rpinkie",
+    keyCode_028: "Rpinkie",
+    keyCode_029: "Lpinkie",
+    keyCode_030: "Lring",
+    keyCode_031: "Lmiddle",
+    keyCode_032: "Lindex",
+    keyCode_033: "Lindex",
+    keyCode_034: "Rindex",
+    keyCode_035: "Rindex",
+    keyCode_036: "Rmiddle",
+    keyCode_037: "Rring",
+    keyCode_038: "Rpinkie",
+    keyCode_039: "Rpinkie",
+    keyCode_040: "Rpinkie",
+    keyCode_041: "Rpinkie",
+    keyCode_042: "Lpinkie",
+    keyCode_043: "Lring",
+    keyCode_044: "Lindex",
+    keyCode_045: "Lindex",
+    keyCode_046: "Lindex",
+    keyCode_047: "Rindex",
+    keyCode_048: "Rindex",
+    keyCode_049: "Rmiddle",
+    keyCode_050: "Rring",
+    keyCode_051: "Rpinkie",
+    keyCode_052: "Rpinkie",
+    keyCode_053: "Rpinkie",
+    keyCode_054: "default",
+    keyCode_055: "default",
+    keyCode_056: "default",
+    keyCode_057: "default",
+    keyCode_058: "default",
+    keyCode_059: "default",
+    keyCode_060: "default",
+    keyCode_061: "default",
+    keyCode_062: "default",
+};
+
+let keyboardBacklightConfig = {
+    dark: {
+        Lpinkie: "#8F3F3F",
+        Lring: "#B76B40",
+        Lmiddle: "#6E8F43",
+        Lindex: "#3F4899",
+        Rindex: "#446390",
+        Rmiddle: "#5B9070",
+        Rring: "#AAAC35",
+        Rpinkie: "#703C83",
+        default: "#5B6C70",
+    },
+    bright: {
+        Lpinkie: "#8F3F3F",
+        Lring: "#B76B40",
+        Lmiddle: "#6E8F43",
+        Lindex: "#3F4899",
+        Rindex: "#446390",
+        Rmiddle: "#5B9070",
+        Rring: "#AAAC35",
+        Rpinkie: "#703C83",
+        default: "#5B6C70",
+    }
+};
+
+let handsBacklight = {
+    
+};
+
 //modules
 let layoutTypes = [
     'QWERTY', 'DWORAK'
@@ -236,6 +331,25 @@ SelectObjects.forEach((item) => item.onclick = function() {
 });
 
 
+document.querySelector(".settingsKeysBacklight input").addEventListener("change", function() {
+    if (this.checked) {
+        document.querySelectorAll(".keyboardSection__keyboard__keyboard div").forEach(function(el) {
+            if (el.childNodes.length != 1) return;
+            let elId = el.id;
+            let zone = keycodesZones[elId];
+            let theme = localStorage.getItem("theme");
+
+            el.style.backgroundColor = keyboardBacklightConfig[theme][zone];
+        })
+    } else {
+        document.querySelectorAll(".keyboardSection__keyboard__keyboard div").forEach(function(el) {
+            if (el.childNodes.length != 1) return;
+            el.style.backgroundColor = null;
+        })
+    }
+});
+
+
 
 // document.querySelector(".mainSectionContainer__settings__container__item__dropList_soundChanger ul").innerHTML = langArray;
 
@@ -293,7 +407,13 @@ keyboardInputText.addEventListener("input", function() {
             document.querySelector(".keyboardSection__keyboard__keyboard__spaceKey").style.backgroundColor = "cyan";
             return;
         }
-        if (el.innerText.toLowerCase().indexOf(element) != -1 && !excludeWords.includes(el.innerText.toLowerCase())) el.style.backgroundColor = "red";
+        if (el.innerText.toLowerCase().indexOf(element) != -1 && !excludeWords.includes(el.innerText.toLowerCase())) {
+            let elId = el.id;
+            let zone = keycodesZones[elId];
+            let theme = localStorage.getItem("theme");
+
+            el.style.backgroundColor = keyboardBacklightConfig[theme][zone];
+        }
     })
 });
 //main_js/storingInfo.js?

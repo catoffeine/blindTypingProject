@@ -19,6 +19,12 @@ keyboardInputText.addEventListener("input", function() {
             document.querySelector(".keyboardSection__keyboard__keyboard__spaceKey").style.backgroundColor = "cyan";
             return;
         }
-        if (el.innerText.toLowerCase().indexOf(element) != -1 && !excludeWords.includes(el.innerText.toLowerCase())) el.style.backgroundColor = "red";
+        if (el.innerText.toLowerCase().indexOf(element) != -1 && !excludeWords.includes(el.innerText.toLowerCase())) {
+            let elId = el.id;
+            let zone = keycodesZones[elId];
+            let theme = localStorage.getItem("theme");
+
+            el.style.backgroundColor = keyboardBacklightConfig[theme][zone];
+        }
     })
 });

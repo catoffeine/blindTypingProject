@@ -1085,36 +1085,36 @@ html {
     width: 190px;
 } */
 
-.dark .keyboardSection__showingText {
+.keyboardSection__showingText {
   color: #d2d2d2;
   background: #282932;
   -webkit-box-shadow: 6px 6px 16px #1B1C23, -2px -2px 5px rgba(74, 75, 81, 0.48);
           box-shadow: 6px 6px 16px #1B1C23, -2px -2px 5px rgba(74, 75, 81, 0.48);
 }
 
-.dark .keyboardSection__writeText {
+.keyboardSection__writeText {
   background: #282932;
   -webkit-box-shadow: inset 6px 6px 16px #1B1C23, inset -2px -2px 5px rgba(74, 75, 81, 0.48);
           box-shadow: inset 6px 6px 16px #1B1C23, inset -2px -2px 5px rgba(74, 75, 81, 0.48);
 }
 
-.dark .keyboardSection__writeText__input {
+.keyboardSection__writeText__input {
   color: #d1d1d1;
   caret-color: #cecece;
 }
 
-.dark .keyboardSection__keyboard__Hand {
+.keyboardSection__keyboard__Hand {
   background-image: url("../images/KeyboardSection/white-hand.svg");
 }
 
-.dark .keyboardSection__keyboard__keyboard {
+.keyboardSection__keyboard__keyboard {
   color: white;
   background: #262730;
   -webkit-box-shadow: inset 7px 7px 14px rgba(0, 0, 0, 0.25), inset -7px -7px 14px rgba(59, 61, 65, 0.31);
           box-shadow: inset 7px 7px 14px rgba(0, 0, 0, 0.25), inset -7px -7px 14px rgba(59, 61, 65, 0.31);
 }
 
-.dark .keyboardSection__keyboard__keyboard_row div {
+.keyboardSection__keyboard__keyboard_row div {
   background: #2A2B35;
   -webkit-box-shadow: 4px 4px 7px rgba(26, 27, 33, 0.72), -1px -1px 4px rgba(119, 120, 130, 0.23);
           box-shadow: 4px 4px 7px rgba(26, 27, 33, 0.72), -1px -1px 4px rgba(119, 120, 130, 0.23);
