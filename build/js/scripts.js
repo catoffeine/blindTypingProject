@@ -23,42 +23,42 @@ let keycodesZones = {
     keyCode_013: "Rpinkie",
     keyCode_014: "Rpinkie",
     keyCode_015: "Lpinkie",
-    keyCode_016: "Lring",
-    keyCode_017: "Lmiddle",
-    keyCode_018: "Lindex",
+    keyCode_016: "Lpinkie",
+    keyCode_017: "Lring",
+    keyCode_018: "Lmiddle",
     keyCode_019: "Lindex",
-    keyCode_020: "Rindex",
+    keyCode_020: "Lindex",
     keyCode_021: "Rindex",
-    keyCode_022: "Rmiddle",
-    keyCode_023: "Rring",
-    keyCode_024: "Rpinkie",
+    keyCode_022: "Rindex",
+    keyCode_023: "Rmiddle",
+    keyCode_024: "Rring",
     keyCode_025: "Rpinkie",
     keyCode_026: "Rpinkie",
     keyCode_027: "Rpinkie",
     keyCode_028: "Rpinkie",
     keyCode_029: "Lpinkie",
-    keyCode_030: "Lring",
-    keyCode_031: "Lmiddle",
-    keyCode_032: "Lindex",
+    keyCode_030: "Lpinkie",
+    keyCode_031: "Lring",
+    keyCode_032: "Lmiddle",
     keyCode_033: "Lindex",
-    keyCode_034: "Rindex",
+    keyCode_034: "Lindex",
     keyCode_035: "Rindex",
-    keyCode_036: "Rmiddle",
-    keyCode_037: "Rring",
-    keyCode_038: "Rpinkie",
+    keyCode_036: "Rindex",
+    keyCode_037: "Rmiddle",
+    keyCode_038: "Rring",
     keyCode_039: "Rpinkie",
     keyCode_040: "Rpinkie",
     keyCode_041: "Rpinkie",
     keyCode_042: "Lpinkie",
-    keyCode_043: "Lring",
-    keyCode_044: "Lindex",
-    keyCode_045: "Lindex",
+    keyCode_043: "Lpinkie",
+    keyCode_044: "Lring",
+    keyCode_045: "Lmiddle",
     keyCode_046: "Lindex",
-    keyCode_047: "Rindex",
+    keyCode_047: "Lindex",
     keyCode_048: "Rindex",
-    keyCode_049: "Rmiddle",
-    keyCode_050: "Rring",
-    keyCode_051: "Rpinkie",
+    keyCode_049: "Rindex",
+    keyCode_050: "Rmiddle",
+    keyCode_051: "Rring",
     keyCode_052: "Rpinkie",
     keyCode_053: "Rpinkie",
     keyCode_054: "default",
@@ -95,10 +95,6 @@ let keyboardBacklightConfig = {
         Rpinkie: "#703C83",
         default: "#5B6C70",
     }
-};
-
-let handsBacklight = {
-    
 };
 
 //modules
@@ -340,14 +336,19 @@ document.querySelector(".settingsKeysBacklight input").addEventListener("change"
             let theme = localStorage.getItem("theme");
 
             el.style.backgroundColor = keyboardBacklightConfig[theme][zone];
-        })
+            
+        });
+        hightlightHandFinger();
+        document.querySelector(".keyboardSection__keyboard__Hands").style.opacity = 1;
     } else {
         document.querySelectorAll(".keyboardSection__keyboard__keyboard div").forEach(function(el) {
             if (el.childNodes.length != 1) return;
             el.style.backgroundColor = null;
-        })
+        });
+        document.querySelector(".keyboardSection__keyboard__Hands").style.opacity = 0;
     }
 });
+
 
 
 
@@ -386,14 +387,66 @@ document.querySelector(".settingsKeysBacklight input").addEventListener("change"
 // document.querySelector(".mainSectionContainer__settings__container__item__dropList_soundChanger button").onclick = function() {
 //     $(".mainSectionContainer__settings__container__item__dropList__button__select__ulContainer").toggle();
 // }
+//Loading configs
+
 let keyboardRunningText = document.querySelector(".keyboardSection__showingText");
 let keyboardInputText = document.querySelector(".keyboardSection__writeText__input");
+
+let excludeWords = ["shift", "tab", "capslock", "backspace", "space", "alt", "win", "fn", "ps", "enter", "ctrl"];
+
+let showingText_text = document.querySelector(".showingText__text");
+let showingText_textArray = showingText_text.innerText.split(" ");
+let showingText_active = document.querySelector(".showingText__activeWord");
+let showingText_activeWord = document.querySelector(".showingText__activeWord .theRestWord"); 
+let showingText_written = document.querySelector(".showingText__written");
+
+function hightlightHandFinger() {
+    if (!document.querySelector(".settingsKeysBacklight input").checked) return;
+    let nextCharacter = document.querySelector(".showingText__activeWord .theRestWord").innerText[0];
+    let isUpperCase = nextCharacter.toUpperCase() === nextCharacter;
+    document.querySelectorAll(".keyboardSection__keyboard__keyboard div").forEach(function(el) {
+        if (el.childNodes.length != 1) return;
+
+        if (el.innerText.toLowerCase().indexOf(nextCharacter.toLowerCase()) != -1 && !excludeWords.includes(el.innerText.toLowerCase())) {
+            document.querySelectorAll(".keyboardSection__keyboard__leftHand__finger").forEach((finger) => {finger.style.opacity = null;});
+            document.querySelectorAll(".keyboardSection__keyboard__rightHand__finger").forEach((finger) => {finger.style.opacity = null;});
+            let zone = keycodesZones[el.id];
+            let theme = localStorage.getItem("theme");
+            if(zone[0].toLowerCase() == "l") {
+                if (isUpperCase) {
+                    document.querySelector(".keyboardSection__keyboard__rightHand__Rpinkie").style.backgroundColor = keyboardBacklightConfig[theme].Rpinkie;
+                    document.querySelector(".keyboardSection__keyboard__rightHand__Rpinkie").style.opacity = 1;
+                }
+                document.querySelector(`.keyboardSection__keyboard__leftHand__${zone}`).style.backgroundColor = keyboardBacklightConfig[theme][zone];
+                document.querySelector(`.keyboardSection__keyboard__leftHand__${zone}`).style.opacity = 1;
+            } else {
+                if (isUpperCase) {
+                    document.querySelector(".keyboardSection__keyboard__leftHand__Lpinkie").style.backgroundColor = keyboardBacklightConfig[theme].Lpinkie;
+                    document.querySelector(".keyboardSection__keyboard__leftHand__Lpinkie").style.opacity = 1;
+                }
+                document.querySelector(`.keyboardSection__keyboard__rightHand__${zone}`).style.backgroundColor = keyboardBacklightConfig[theme][zone];
+                document.querySelector(`.keyboardSection__keyboard__rightHand__${zone}`).style.opacity = 1;
+            }
+            return;
+        }
+    });
+}
+
+
+
+showingText_activeWord.innerHTML = showingText_textArray[0];
+showingText_textArray.shift();
+showingText_text.innerHTML = showingText_textArray.join(" ");
+hightlightHandFinger();
+
+
+
 
 let width = parseInt(getComputedStyle(keyboardRunningText).getPropertyValue('width'));
 console.log(width / 2 / 18);
 // console.log(width);
 
-let excludeWords = ["shift", "tab", "capslock", "backspace", "space", "alt", "win", "fn", "ps", "enter", "ctrl"];
+
 
 
 let keyboardSection_keyboard = document.querySelector(".keyboardSection__keyboard__keyboard");
@@ -416,6 +469,8 @@ keyboardInputText.addEventListener("input", function() {
         }
     })
 });
+
+
 //main_js/storingInfo.js?
 'use strict';
 
@@ -448,14 +503,17 @@ let languages_html = {
     "EN": "English"
 };
 
+document.querySelector(".language_modal .language").value = 0;
+
 let ul = document.querySelector(".languageList_modal ul");
 let li_template = document.querySelector("#language_tmpli");
 //localStorage.setItem("nativeLan", languages[0]); //setting it by default
 
 async function li_onclick() {
     localStorage.setItem("nativeLan", languages[Number(this.value)]);
-    typingLan = layoutTypes[0] + '/' + languages[Number(this.value)];
+    // typingLan = layoutTypes[0] + '/' + languages[Number(this.value)];
     document.querySelector(".language_modal .language").innerHTML = this.innerHTML;
+    document.querySelector(".language_modal .language").value = this.value;
 
     ul.style.display = "none";
     await setTimeout(() => {
@@ -474,9 +532,18 @@ languages.forEach(function(el, i) {
 
 //Confirm button
 document.querySelector(".language_modal a").addEventListener("click", function() {
+    localStorage.setItem("nativeLan", languages[Number(document.querySelector(".language_modal .language").value)]);
     document.querySelector(".language_absolute").classList.toggle("language_absolute_hide");
-    changeTypingLan(typingLan);
+    if (localStorage.getItem("nativeLan") == "RU") {
+        location.href = document.querySelector(".page").innerText + '_ru.html';
+    }
+    // changeTypingLan(typingLan);
 });
+
+document.querySelector(".header__mainLanguage").addEventListener("click", function() {
+    // if (document.querySelector(".language_absolute").classList.contains("language_absolute_hide")) document.querySelector(".language_absolute").style.display = "block";
+    document.querySelector(".language_absolute").classList.toggle("language_absolute_hide");
+})
 //Language choose _END
 
 //OnStart scripts

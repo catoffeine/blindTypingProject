@@ -1,0 +1,33 @@
+body {
+    background-color: $backgroundMainDark;
+    color: $textColorDark;
+    text-decoration: none;
+    outline: none;
+}
+
+.bright {
+    background-color: $backgroundMainBright;
+    color: $textColorBright;
+}
+
+.logo:hover {
+    background-color: $backgroundMainDark;
+    box-shadow: 0px;
+}
+
+.header__item:hover {
+    background: #31323C;
+    box-shadow: 5px 6px 15px #1F1F23;
+}
+
+h1, h5 {
+    color: $textColorDark;
+}
+
+.header__mainLanguage {
+    background: $backgroundMainDark;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    &:hover {
+        box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.25);
+    }
+}

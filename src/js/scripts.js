@@ -1,22 +1,22 @@
 //All scripts
-@@include('dependentLibs.js')
+@@include('_dependentLibs.js')
 
 'use strict';
 //configs
-@@include('configs/keyboardBacklight.js')
+@@include('configs/_keyboardBacklight.js')
 
 //modules
-@@include('modules/keyboardLayout.js')
+@@include('modules/_keyboardLayout.js')
 
 //Main scripts
-@@include('tiltSettings/tiltSettings.js')
-@@include('main_js/lessonscontrol.js')
-@@include('main_js/musicControl.js')
-@@include('main_js/settingsControl.js')
-@@include('main_js/keyboardEngine.js')
+@@include('tiltSettings/_tiltSettings.js')
+@@include('main_js/_lessonscontrol.js')
+@@include('main_js/_musicControl.js')
+@@include('main_js/_settingsControl.js')
+@@include('main_js/_keyboardEngine.js')
 //main_js/storingInfo.js?
-@@include('main_js/themecontrol.js')
-@@include('main_js/languageChoose.js')
+@@include('main_js/_themecontrol.js')
+@@include('main_js/_languageChoose.js')
 
 //OnStart scripts
-@@include('onstart.js')
+@@include('_onstart.js')

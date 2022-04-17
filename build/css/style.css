@@ -128,7 +128,7 @@ body {
   transition: var(--mainTransitionDuration) ease-in-out transform;
 }
 
-.dark .language_absolute {
+.language_absolute {
   background-color: var(--darkMainColor);
 }
 
@@ -171,7 +171,7 @@ body {
   border-radius: 25px;
 }
 
-.dark .language_modal {
+.language_modal {
   background-color: var(--darkMainColor);
   -webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.35), -2px -2px 4px rgba(255, 255, 255, 0.04);
           box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.35), -2px -2px 4px rgba(255, 255, 255, 0.04);
@@ -202,7 +202,7 @@ body {
   opacity: 1;
 }
 
-.dark .language_modal .language {
+.language_modal .language {
   background-color: var(--darkMainColor);
   -webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.22), -2px -2px 4px rgba(255, 255, 255, 0.05);
           box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.22), -2px -2px 4px rgba(255, 255, 255, 0.05);
@@ -217,7 +217,7 @@ body {
   font-size: 18px;
 }
 
-.dark .language_modal .language h4 {
+.language_modal .language h4 {
   color: var(--darkTextColor);
 }
 
@@ -240,11 +240,11 @@ body {
   transition: 0.4s border ease-in-out;
 }
 
-.dark .language_modal a:hover {
+.language_modal a:hover {
   border: 1px solid var(--darkGrayColor);
 }
 
-.dark .language_modal a {
+.language_modal a {
   border-bottom: 1px solid var(--darkGrayColor);
 }
 
@@ -298,7 +298,7 @@ body {
   content: attr(data-front);
 }
 
-.dark .language_modal a::before,
+.language_modal a::before,
 ::after {
   background-color: var(--darkMainColor);
   /* background-color: #383a46; for after */
@@ -365,7 +365,7 @@ body {
   width: 100%;
 }
 
-.dark .language_modal .languageList_modal li::after {
+.language_modal .languageList_modal li::after {
   background-color: rgba(255, 255, 255, 0.055);
 }
 
@@ -380,26 +380,26 @@ body {
   width: 30px;
 }
 
-.dark .language_modal .languageList_modal {
+.language_modal .languageList_modal {
   background-color: var(--darkMainColor);
 }
 
-.dark .language_modal .languageList_modal li {
+.language_modal .languageList_modal li {
   border-bottom: rgba(160, 160, 160, 0.979) 2px solid;
   -webkit-box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.35);
           box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.35);
 }
 
-.dark .language_modal .languageList_modal li:first-child {
+.language_modal .languageList_modal li:first-child {
   -webkit-box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.35);
           box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.35);
 }
 
-.dark .language_modal .languageList_modal li:last-of-type {
+.language_modal .languageList_modal li:last-of-type {
   border-bottom: none;
 }
 
-.dark .languageList_modal h4 {
+.languageList_modal h4 {
   color: var(--darkTextColor);
 }
 
@@ -905,13 +905,13 @@ html {
   font-family: "JetBrains Mono", monospace;
   font-weight: 500;
   width: 95%;
-  padding: 4px;
   padding-left: 20px;
   padding-right: 20px;
   text-align: left;
   /* line-height: 1.5; */
-  line-height: 44px;
-  height: 65px;
+  line-height: 54px;
+  max-height: 55px;
+  min-height: 55px;
   font-size: 18px;
   border-radius: 25px;
   -webkit-transition: 0.4s all ease-in-out;
@@ -980,6 +980,10 @@ html {
           justify-content: space-evenly;
   width: 100%;
   height: 30%;
+  -webkit-transition: 0.4s opacity ease-in-out;
+  -o-transition: 0.4s opacity ease-in-out;
+  transition: 0.4s opacity ease-in-out;
+  opacity: 0;
 }
 
 .keyboardSection__keyboard__Hand {
@@ -993,6 +997,86 @@ html {
 .keyboardSection__keyboard__leftHand {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
+}
+
+.keyboardSection__keyboard__leftHand__finger {
+  border-radius: 50%;
+  width: 9px;
+  height: 9px;
+  opacity: 0;
+  -webkit-transition: 0.1s all ease-in-out;
+  -o-transition: 0.1s all ease-in-out;
+  transition: 0.1s all ease-in-out;
+}
+
+.keyboardSection__keyboard__leftHand__Lpinkie {
+  -webkit-transform: translate(105px, 85px);
+      -ms-transform: translate(105px, 85px);
+          transform: translate(105px, 85px);
+}
+
+.keyboardSection__keyboard__leftHand__Lring {
+  -webkit-transform: translate(111px, 52px);
+      -ms-transform: translate(111px, 52px);
+          transform: translate(111px, 52px);
+}
+
+.keyboardSection__keyboard__leftHand__Lmiddle {
+  -webkit-transform: translate(105px, 30px);
+      -ms-transform: translate(105px, 30px);
+          transform: translate(105px, 30px);
+}
+
+.keyboardSection__keyboard__leftHand__Lindex {
+  -webkit-transform: translate(92px, 15px);
+      -ms-transform: translate(92px, 15px);
+          transform: translate(92px, 15px);
+}
+
+.keyboardSection__keyboard__leftHand__Lthumb {
+  -webkit-transform: translate(55px, 25px);
+      -ms-transform: translate(55px, 25px);
+          transform: translate(55px, 25px);
+}
+
+.keyboardSection__keyboard__rightHand__finger {
+  border-radius: 50%;
+  width: 9px;
+  height: 9px;
+  opacity: 0;
+  -webkit-transition: 0.1s all ease-in-out;
+  -o-transition: 0.1s all ease-in-out;
+  transition: 0.1s all ease-in-out;
+}
+
+.keyboardSection__keyboard__rightHand__Rpinkie {
+  -webkit-transform: translate(105px, 85px);
+      -ms-transform: translate(105px, 85px);
+          transform: translate(105px, 85px);
+}
+
+.keyboardSection__keyboard__rightHand__Rring {
+  -webkit-transform: translate(111px, 52px);
+      -ms-transform: translate(111px, 52px);
+          transform: translate(111px, 52px);
+}
+
+.keyboardSection__keyboard__rightHand__Rmiddle {
+  -webkit-transform: translate(105px, 30px);
+      -ms-transform: translate(105px, 30px);
+          transform: translate(105px, 30px);
+}
+
+.keyboardSection__keyboard__rightHand__Rindex {
+  -webkit-transform: translate(92px, 15px);
+      -ms-transform: translate(92px, 15px);
+          transform: translate(92px, 15px);
+}
+
+.keyboardSection__keyboard__rightHand__Rthumb {
+  -webkit-transform: translate(55px, 25px);
+      -ms-transform: translate(55px, 25px);
+          transform: translate(55px, 25px);
 }
 
 .keyboardSection__keyboard__keyboard {
@@ -1024,6 +1108,8 @@ html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   width: 100%;
   height: 25px;
 }
@@ -1054,6 +1140,18 @@ html {
   -webkit-box-flex: 2;
       -ms-flex-positive: 2;
           flex-grow: 2;
+}
+
+.keyboardSection__keyboard__keyboard_row .keyboardSection__keyboard__keyboard__backspaceKey {
+  -webkit-box-flex: 0.7;
+      -ms-flex-positive: 0.7;
+          flex-grow: 0.7;
+}
+
+#keyCode_001 {
+  -webkit-box-flex: 1.2;
+      -ms-flex-positive: 1.2;
+          flex-grow: 1.2;
 }
 
 /*
@@ -1331,9 +1429,9 @@ html {
 
 .mainSectionContainer__settings__container__item__checkbox__button input:checked + .mainSectionContainer__settings__container__item__checkbox__button__outerLongPart span {
   margin-left: 0;
-  -webkit-transform: translateX(24px);
-      -ms-transform: translateX(24px);
-          transform: translateX(24px);
+  -webkit-transform: translateX(31px);
+      -ms-transform: translateX(31px);
+          transform: translateX(31px);
 }
 
 .mainSectionContainer__settings__container__item__checkbox__button__slider {

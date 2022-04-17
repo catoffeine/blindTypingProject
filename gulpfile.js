@@ -13,8 +13,10 @@ let path = {
     },
     src: {
         html: [source_folder + '/*.html', '!' + source_folder + '/_*.html'],
-        css: source_folder + '/scss/style.scss',
-        js: source_folder + '/js/scripts.js',
+        // css: source_folder + '/scss/style.scss',
+        css: [source_folder + '/scss/*.scss', '!' + source_folder + '/scss/_*.scss'],
+        // js: source_folder + '/js/scripts.js',
+        js: [source_folder + '/js/*.js', '!' + source_folder + '/**/*_*.js'],
         js_module: source_folder + '/js/modules/**/*.js',
         img: source_folder + '/img/**/*.+(png|jpg|jpeg|ico|svg|webp)',
         fonts: source_folder + '/fonts/**/*',

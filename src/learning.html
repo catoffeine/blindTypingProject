@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main page</title>
+    <link rel="stylesheet" href="./css/style.min.css">
+</head>
+
+<body class="dark">
+    <!-- Language Choosing Absolute -->
+    @@include('./html/languageChoose/_languageChoose_bgLocked.html')
+    <button class="themeSwitcher"></button>
+    <div class="container">
+        <div class="mainSectionContainer">
+            <div class="mainSectionContainer__mainSectionFlex">
+                <!-- Lessons -->
+                @@include('./html/mainSection/_lessons.html')
+                <!-- main keyboard -->
+                @@include('./html/mainSection/_keyboard.html')
+                <!-- main settings on the right -->
+                @@include('./html/mainSection/_settings.html')
+            </div>
+            <!-- music control section -->
+            @@include('./html/musicSection/_musicSection.html')
+        </div>
+    </div>
+    
+</body>
+
+<script src="./js/scripts.min.js"></script>
+
+</html>
