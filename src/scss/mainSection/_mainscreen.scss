@@ -27,7 +27,7 @@ html {
 .container {
     margin: 0 auto;
     max-width: 1440px;
-    min-width: 690px;
+    // min-width: 690px;
     height: 100%;
 }
 
@@ -54,16 +54,22 @@ html {
 }
 
 .mainSectionContainer__mainSectionFlex {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    align-content: flex-start;
+    // display: flex;
+    // justify-content: space-evenly;
+    // align-items: flex-start;
+    // align-content: flex-start;
+    display: grid;
+    grid-template-columns: 2.5fr 10fr 0.7fr;
+    @media (max-width: $breakpoint1107) {
+        grid-template-columns: 10fr 0.7fr;
+    }
+    // grid-template-columns: 10fr 0.7fr;
     height: 70%;
     min-height: 350px;
     width: 100%;
-    min-width: 690px;
+    // min-width: 690px;
     flex-wrap: nowrap;
-    overflow-x: hidden;
+    // overflow-x: hidden;
     border: 2px solid black;
 }
 

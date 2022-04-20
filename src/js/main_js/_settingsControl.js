@@ -97,7 +97,7 @@ document.querySelector(".settingsKeysBacklight input").addEventListener("change"
             el.style.backgroundColor = keyboardBacklightConfig[theme][zone];
             
         });
-        hightlightHandFinger();
+        hightlightHandFinger(document.querySelector(".showingText__activeWord").innerText[0]);
         document.querySelector(".keyboardSection__keyboard__Hands").style.opacity = 1;
     } else {
         document.querySelectorAll(".keyboardSection__keyboard__keyboard div").forEach(function(el) {

@@ -2,15 +2,19 @@ body {
     
     font-family: Work Sans, monospace;
 }
-.container {
-    position: relative;
-    z-index: 1;
-    max-width: 1480px;
-    margin: 0 auto;
-    box-sizing: border-box;
-}
+// .container {
+//     position: relative;
+//     z-index: 1;
+//     max-width: 1480px;
+//     margin: 0 auto;
+//     box-sizing: border-box;
+// }
 
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    // align-self: flex-start;
     box-sizing: border-box;
     margin-top: 20px;
     width: 100%;

@@ -1,6 +1,10 @@
 .mainSectionContainer {
     &__lessons {
-        width: 20%;
+        @media (max-width: $breakpoint1107) {
+            display: none;
+        }
+        
+        // width: 20%;
         min-width: 140px;
         height: 100%;
         border: 2px solid black;
