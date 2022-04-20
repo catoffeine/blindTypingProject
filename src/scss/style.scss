@@ -5,6 +5,10 @@
 @import './fonts';
 
 //sections styles
+@import './indexPage/header/header';
+@import './indexPage/header/header_themes';
+
+//Language choosing
 @import './languageChoose/languageChoose';
 @import './mainSection/mainscreen';
 

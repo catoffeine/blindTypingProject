@@ -132,16 +132,27 @@
             }
         }
         &__keyboard {
-            width: 540px;
-            height: 180px;
-            // width: 800px;
-            // height: 200px;
+            @media (max-width: $breakpoint1107) {
+                width: 540px;
+                height: 185px;
+                font-size: 11px;
+            }
+            @media (max-width: $breakpoint792) {
+                width: 400px;
+                height: 140px;
+                row-gap: 6px;
+                font-size: 9px;
+            }
+            width: 750px;
+            height: 250px;
+            // width: 500px;
+            // height: 100px;
         
             border-radius: 15px;
             padding: 10px;
             padding-top: 10px;
             font-family: RobotoLight;
-            font-size: 11px;
+            font-size: 15px;
             transition: 0.4s ease-in-out;
 
 
@@ -153,45 +164,43 @@
             transition-property: all;
 
             &_row {
+                width: 100%;
+                display: grid;
+                @media (max-width: $breakpoint1107) {
+                    column-gap: 5px;   
+                }
+                column-gap: 6px;
                 &:nth-child(1) {
-                    width: 100%;
-                    display: grid;
                     grid-template-columns: 1.6fr repeat(12, 1fr) 3fr;
-                    column-gap: 6px;
                 }
                 &:nth-child(2) {
-                    width: 100%;
-                    display: grid;
                     grid-template-columns: 2.5fr repeat(12, 1fr) 2.2fr;
-                    column-gap: 6px;
                 }
                 &:nth-child(3) {
-                    width: 100%;
-                    display: grid;
                     grid-template-columns: 2.9fr repeat(11, 1fr) 2.7fr;
-                    column-gap: 6px;
                 }
                 &:nth-child(4) {
-                    width: 100%;
-                    display: grid;
                     grid-template-columns: 4fr repeat(10, 1fr) 4fr;
-                    column-gap: 6px;
                 }
                 &:nth-child(5) {
-                    width: 100%;
-                    display: grid;
                     grid-template-columns: 1fr 1fr 1fr 9fr repeat(5, 1fr);
-                    column-gap: 6px;
                 }
-                display: flex;
-                justify-content: space-around;
-                width: 100%;
+                // display: flex;
+                // justify-content: space-around;
+                // width: 100%;
                 // height: 25px;
                 div {
                     // height: 100%;
                     border-radius: 5px;
                     text-align: center;
-                    line-height: 25px;
+                    @media (max-width: $breakpoint1107) {
+                        line-height: 24px;
+                    }
+                    @media (max-width: $breakpoint792) {
+                        line-height: 17px;
+                        border-radius: 2px;
+                    }
+                    line-height: 37px;
                     transition: 0.4s all ease-in-out;
                 }
             }
@@ -228,22 +237,22 @@
     } //__keyboard
 }
 
-.keyboardSection__keyboard__keyboard_row .keyboardSection__keyboard__keyboard__specialKey {
-    flex-grow: 1;
-    // margin: 0px 4px;
-}
+// .keyboardSection__keyboard__keyboard_row .keyboardSection__keyboard__keyboard__specialKey {
+//     flex-grow: 1;
+//     // margin: 0px 4px;
+// }
 
-.keyboardSection__keyboard__keyboard_row .keyboardSection__keyboard__keyboard__EnterKey {
-    flex-grow: 2;
-}
+// .keyboardSection__keyboard__keyboard_row .keyboardSection__keyboard__keyboard__EnterKey {
+//     flex-grow: 2;
+// }
 
-.keyboardSection__keyboard__keyboard_row .keyboardSection__keyboard__keyboard__backspaceKey {
-    flex-grow: 0.7;
-}
+// .keyboardSection__keyboard__keyboard_row .keyboardSection__keyboard__keyboard__backspaceKey {
+//     flex-grow: 0.7;
+// }
 
-#keyCode_001 {
-    flex-grow: 1.2;
-}
+// #keyCode_001 {
+//     flex-grow: 1.2;
+// }
 
 /*
 .keyboardSection__keyboard__keyboard__backspaceKey {
