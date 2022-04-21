@@ -43,13 +43,31 @@
         .misTyping {
             font-size: 0;
         }
+        &__written {
+            font-size: 0;
+        }
+        .wrongCh {
+            font-size: 18px;
+            color: red;
+        }
+        .rightCh {
+            color: green;
+            font-size: 18px;
+        }
     }
     &__writeText {
-        text-align: center;
+        display: inline-block;
+        flex-wrap: nowrap;
+        // text-align: center;
+        justify-content: flex-start;
+        // margin-left: 19px;
+        padding-left: 19px;
+        padding-right: 19px;
         vertical-align: center;
         line-height: 50px;
         width: 95%;
-        min-height: 50px;
+        max-height: 55px;
+        min-height: 55px;
         margin-top: 20px;
         border-radius: 25px;
         transition: 0.4s all ease-in-out;
@@ -58,13 +76,21 @@
             font-family: 'JetBrains Mono', monospace;
             font-weight: 500;
             font-size: 18px;
-            width: 95%;
+            // width: 95%;
             height: 100%;
             border: none;
             border-radius: 25px;
             outline: none;
             transition: 0.4s all ease-in-out;
             background: transparent;
+        }
+        &__dontTouch {
+            // display: none;
+            // margin-right: 10px;
+            width: auto;
+            font-size: 18px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
         }
     } //__writeText
     &__keyboard {
@@ -146,15 +172,26 @@
             }
         }
         &__keyboard {
-            @media (max-width: $breakpoint1107) {
+            // @media (max-width: $breakpoint1107) {
+            //     width: 540px;
+            //     height: 185px;
+            //     font-size: 11px;
+            // }
+            // @media (max-width: $breakpoint1107) {
+            //     width: 600px;
+            //     height: 200px;
+            //     font-size: 11px;
+            // }
+            @media (max-width: $breakpoint792) {
                 width: 540px;
                 height: 185px;
+                row-gap: 6px;
                 font-size: 11px;
             }
-            @media (max-width: $breakpoint792) {
-                width: 400px;
-                height: 140px;
-                row-gap: 6px;
+            @media (max-width: $breakpoint600) {
+                width: 420px;
+                height: 145px;
+                row-gap: 5px;
                 font-size: 9px;
             }
             width: 750px;
@@ -207,12 +244,12 @@
                     // height: 100%;
                     border-radius: 5px;
                     text-align: center;
-                    @media (max-width: $breakpoint1107) {
-                        line-height: 24px;
-                    }
                     @media (max-width: $breakpoint792) {
-                        line-height: 17px;
-                        border-radius: 2px;
+                        line-height: 26px;
+                        border-radius: 4px;
+                    }
+                    @media (max-width: $breakpoint600) {
+                        line-height: 18px;
                     }
                     line-height: 37px;
                     transition: 0.4s all ease-in-out;

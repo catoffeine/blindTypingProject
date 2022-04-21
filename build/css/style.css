@@ -1044,12 +1044,34 @@ html {
   font-size: 0;
 }
 
+.keyboardSection__showingText__written {
+  font-size: 0;
+}
+
+.keyboardSection__showingText .wrongCh {
+  font-size: 18px;
+  color: red;
+}
+
+.keyboardSection__showingText .rightCh {
+  color: green;
+  font-size: 18px;
+}
+
 .keyboardSection__writeText {
-  text-align: center;
+  display: inline-block;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding-left: 19px;
+  padding-right: 19px;
   vertical-align: center;
   line-height: 50px;
   width: 95%;
-  min-height: 50px;
+  max-height: 55px;
+  min-height: 55px;
   margin-top: 20px;
   border-radius: 25px;
   -webkit-transition: 0.4s all ease-in-out;
@@ -1062,7 +1084,6 @@ html {
   font-family: "JetBrains Mono", monospace;
   font-weight: 500;
   font-size: 18px;
-  width: 95%;
   height: 100%;
   border: none;
   border-radius: 25px;
@@ -1071,6 +1092,13 @@ html {
   -o-transition: 0.4s all ease-in-out;
   transition: 0.4s all ease-in-out;
   background: transparent;
+}
+
+.keyboardSection__writeText__dontTouch {
+  width: auto;
+  font-size: 18px;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 500;
 }
 
 .keyboardSection__keyboard {
@@ -28930,33 +28958,36 @@ html {
     display: none;
   }
 
-  .keyboardSection__keyboard__keyboard {
-    width: 540px;
-    height: 185px;
-    font-size: 11px;
-  }
-
   .keyboardSection__keyboard__keyboard_row {
     -webkit-column-gap: 5px;
        -moz-column-gap: 5px;
             column-gap: 5px;
   }
-
-  .keyboardSection__keyboard__keyboard_row div {
-    line-height: 24px;
-  }
 }
 
 @media (max-width: 792px) {
   .keyboardSection__keyboard__keyboard {
-    width: 400px;
-    height: 140px;
+    width: 540px;
+    height: 185px;
     row-gap: 6px;
+    font-size: 11px;
+  }
+
+  .keyboardSection__keyboard__keyboard_row div {
+    line-height: 26px;
+    border-radius: 4px;
+  }
+}
+
+@media (max-width: 600px) {
+  .keyboardSection__keyboard__keyboard {
+    width: 420px;
+    height: 145px;
+    row-gap: 5px;
     font-size: 9px;
   }
 
   .keyboardSection__keyboard__keyboard_row div {
-    line-height: 17px;
-    border-radius: 2px;
+    line-height: 18px;
   }
 }

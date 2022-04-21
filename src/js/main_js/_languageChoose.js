@@ -36,7 +36,11 @@ languages.forEach(function(el, i) {
 //Confirm button
 document.querySelector(".language_modal a").addEventListener("click", function() {
     localStorage.setItem("nativeLan", languages[Number(document.querySelector(".language_modal .language").value)]);
+    let keyboardTypingLan = localStorage.getItem("typingLan").split("/");
+    keyboardTypingLan[1] = localStorage.getItem("nativeLan");
+    localStorage.setItem("typingLan", keyboardTypingLan.join("/"));
     document.querySelector(".language_absolute").classList.toggle("language_absolute_hide");
+    changeTypingLan(localStorage.getItem("typingLan"));
     if (localStorage.getItem("nativeLan") == "RU") {
         location.href = document.querySelector(".page").innerText + '_ru.html';
     }
@@ -44,6 +48,7 @@ document.querySelector(".language_modal a").addEventListener("click", function()
 });
 
 document.querySelector(".header__mainLanguage").addEventListener("click", function() {
+    console.log("headerMainLanguage");
     // if (document.querySelector(".language_absolute").classList.contains("language_absolute_hide")) document.querySelector(".language_absolute").style.display = "block";
     document.querySelector(".language_absolute").classList.toggle("language_absolute_hide");
 })
