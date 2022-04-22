@@ -18,20 +18,21 @@
         font-size: 0;
         width: 95%;
         // padding: 4px;
-        padding-left: 20px;
-        padding-right: 20px;
+        // padding-left: 20px;
+        // padding-right: 20px;
+        padding: 14px 20px;
         text-align: left;
         /* line-height: 1.5; */
-        line-height: 54px;
-        max-height: 55px;
-        min-height: 55px;
+        line-height: 20px;
+        // max-height: 55px;
+        // min-height: 55px;
        
         border-radius: 25px;
         transition: 0.4s all ease-in-out;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        text-indent: 0px;
+        // text-overflow: ellipsis;
+        // white-space: nowrap;
+        // overflow: hidden;
+        // text-indent: 0px;
         span {
             font-family: 'JetBrains Mono', monospace;
             font-weight: 500;
@@ -56,42 +57,61 @@
         }
     }
     &__writeText {
-        display: inline-block;
-        flex-wrap: nowrap;
+        // display: inline-block;
+        // display: grid;
+        // grid-template-rows: auto;
+        // grid-template-columns: 100px 100%;
+        // grid-auto-columns: minmax(0px, auto);
+
+        // box-sizing: border-box;
+        // flex-wrap: nowrap;
         // text-align: center;
-        justify-content: flex-start;
+        // justify-content: flex-start;
         // margin-left: 19px;
-        padding-left: 19px;
-        padding-right: 19px;
-        vertical-align: center;
-        line-height: 50px;
+        // padding-left: 19px;
+        // padding-right: 19px;
+        padding: 15px 19px;
+        // vertical-align: center;
+        // line-height: 50px;
         width: 95%;
-        max-height: 55px;
-        min-height: 55px;
+        // max-height: 55px;
+        // min-height: 55px;
+        text-overflow: hidden;
+        white-space: wrap;
         margin-top: 20px;
         border-radius: 25px;
-        transition: 0.4s all ease-in-out;
+        transition: 0.4s background-color ease-in-out;
         &__input {
-            display: inline-block;
+            // display: block;
+            width: 100%;
+            height: 100%;
+            min-width: 200px;
+            min-height: 25px;
+            max-height: 300px;
+            max-width: 100%;
+            // display: block;
+            // padding: 0;
+            // margin: 0;
             font-family: 'JetBrains Mono', monospace;
             font-weight: 500;
             font-size: 18px;
-            // width: 95%;
-            height: 100%;
+            // width: auto;
+            // height: 100%;
             border: none;
-            border-radius: 25px;
+            // border-radius: 25px;
             outline: none;
-            transition: 0.4s all ease-in-out;
+            transition: 0.4s color ease-in-out;
             background: transparent;
         }
-        &__dontTouch {
-            // display: none;
-            // margin-right: 10px;
-            width: auto;
-            font-size: 18px;
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 500;
-        }
+        // &__dontTouch {
+        //     // display: none;
+        //     // margin-right: 10px;
+        //     // width: auto;
+        //     height: 100%;
+        //     font-size: 18px;
+        //     font-family: 'JetBrains Mono', monospace;
+        //     font-weight: 500;
+        // }
     } //__writeText
     &__keyboard {
         display: flex;
@@ -125,13 +145,14 @@
             transform: rotateY(180deg);
             &__finger {
                 border-radius: 50%;
-                width: 9px;
-                height: 9px;
+                width: 14px;
+                height: 14px;
                 opacity: 0;
                 transition: 0.1s all ease-in-out;
             }
             &__Lpinkie {
-                transform: translate(94px,55px);
+                transform: translate(91px,52px);
+                box-shadow: 0 0 10px rgb(219, 48, 48), 0 0 20px rgb(207, 48, 48), 0 0 40px rgb(214, 49, 49);
             }
             &__Lring {
                 transform: translate(100px,19px);
@@ -149,14 +170,14 @@
         &__rightHand {
             &__finger {
                 border-radius: 50%;
-                width: 9px;
-                height: 9px;
+                width: 14px;
+                height: 14px;
                 opacity: 0;
                 transition: 0.1s all ease-in-out;
                 // background-color: cyan;
             }
             &__Rpinkie {
-                transform: translate(94px,55px);
+                transform: translate(91px,52px);
             }
             &__Rring {
                 transform: translate(100px,19px);
@@ -255,10 +276,10 @@
                     transition: 0.4s all ease-in-out;
                 }
             }
-            &__singleKey {
+            // &__singleKey {
                 // width: 25px;
                 // margin: 0px 4px;
-            }
+            // }
 
             //display: flex;
             // flex-direction: column;

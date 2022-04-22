@@ -466,19 +466,19 @@ function getSpanWrapText(correctWord, inputWord) {
     for (let i = 0; i < size; ++i) {
         if (correctWord[i] == inputWord[i]) {
             if (isRight) {
-                spanArray[spanArray.length - 1] += inputWord[i];
+                spanArray[spanArray.length - 1] += correctWord[i];
             } else {
-                spanArray.push(inputWord[i]);
+                spanArray.push(correctWord[i]);
                 spanCorrectionArray.push(true);
             }
             isRight = true;
         } else {
             if (i == 0) isRight = true;
             if (isRight) {
-                spanArray.push(inputWord[i]);
+                spanArray.push(correctWord[i]);
                 spanCorrectionArray.push(false);
             } else {
-                spanArray[spanArray.length - 1] += inputWord[i];
+                spanArray[spanArray.length - 1] += correctWord[i];
             }
             isRight = false;
         }
@@ -488,7 +488,7 @@ function getSpanWrapText(correctWord, inputWord) {
             spanArray.push(correctWord.substr(size, correctWord.length - size));
             spanCorrectionArray.push(false);
         } else {
-            spanArray[spanArray.length - 1] += inputWord[i];
+            spanArray[spanArray.length - 1] += correctWord.substr(size, correctWord.length - size);
         }
     }
     spanArray.forEach((value, index) => {
