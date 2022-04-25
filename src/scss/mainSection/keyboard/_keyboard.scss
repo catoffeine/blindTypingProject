@@ -73,7 +73,7 @@
         padding: 15px 19px;
         // vertical-align: center;
         // line-height: 50px;
-        width: 95%;
+        width: 60%;
         // max-height: 55px;
         // min-height: 55px;
         text-overflow: hidden;
@@ -145,33 +145,32 @@
             transform: rotateY(180deg);
             &__finger {
                 border-radius: 50%;
-                width: 14px;
-                height: 14px;
+                width: 16px;
+                height: 16px;
                 opacity: 0;
                 transition: 0.1s all ease-in-out;
             }
             &__Lpinkie {
                 transform: translate(91px,52px);
-                box-shadow: 0 0 10px rgb(219, 48, 48), 0 0 20px rgb(207, 48, 48), 0 0 40px rgb(214, 49, 49);
             }
             &__Lring {
-                transform: translate(100px,19px);
+                transform: translate(97px,9px);
             }
             &__Lmiddle {
-                transform: translate(95px,-7px);
+                transform: translate(91px,-24px);
             }
             &__Lindex {
-                transform: translate(80px,-22px);
+                transform: translate(76px,-48px);
             }
             &__Lthumb {
-                transform: translate(37px,-10px);
+                transform: translate(32px,-42px);
             }
         }
         &__rightHand {
             &__finger {
                 border-radius: 50%;
-                width: 14px;
-                height: 14px;
+                width: 16px;
+                height: 16px;
                 opacity: 0;
                 transition: 0.1s all ease-in-out;
                 // background-color: cyan;
@@ -180,16 +179,16 @@
                 transform: translate(91px,52px);
             }
             &__Rring {
-                transform: translate(100px,19px);
+                transform: translate(97px,9px);
             }
             &__Rmiddle {
-                transform: translate(95px,-7px);
+                transform: translate(91px,-24px);
             }
             &__Rindex {
-                transform: translate(80px,-22px);
+                transform: translate(76px,-48px);
             }
             &__Rthumb {
-                transform: translate(37px,-10px);
+                transform: translate(32px,-42px);
             }
         }
         &__keyboard {

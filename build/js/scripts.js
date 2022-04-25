@@ -73,15 +73,30 @@ let keycodesZones = {
 };
 
 let keyboardBacklightConfig = {
+    default: {
+        Lpinkie: "#8F3F3F",
+        Lring: "#B76B40",
+        Lmiddle: "#6E8F43",
+        Lindex: "#3F4899",
+        Lthumb: "#5B6C70",
+        Rindex: "#446390",
+        Rmiddle: "#5B9070",
+        Rring: "#AAAC35",
+        Rpinkie: "#703C83",
+        Rthumb: "#5B6C70",
+        default: "#5B6C70",
+    },
     dark: {
         Lpinkie: "#8F3F3F",
         Lring: "#B76B40",
         Lmiddle: "#6E8F43",
         Lindex: "#3F4899",
+        Lthumb: "#5B6C70",
         Rindex: "#446390",
         Rmiddle: "#5B9070",
         Rring: "#AAAC35",
         Rpinkie: "#703C83",
+        Rthumb: "#5B6C70",
         default: "#5B6C70",
     },
     bright: {
@@ -96,8 +111,101 @@ let keyboardBacklightConfig = {
         default: "#5B6C70",
     }
 };
+let lessons = {
+    beginning: {
+        middleRow: 
+        ["aa ss dd ff jj kk ll ;;",
+        "as as df df jk jk l; l;",
+        "as as df df jk jk l; l;",
+        "sa sa fd fd kj kj ;l ;l",
+        "jkl; jkl; asdf asdf",
+        "fdsa fdsa ;lkj ;lkj",
+        "asdf asdf jkl; jkl;"],
+        newKeys1:
+        ["ad ad jk jk ad ad jk jk",
+        "jljl adad jljl adad",
+        "sfsf adad jljl sfsf",
+        "fsfs dada ljlj fsfs",
+        "fsfs adad jllj sffs",
+        "jkfd dfkj kjdf fdjk",
+        "affa j;;j jkfd l;sa",
+        "afds j;lk jkj; ;jad"],
+        newKeys2:
+        ["adfs adfs jlk; jlk;",
+        "ajsk ajsk ;lfd ;lfd",
+        "afsd afsd j;kl j;kl",
+        "jfa; jfa; ;afj ;afj",
+        "slsl kdkd jfjf ;a;a",
+        "akak sjsj dkdk alal",
+        "aslk dfkj aslk dfkj",
+        "fjkd fkjd fkjd fjkd",
+        "a;ls ls;a ;jlk j;lk",
+        "f;a; ja;a ks;a ;ajs"],
+        newKeys3:
+        ["lsda lfds jfal jfal",
+        "laks skda sdas alla",
+        "fsls slfk slfk fsls",
+        "alsk alsk ddak ddaj",
+        "aj;; jka; ;jka ;;ja",
+        "fja; fja; akdl aks;",
+        "aslk dfkj aslk askj",
+        "fjkl a;sl sla; fl;s",
+        "fsl; ;als jfkd jfkd",
+        "ajsl l;al asjd ajdk"],
+        keyTest1:
+        ["ask ask ask ask",
+        "add add add add",
+        "dad dad dad dad",
+        "fas fas fas fas",
+        "dsd dsd dsd dsd",
+        "lkj lkj lkj lkj",
+        "fad fad fad fad",
+        "all all all all",
+        "ala ala ala ala",
+        "sad sad sad sad",
+        "flak flak flak flak",
+        "flask flask flask flask",
+        "fall fall fall fall",
+        "alas alas alas alas",
+        "salad salad salad salad",
+        "alfala alfala alfala aflala",
+        "sals sals sals sals sals"],
+        wordTest1:
+        ["all ask fall ask",
+        "dad ask fall adds",
+        "adds salad flask all",
+        "daff all salad salsa",
+        "sals; flack; ;slak dad",
+        "asks salad; fall sad",
+        "alfa ;alfa salad falls",
+        "allas all sad; ask fad;",
+        "all fads fad salsa;",
+        "las; salad allas sals",
+        "alas daff flask fask",
+        "sass lad lads fask",
+        "as salsa las; alas",
+        "adds fads lass sass",
+        "adj adk all sad adds",
+        "asks falls dad all",
+        "laff daffs alls sass"],
+    }
+}
 
 //modules
+class Debugger {
+    constructor(debug = false, debugLevel = 0) {
+        this.debug = debug;
+        this.debugLevel = debugLevel;
+    }
+    log(level, message) {
+        if (!this.debug) return;
+        if (level === this.debugLevel) console.log(message);
+    }
+    setDebug(isOn) {
+        this.debug == isOn;
+    }
+};
+const debug = new Debugger(true, 0);
 let layoutTypes = [
     'QWERTY', 'DWORAK'
 ]
@@ -149,96 +257,91 @@ function changeTypingLan(newLan) {
         console.log("ERROR: Data is corrupted, maybe wrong format of changing language string");
     }
 }
+class Lesson {
+    constructor(currentLesson, currentPartLesson) {
+        // this.lessonID = lesson;
+        this.lesson = currentLesson;
+        this.partLesson = currentPartLesson;
+
+        this.currentPart = 0;
+        this.lessonArray = [];
+        this.loadLesson();
+    }
+    showLesson() {
+        console.log(this.lesson);
+        console.log(this.partLesson);
+        console.log(this.lessonArray);
+    }
+    loadLesson() {
+        // console.log(this.lesson);
+        // console.log(Object.keys(lessons[(Object.keys(lessons)[this.lesson]).toString()]));
+        this.lessonArray = Object.keys(lessons[Object.keys(lessons)[this.lesson].toString()])[this.partLesson];
+    }
+};
+
 
 //Main scripts
-$('.mainSectionContainer__lessons__flexContainer__menu__item').tilt({
-    glare: true,
-    maxGlare: 0.05,
-    scale: 1.05,
-    easing: "cubic-bezier(.03,.98,.52,.99)",
-    maxTilt: 15,
-})
+let keyClass = ".keyboardSection__keyboard__keyboard div",
+handClass = ".keyboardSection__keyboard__Hands";
 
-$('.mainSectionContainer__lessons__flexContainer__menu__subitem').tilt({
-    glare: true,
-    maxGlare: 0.05,
-    easing: "cubic-bezier(.03,.98,.52,.99)",
-})
+let mainSettingsStorageName = "mainSettings";
 
-$('.languageList_modal ul').tilt({
-    glare: true,
-    maxGlare: 0.05,
-})
-'use strict';
-
-let currentLessonContent = document.querySelector(".currentLesson");
-let currentLessonNumber;
-
-let currentPartLessonContent = document.querySelector(".currentPart");
-let currentPartLessonNumber;
-
-if (currentLessonContent != null) {
-    currentLessonNumber = Number(currentLessonContent.innerHTML);
-    if (localStorage.getItem("currentLesson") == null) {
-        localStorage.setItem("currentLesson", currentLessonNumber.toString());
-    }
+let mainSettings = {
+    keyboardBacklight: false,
+    showProgressBar: false,
+    showKeyboard: false,
+    showSpeed: false,
+    theme: "dark",
+};
+if (localStorage.getItem(mainSettingsStorageName) == null) {
+    localStorage.setItem(mainSettings.localStorageName, JSON.stringify(mainSettings));
+} else {
+    mainSettings = JSON.parse(localStorage.getItem(mainSettingsStorageName));
 }
 
-if (currentPartLessonContent != null) {
-    currentPartLessonNumber = Number(currentPartLessonContent.innerHTML);
-    if (localStorage.getItem("currentPart") == null) {
-        localStorage.setItem("currentPart", currentPartLessonNumber.toString());
-    }
-}
+debug.log(2, mainSettings);
 
-let lessonsDropDownItems = document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__dropDownItem");
-
-for (let i = 0; i < lessonsDropDownItems.length; ++i) {
-    lessonsDropDownItems[i].onclick = function() {
-        lessonsDropDownItems[i].classList.toggle("mainSectionContainer__lessons__flexContainer__menu__item_active");
-        let blockHeightSubmenu = lessonsDropDownItems[i].querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem").length * 50;
-        if (lessonsDropDownItems[i].querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu") != null) {
-            lessonsDropDownItems[i].querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu")
-            .style.height = blockHeightSubmenu + "px";
-        } else {
-            lessonsDropDownItems[i].querySelector(".mainSectionContainer__lessons__flexContainer__submenu")
-            .style.height = 0 + "px";
-        }        
-    }
-}
-
-if (localStorage.getItem("currentLesson") != null && localStorage.getItem("currentPart") != null) {
-    let currentSubitemSelection = document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__dropDownItem")[localStorage.getItem("currentLesson") - 1].querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem__text")[1];
-    let mainSectionContainer__lessons__flexContainer = document.querySelector(".mainSectionContainer__lessons__flexContainer");
-    if (!currentSubitemSelection.classList.contains("mainSectionContainer__lessons__flexContainer__menu__subitem__active")) { 
-        currentSubitemSelection.classList.add("mainSectionContainer__lessons__flexContainer__menu__subitem__active");
-        mainSectionContainer__lessons__flexContainer.scroll({
-            top: (localStorage.getItem("currentLesson") - 1) * 30,
-            behavior: 'smooth'
+function backlightSwitch() {
+    document.querySelector(".settingsKeysBacklight input").checked = mainSettings.keyboardBacklight;
+    let hands = document.querySelector(handClass);
+    if (mainSettings.keyboardBacklight) {
+        document.querySelectorAll(keyClass).forEach(function(el) {
+            if (el.childNodes.length != 1) return;
+            let elId = el.id;
+            let zone = keycodesZones[elId];
+            let theme = mainSettings.theme;
+            if (theme == null) {
+                debug.log(0, "Theme error in Settings class, function BacklightSwitch");
+                return;
+            }
+            el.style.backgroundColor = keyboardBacklightConfig[theme][zone];
+            
         });
-        currentSubitemSelection.focus();
+        if (hands == null) {
+            debug.log(0, "Hand class is null, class Settings, function backlightSwitch");
+            return;
+        }
+        hands.style.opacity = 1;
+    } else {
+        document.querySelectorAll(keyClass).forEach(function(el) {
+            if (el.childNodes.length != 1) return;
+            el.style.backgroundColor = null;
+        }); 
+        hands.style.opacity = 0;
     }
+    
+}
+function setKeyboardBacklight(isOn) {
+    mainSettings.keyboardBacklight = isOn;
+    backlightSwitch();
+    localStorage.setItem(mainSettingsStorageName, JSON.stringify(mainSettings));
 }
 
-if (localStorage.getItem("currentLesson") != null) {
-
-    lessonsDropDownItems[localStorage.getItem("currentLesson") - 1].onclick();
-
-    // lessonsDropDownItems[localStorage.getItem("currentLesson") - 1].classList.toggle("mainSectionContainer__lessons__flexContainer__menu__item_active");
-    // let blockHeightSubmenu = lessonsDropDownItems[localStorage.getItem("currentLesson") - 1].querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem").length * 50;
-    // if (lessonsDropDownItems[localStorage.getItem("currentLesson") - 1].querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu") != null) {
-    //     lessonsDropDownItems[localStorage.getItem("currentLesson") - 1].querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu")
-    //     .style.height = blockHeightSubmenu + "px";
-    // } else {
-    //     lessonsDropDownItems[localStorage.getItem("currentLesson") - 1].querySelector(".mainSectionContainer__lessons__flexContainer__submenu")
-    //     .style.height = 0 + "px";
-    // }
+function applySettings() {
+    backlightSwitch();
 }
-let musicPausePlay = document.querySelector(".musicSection__pausePlay");
 
-musicPausePlay.onclick = function() {
-    musicPausePlay.classList.toggle("musicSection__pausePlay__isPause");
-}
+
 let hamburgerSettingsBtn = document.querySelector(".mainSectionContainer__settings__hamburgerButton");
 let closeBtnSettings = document.querySelector(".mainSectionContainer__settings__closeBtn");
 
@@ -328,25 +431,8 @@ SelectObjects.forEach((item) => item.onclick = function() {
 
 
 document.querySelector(".settingsKeysBacklight input").addEventListener("change", function() {
-    if (this.checked) {
-        document.querySelectorAll(".keyboardSection__keyboard__keyboard div").forEach(function(el) {
-            if (el.childNodes.length != 1) return;
-            let elId = el.id;
-            let zone = keycodesZones[elId];
-            let theme = localStorage.getItem("theme");
-
-            el.style.backgroundColor = keyboardBacklightConfig[theme][zone];
-            
-        });
-        hightlightHandFinger(document.querySelector(".showingText__activeWord").innerText[0]);
-        document.querySelector(".keyboardSection__keyboard__Hands").style.opacity = 1;
-    } else {
-        document.querySelectorAll(".keyboardSection__keyboard__keyboard div").forEach(function(el) {
-            if (el.childNodes.length != 1) return;
-            el.style.backgroundColor = null;
-        });
-        document.querySelector(".keyboardSection__keyboard__Hands").style.opacity = 0;
-    }
+    setKeyboardBacklight(this.checked);
+    hightlightHandFinger(document.querySelector(".showingText__activeWord").innerText[0]);
 });
 
 
@@ -387,8 +473,118 @@ document.querySelector(".settingsKeysBacklight input").addEventListener("change"
 // document.querySelector(".mainSectionContainer__settings__container__item__dropList_soundChanger button").onclick = function() {
 //     $(".mainSectionContainer__settings__container__item__dropList__button__select__ulContainer").toggle();
 // }
-//Loading configs
+$('.mainSectionContainer__lessons__flexContainer__menu__item').tilt({
+    glare: true,
+    maxGlare: 0.05,
+    scale: 1.05,
+    easing: "cubic-bezier(.03,.98,.52,.99)",
+    maxTilt: 15,
+})
 
+$('.mainSectionContainer__lessons__flexContainer__menu__subitem').tilt({
+    glare: true,
+    maxGlare: 0.05,
+    easing: "cubic-bezier(.03,.98,.52,.99)",
+})
+
+$('.languageList_modal ul').tilt({
+    glare: true,
+    maxGlare: 0.05,
+})
+'use strict';
+
+let currentLesson;
+let currentPartLesson;
+let currentLessonID;
+
+if (localStorage.getItem("currentLesson") == null) {
+    currentLesson = 0;
+    localStorage.setItem("currentLesson", currentLesson.toString())
+} else {
+    currentLesson = localStorage.getItem("currentLesson");
+}
+
+if (localStorage.getItem("currentLessonPart") == null) {
+    currentPartLesson = 0;
+    localStorage.setItem("currentLessonPart", currentPartLesson.toString())
+} else {
+    currentPartLesson = localStorage.getItem("currentLessonPart");
+}
+
+let lessonsDropDownItems = document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__item");
+
+for (let i = 0; i < lessonsDropDownItems.length; ++i) {
+    lessonsDropDownItems[i].onclick = function() {
+        lessonsDropDownItems[i].parentElement.classList.toggle("mainSectionContainer__lessons__flexContainer__menu__item_active");
+        let blockHeightSubmenu = lessonsDropDownItems[i].parentElement.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem").length * 50;
+
+        if (lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu") != null) {
+            lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu")
+            .style.height = blockHeightSubmenu + "px";
+        } else {
+            lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__submenu")
+            .style.height = 0 + "px";
+        }        
+    }
+}
+
+function switchLesson(currentLesson, currentPartLesson) {
+    localStorage.setItem("currentLesson", currentLesson);
+    localStorage.setItem("currentLessonPart", currentPartLesson);
+    document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem__active").forEach((el) => {
+        el.classList.toggle("mainSectionContainer__lessons__flexContainer__menu__subitem__active");
+    });
+    
+    let currentLesson_subItem = document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__submenu")[currentLesson].querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem__text")[currentPartLesson];
+    currentLesson_subItem.classList.toggle("mainSectionContainer__lessons__flexContainer__menu__subitem__active");
+    currentLessonID = currentLesson_subItem.id;
+    
+}
+
+lessonsDropDownItems[currentLesson].onclick();
+switchLesson(currentLesson, currentPartLesson);
+
+document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__submenu").forEach((item, itemInd) => {
+    let itemIndex = itemInd;
+    item.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem__text").forEach((subItem, subitemInd) => {
+        subItem.addEventListener("click", function() {
+            currentPartLesson = subitemInd;
+            currentLesson = itemIndex;
+            currentLessonID = this.id;
+            switchLesson(currentLesson, currentPartLesson);
+            debug.log(2, "currentLesson is " + currentLesson);
+            debug.log(2, "currentLesson is " + currentPartLesson);
+        });
+    });
+});
+
+let musicPausePlay = document.querySelector(".musicSection__pausePlay");
+
+musicPausePlay.onclick = function() {
+    musicPausePlay.classList.toggle("musicSection__pausePlay__isPause");
+}
+'use strict';
+
+let mainThemes = ['dark', 'bright'];
+let currentTheme = 0;
+
+function setTheme() {
+    if (localStorage.getItem("theme") == null) localStorage.setItem("theme", "dark");
+    let newTheme = localStorage.getItem("theme");
+    currentTheme = mainThemes.findIndex(el => el == newTheme);
+    document.querySelector("body").classList = "";
+    document.querySelector("body").classList.add(newTheme);
+}
+
+function changeThemeForward() {
+    currentTheme = (currentTheme + 1) % mainThemes.length;
+    localStorage.setItem("theme", mainThemes[currentTheme]);
+    setTheme();
+}
+
+document.querySelector(".themeSwitcher").onclick = function() {
+    changeThemeForward();
+}
 let keyboardRunningText = document.querySelector(".keyboardSection__showingText");
 let keyboardInputText = document.querySelector(".keyboardSection__writeText__input");
 
@@ -401,11 +597,31 @@ let showingText_written = document.querySelector(".showingText__written");
 
 let inputText__dontTouch = document.querySelector(".keyboardSection__writeText__dontTouch");
 
-function hightlightHandFinger(ch) {
-    if (!document.querySelector(".settingsKeysBacklight input").checked || ch == " ") return;
+let keyboardLesson = new Lesson(currentLesson, currentPartLesson);
+keyboardLesson.showLesson();
 
+
+Object.keys(keyboardBacklightConfig.default).forEach((finger) => {
+    if (finger == 'default') return;
+    let item; let color;
+    if (finger[0] == 'L') item = document.querySelector(`.keyboardSection__keyboard__leftHand__${finger}`);
+    else item = document.querySelector(`.keyboardSection__keyboard__rightHand__${finger}`);
+    const theme = localStorage.getItem("theme");
+    if (theme == null) color = item.style.backgroundColor = keyboardBacklightConfig.default[finger];
+    else color = item.style.backgroundColor = keyboardBacklightConfig[theme][finger];
+    item.style.boxShadow = `0 0 10px ${color}, 0 0 20px ${color}, 0 0 40px ${color}`;
+});
+
+function hightlightHandFinger(ch) {
     document.querySelectorAll(".keyboardSection__keyboard__leftHand__finger").forEach((finger) => {finger.style.opacity = null;});
     document.querySelectorAll(".keyboardSection__keyboard__rightHand__finger").forEach((finger) => {finger.style.opacity = null;});
+
+    if (!mainSettings.keyboardBacklight) return;
+    if (ch == ' ') {
+        document.querySelector(`.keyboardSection__keyboard__leftHand__Lthumb`).style.opacity = 1;
+        document.querySelector(`.keyboardSection__keyboard__rightHand__Rthumb`).style.opacity = 1;
+        return;
+    }
     
     // let nextCharacter = document.querySelector(".showingText__activeWord .theRestWord").innerText[0];
     let isUpperCase = ch.toUpperCase() === ch;
@@ -418,20 +634,12 @@ function hightlightHandFinger(ch) {
                 else isUpperCase = true;
             }
             let zone = keycodesZones[el.id];
-            let theme = localStorage.getItem("theme");
+            let theme = mainSettings.theme;
             if(zone[0].toLowerCase() == "l") {
-                if (isUpperCase) {
-                    document.querySelector(".keyboardSection__keyboard__rightHand__Rpinkie").style.backgroundColor = keyboardBacklightConfig[theme].Rpinkie;
-                    document.querySelector(".keyboardSection__keyboard__rightHand__Rpinkie").style.opacity = 1;
-                }
-                document.querySelector(`.keyboardSection__keyboard__leftHand__${zone}`).style.backgroundColor = keyboardBacklightConfig[theme][zone];
+                if (isUpperCase) document.querySelector(".keyboardSection__keyboard__rightHand__Rpinkie").style.opacity = 1;
                 document.querySelector(`.keyboardSection__keyboard__leftHand__${zone}`).style.opacity = 1;
             } else {
-                if (isUpperCase) {
-                    document.querySelector(".keyboardSection__keyboard__leftHand__Lpinkie").style.backgroundColor = keyboardBacklightConfig[theme].Lpinkie;
-                    document.querySelector(".keyboardSection__keyboard__leftHand__Lpinkie").style.opacity = 1;
-                }
-                document.querySelector(`.keyboardSection__keyboard__rightHand__${zone}`).style.backgroundColor = keyboardBacklightConfig[theme][zone];
+                if (isUpperCase) document.querySelector(".keyboardSection__keyboard__leftHand__Lpinkie").style.opacity = 1;
                 document.querySelector(`.keyboardSection__keyboard__rightHand__${zone}`).style.opacity = 1;
             }
             return;
@@ -444,7 +652,7 @@ function getNextActiveWord() {
     showingText_textArray.shift();
     showingText_text.innerHTML = showingText_textArray.join(" ");
     hightlightHandFinger(showingText_active.innerText[0]);
-    // if (inputText__dontTouch.innerText != '') keyboardInputText.style.placeHolder = null;
+    if (showingText_written.innerText != '') keyboardInputText.placeholder = '';
 }
 getNextActiveWord();
 
@@ -498,56 +706,24 @@ function getSpanWrapText(correctWord, inputWord) {
     return spanCorrection;
 }
 
-let isRight = false;
-// let inputTextSize;
-let currentInputWord = "";
-let spanCorrectionText = "";
-
-// let keyboardSection_keyboard = document.querySelector(".keyboardSection__keyboard__keyboard");
-
 keyboardInputText.addEventListener("input", function() {
-    let inputText = keyboardInputText.value.toString();
+    let currentInputWord = keyboardInputText.value.toString();
     let currentWord = showingText_active.innerText;
 
-    let arrTmp = inputText.split(" ");
-    currentInputWord = arrTmp[arrTmp.length - 1];
-    let inputCh = currentInputWord[currentInputWord.length - 1];
-    let currentCh = currentWord[currentInputWord.length - 1];
-
-    if (arrTmp.length > 1 && currentInputWord == '') {
-        currentInputWord = arrTmp[arrTmp.length - 2];
-        inputCh = ' ';
-        hightlightHandFinger(inputCh);
-        spanCorrectionText += getSpanWrapText(currentWord.substr(0, currentWord.length - 1), currentInputWord) + ' ';
-        showingText_written.innerHTML = spanCorrectionText;
+    if (currentInputWord[currentInputWord.length - 1] == ' ') {
+        hightlightHandFinger(' ');
+        let spanCorrectionText = getSpanWrapText(currentWord.substr(0, currentWord.length - 1), currentInputWord.substr(0, currentInputWord.length - 1)) + ' ';
+        showingText_written.innerHTML += spanCorrectionText;
         getNextActiveWord();
-        inputText__dontTouch.innerText = inputText__dontTouch.innerHTML + currentInputWord + " ";
         keyboardInputText.value = '';
     }
     if (currentInputWord.length < currentWord.length) {
         hightlightHandFinger(currentWord[currentInputWord.length]);
     }
 
-    if (inputText.length == 0 || currentInputWord.length > currentWord.length) return;
+    // if (inputText.length == 0 || currentInputWord.length > currentWord.length) return;
 
-    console.log("Comparing " + inputCh + " with " + currentCh);
-    
-    // inputTextSize = inputText.length;
-    
-
-    // if (inputText[inputText.length - 1] === currentWord[0]) {
-    //     console.log("right");
-    //     if (spanCorrectionText.length == 0) {
-    //         isRight = true;
-    //         spanCorrectionText = rightCh_template + currentWord[0] + '</span>';
-    //     }
-    //     misTypingDocument.innerHTML = spanCorrectionText;
-    //     showingText_activeWord.innerHTML = currentWord.substr(1);
-    // } else {
-    //     console.log("incorrect");
-    // }
-
-    let lastCharacter = inputText[inputText.length - 1];
+    // console.log("Comparing " + inputCh + " with " + currentCh);
     
     
 
@@ -571,30 +747,8 @@ keyboardInputText.addEventListener("input", function() {
 });
 
 
+
 //main_js/storingInfo.js?
-'use strict';
-
-let mainThemes = ['dark', 'bright'];
-let currentTheme = 0;
-
-function setTheme() {
-    if (localStorage.getItem("theme") == null) localStorage.setItem("theme", "dark");
-    let newTheme = localStorage.getItem("theme");
-    currentTheme = mainThemes.findIndex(el => el == newTheme);
-    document.querySelector("body").classList = "";
-    document.querySelector("body").classList.add(newTheme);
-    console.log("Current index is ");
-}
-
-function changeThemeForward() {
-    currentTheme = (currentTheme + 1) % mainThemes.length;
-    localStorage.setItem("theme", mainThemes[currentTheme]);
-    setTheme();
-}
-
-document.querySelector(".themeSwitcher").onclick = function() {
-    changeThemeForward();
-}
 //Language choose _BEGIN
 
 let languages = ["RU", "EN"];
@@ -652,8 +806,10 @@ document.querySelector(".header__mainLanguage").addEventListener("click", functi
 //Language choose _END
 
 //OnStart scripts
+
 let typingLan;
 if (localStorage.getItem('typingLan') == null) typingLan = 'QWERTY/RU'; //byDefault
 else typingLan = localStorage.getItem('typingLan');
 changeTypingLan(typingLan);
 setTheme();
+applySettings();

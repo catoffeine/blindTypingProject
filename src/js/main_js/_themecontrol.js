@@ -9,7 +9,6 @@ function setTheme() {
     currentTheme = mainThemes.findIndex(el => el == newTheme);
     document.querySelector("body").classList = "";
     document.querySelector("body").classList.add(newTheme);
-    console.log("Current index is ");
 }
 
 function changeThemeForward() {

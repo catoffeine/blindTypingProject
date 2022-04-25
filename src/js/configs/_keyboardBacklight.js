@@ -64,15 +64,30 @@ let keycodesZones = {
 };
 
 let keyboardBacklightConfig = {
+    default: {
+        Lpinkie: "#8F3F3F",
+        Lring: "#B76B40",
+        Lmiddle: "#6E8F43",
+        Lindex: "#3F4899",
+        Lthumb: "#5B6C70",
+        Rindex: "#446390",
+        Rmiddle: "#5B9070",
+        Rring: "#AAAC35",
+        Rpinkie: "#703C83",
+        Rthumb: "#5B6C70",
+        default: "#5B6C70",
+    },
     dark: {
         Lpinkie: "#8F3F3F",
         Lring: "#B76B40",
         Lmiddle: "#6E8F43",
         Lindex: "#3F4899",
+        Lthumb: "#5B6C70",
         Rindex: "#446390",
         Rmiddle: "#5B9070",
         Rring: "#AAAC35",
         Rpinkie: "#703C83",
+        Rthumb: "#5B6C70",
         default: "#5B6C70",
     },
     bright: {

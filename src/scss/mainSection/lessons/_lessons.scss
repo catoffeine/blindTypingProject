@@ -14,7 +14,7 @@
             justify-content: center;
             align-content: center;
             width: 100%;
-            max-height: 80%;
+            max-height: 650px;
             transition: 0.4s all ease-in-out;
             overflow-y: scroll;
             scrollbar-width: none;
@@ -41,7 +41,7 @@
                     line-height: 50px;
                     font-family: RobotoLight;
                     font-weight: 600;
-                    font-size: 14px;
+                    font-size: 15px;
                     letter-spacing: 0.8px;
                     transition-timing-function: ease-in-out;
                     transition-duration: 0.25s;
@@ -75,13 +75,19 @@
                     line-height: 50px;
                     font-family: RobotoLight;
                     font-weight: 600;
-                    font-size: 12px;
+                    font-size: 14px;
                     letter-spacing: 0.8px;
                     transition-timing-function: ease-in-out;
-                    transition-duration: 0.25s;
-                    transition-property: background-color color box-shadow;
+                    transition-duration: 0.4s;
+                    transition-property: background-color box-shadow;
                     overflow-y: hidden;
                     overflow-x: all;
+                    // &__text {
+                    //     transition: 0.4s color ease-in-out;
+                    //     &:hover {
+                    //         transition-property: none;
+                    //     }
+                    // }
                 }
             } //__menu
             &__submenu {

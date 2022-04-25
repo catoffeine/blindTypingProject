@@ -709,7 +709,7 @@ html {
   -ms-flex-line-pack: center;
       align-content: center;
   width: 100%;
-  max-height: 80%;
+  max-height: 650px;
   -webkit-transition: 0.4s all ease-in-out;
   -o-transition: 0.4s all ease-in-out;
   transition: 0.4s all ease-in-out;
@@ -752,7 +752,7 @@ html {
   line-height: 50px;
   font-family: RobotoLight;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 15px;
   letter-spacing: 0.8px;
   -webkit-transition-timing-function: ease-in-out;
        -o-transition-timing-function: ease-in-out;
@@ -810,17 +810,17 @@ html {
   line-height: 50px;
   font-family: RobotoLight;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.8px;
   -webkit-transition-timing-function: ease-in-out;
        -o-transition-timing-function: ease-in-out;
           transition-timing-function: ease-in-out;
-  -webkit-transition-duration: 0.25s;
-       -o-transition-duration: 0.25s;
-          transition-duration: 0.25s;
-  -webkit-transition-property: background-color color box-shadow;
-  -o-transition-property: background-color color box-shadow;
-  transition-property: background-color color box-shadow;
+  -webkit-transition-duration: 0.4s;
+       -o-transition-duration: 0.4s;
+          transition-duration: 0.4s;
+  -webkit-transition-property: background-color box-shadow;
+  -o-transition-property: background-color box-shadow;
+  transition-property: background-color box-shadow;
   overflow-y: hidden;
   overflow-x: all;
 }
@@ -854,20 +854,20 @@ html {
   margin-left: 15px;
 }
 
-.dark .mainSectionContainer__lessons__flexContainer {
-  background: #282932;
+.mainSectionContainer__lessons__flexContainer {
+  background-color: #282932;
   -webkit-box-shadow: -4px -4px 10px rgba(255, 255, 255, 0.03), 4px 4px 10px rgba(6, 8, 10, 0.25);
           box-shadow: -4px -4px 10px rgba(255, 255, 255, 0.03), 4px 4px 10px rgba(6, 8, 10, 0.25);
 }
 
-.dark .mainSectionContainer__lessons__flexContainer::-webkit-scrollbar-thumb {
+.mainSectionContainer__lessons__flexContainer::-webkit-scrollbar-thumb {
   background-color: #67686F;
   border-radius: 25px;
 }
 
-.dark .mainSectionContainer__lessons__flexContainer__menu__item {
+.mainSectionContainer__lessons__flexContainer__menu__item {
   color: #67686F;
-  background: #282932;
+  background-color: #282932;
   -webkit-box-shadow: 4px 0px 5px rgba(0, 0, 0, 0.06), -4px 0px 5px rgba(0, 0, 0, 0.06);
           box-shadow: 4px 0px 5px rgba(0, 0, 0, 0.06), -4px 0px 5px rgba(0, 0, 0, 0.06);
   border-bottom: 1px solid #67686F;
@@ -876,46 +876,53 @@ html {
   transition: 0.4s color ease-in-out, 0.4s background-color ease-in-out;
 }
 
-.dark .mainSectionContainer__lessons__flexContainer__menu__item:hover {
+.mainSectionContainer__lessons__flexContainer__menu__item:hover {
   color: #94959b;
   border-top: 1px solid #67686F;
   z-index: 100;
 }
 
-.dark .mainSectionContainer__lessons__flexContainer__menu__item a {
+.mainSectionContainer__lessons__flexContainer__menu__item a {
   color: #67686F;
 }
 
-.dark .mainSectionContainer__lessons__flexContainer__menu__item:first-child {
+.mainSectionContainer__lessons__flexContainer__menu__item:first-child {
   -webkit-box-shadow: 4px -4px 5px rgba(0, 0, 0, 0.06), -4px 0 5px rgba(0, 0, 0, 0.06);
           box-shadow: 4px -4px 5px rgba(0, 0, 0, 0.06), -4px 0 5px rgba(0, 0, 0, 0.06);
 }
 
-.dark .mainSectionContainer__lessons__flexContainer__menu__item:last-child {
+.mainSectionContainer__lessons__flexContainer__menu__item:last-child {
   -webkit-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.06), -4px 0 5px rgba(0, 0, 0, 0.06);
           box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.06), -4px 0 5px rgba(0, 0, 0, 0.06);
   border-bottom: none;
 }
 
-.dark .mainSectionContainer__lessons__flexContainer__menu__subitem {
+.mainSectionContainer__lessons__flexContainer__menu__subitem {
   color: rgba(116, 116, 116, 0.8);
   background-color: #282932;
   -webkit-box-shadow: 4px 0px 5px rgba(0, 0, 0, 0.06), -4px 0px 5px rgba(0, 0, 0, 0.06);
           box-shadow: 4px 0px 5px rgba(0, 0, 0, 0.06), -4px 0px 5px rgba(0, 0, 0, 0.06);
   border-bottom: 1px solid #67686F;
-  -webkit-transition: 0.4s background-color ease-in-out, 0.4s color ease-in-out;
-  -o-transition: 0.4s background-color ease-in-out, 0.4s color ease-in-out;
-  transition: 0.4s background-color ease-in-out, 0.4s color ease-in-out;
+  -webkit-transition: 0.4s background-color ease-in-out;
+  -o-transition: 0.4s background-color ease-in-out;
+  transition: 0.4s background-color ease-in-out;
 }
 
-.dark .mainSectionContainer__lessons__flexContainer__menu__subitem:hover {
+.mainSectionContainer__lessons__flexContainer__menu__subitem:hover {
   color: #94959b;
   border-top: 1px solid #67686F;
   z-index: 100;
 }
 
-.dark .mainSectionContainer__lessons__flexContainer__menu__subitem__active {
-  color: #b9ab57;
+.mainSectionContainer__lessons__flexContainer__menu__subitem__active {
+  -webkit-animation-name: mainSectionLessons_subItemActiveDefault;
+          animation-name: mainSectionLessons_subItemActiveDefault;
+  -webkit-animation-duration: 0.4s;
+          animation-duration: 0.4s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
 }
 
 .bright .mainSectionContainer__lessons__flexContainer {
@@ -980,6 +987,18 @@ html {
 
 .bright .mainSectionContainer__lessons__flexContainer__menu__subitem__active {
   color: #6cb9b3;
+}
+
+@-webkit-keyframes mainSectionLessons_subItemActiveDefault {
+  100% {
+    color: #b9ab57;
+  }
+}
+
+@keyframes mainSectionLessons_subItemActiveDefault {
+  100% {
+    color: #b9ab57;
+  }
 }
 
 .mainSectionContainer__keyboard {
@@ -1052,7 +1071,7 @@ html {
 
 .keyboardSection__writeText {
   padding: 15px 19px;
-  width: 95%;
+  width: 60%;
   -o-text-overflow: hidden;
      text-overflow: hidden;
   white-space: wrap;
@@ -1129,8 +1148,8 @@ html {
 
 .keyboardSection__keyboard__leftHand__finger {
   border-radius: 50%;
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   opacity: 0;
   -webkit-transition: 0.1s all ease-in-out;
   -o-transition: 0.1s all ease-in-out;
@@ -1141,38 +1160,36 @@ html {
   -webkit-transform: translate(91px, 52px);
       -ms-transform: translate(91px, 52px);
           transform: translate(91px, 52px);
-  -webkit-box-shadow: 0 0 10px #db3030, 0 0 20px #cf3030, 0 0 40px #d63131;
-          box-shadow: 0 0 10px #db3030, 0 0 20px #cf3030, 0 0 40px #d63131;
 }
 
 .keyboardSection__keyboard__leftHand__Lring {
-  -webkit-transform: translate(100px, 19px);
-      -ms-transform: translate(100px, 19px);
-          transform: translate(100px, 19px);
+  -webkit-transform: translate(97px, 9px);
+      -ms-transform: translate(97px, 9px);
+          transform: translate(97px, 9px);
 }
 
 .keyboardSection__keyboard__leftHand__Lmiddle {
-  -webkit-transform: translate(95px, -7px);
-      -ms-transform: translate(95px, -7px);
-          transform: translate(95px, -7px);
+  -webkit-transform: translate(91px, -24px);
+      -ms-transform: translate(91px, -24px);
+          transform: translate(91px, -24px);
 }
 
 .keyboardSection__keyboard__leftHand__Lindex {
-  -webkit-transform: translate(80px, -22px);
-      -ms-transform: translate(80px, -22px);
-          transform: translate(80px, -22px);
+  -webkit-transform: translate(76px, -48px);
+      -ms-transform: translate(76px, -48px);
+          transform: translate(76px, -48px);
 }
 
 .keyboardSection__keyboard__leftHand__Lthumb {
-  -webkit-transform: translate(37px, -10px);
-      -ms-transform: translate(37px, -10px);
-          transform: translate(37px, -10px);
+  -webkit-transform: translate(32px, -42px);
+      -ms-transform: translate(32px, -42px);
+          transform: translate(32px, -42px);
 }
 
 .keyboardSection__keyboard__rightHand__finger {
   border-radius: 50%;
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   opacity: 0;
   -webkit-transition: 0.1s all ease-in-out;
   -o-transition: 0.1s all ease-in-out;
@@ -1186,27 +1203,27 @@ html {
 }
 
 .keyboardSection__keyboard__rightHand__Rring {
-  -webkit-transform: translate(100px, 19px);
-      -ms-transform: translate(100px, 19px);
-          transform: translate(100px, 19px);
+  -webkit-transform: translate(97px, 9px);
+      -ms-transform: translate(97px, 9px);
+          transform: translate(97px, 9px);
 }
 
 .keyboardSection__keyboard__rightHand__Rmiddle {
-  -webkit-transform: translate(95px, -7px);
-      -ms-transform: translate(95px, -7px);
-          transform: translate(95px, -7px);
+  -webkit-transform: translate(91px, -24px);
+      -ms-transform: translate(91px, -24px);
+          transform: translate(91px, -24px);
 }
 
 .keyboardSection__keyboard__rightHand__Rindex {
-  -webkit-transform: translate(80px, -22px);
-      -ms-transform: translate(80px, -22px);
-          transform: translate(80px, -22px);
+  -webkit-transform: translate(76px, -48px);
+      -ms-transform: translate(76px, -48px);
+          transform: translate(76px, -48px);
 }
 
 .keyboardSection__keyboard__rightHand__Rthumb {
-  -webkit-transform: translate(37px, -10px);
-      -ms-transform: translate(37px, -10px);
-          transform: translate(37px, -10px);
+  -webkit-transform: translate(32px, -42px);
+      -ms-transform: translate(32px, -42px);
+          transform: translate(32px, -42px);
 }
 
 .keyboardSection__keyboard__keyboard {

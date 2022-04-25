@@ -1,3 +1,64 @@
+let keyClass = ".keyboardSection__keyboard__keyboard div",
+handClass = ".keyboardSection__keyboard__Hands";
+
+let mainSettingsStorageName = "mainSettings";
+
+let mainSettings = {
+    keyboardBacklight: false,
+    showProgressBar: false,
+    showKeyboard: false,
+    showSpeed: false,
+    theme: "dark",
+};
+if (localStorage.getItem(mainSettingsStorageName) == null) {
+    localStorage.setItem(mainSettings.localStorageName, JSON.stringify(mainSettings));
+} else {
+    mainSettings = JSON.parse(localStorage.getItem(mainSettingsStorageName));
+}
+
+debug.log(2, mainSettings);
+
+function backlightSwitch() {
+    document.querySelector(".settingsKeysBacklight input").checked = mainSettings.keyboardBacklight;
+    let hands = document.querySelector(handClass);
+    if (mainSettings.keyboardBacklight) {
+        document.querySelectorAll(keyClass).forEach(function(el) {
+            if (el.childNodes.length != 1) return;
+            let elId = el.id;
+            let zone = keycodesZones[elId];
+            let theme = mainSettings.theme;
+            if (theme == null) {
+                debug.log(0, "Theme error in Settings class, function BacklightSwitch");
+                return;
+            }
+            el.style.backgroundColor = keyboardBacklightConfig[theme][zone];
+            
+        });
+        if (hands == null) {
+            debug.log(0, "Hand class is null, class Settings, function backlightSwitch");
+            return;
+        }
+        hands.style.opacity = 1;
+    } else {
+        document.querySelectorAll(keyClass).forEach(function(el) {
+            if (el.childNodes.length != 1) return;
+            el.style.backgroundColor = null;
+        }); 
+        hands.style.opacity = 0;
+    }
+    
+}
+function setKeyboardBacklight(isOn) {
+    mainSettings.keyboardBacklight = isOn;
+    backlightSwitch();
+    localStorage.setItem(mainSettingsStorageName, JSON.stringify(mainSettings));
+}
+
+function applySettings() {
+    backlightSwitch();
+}
+
+
 let hamburgerSettingsBtn = document.querySelector(".mainSectionContainer__settings__hamburgerButton");
 let closeBtnSettings = document.querySelector(".mainSectionContainer__settings__closeBtn");
 
@@ -87,25 +148,8 @@ SelectObjects.forEach((item) => item.onclick = function() {
 
 
 document.querySelector(".settingsKeysBacklight input").addEventListener("change", function() {
-    if (this.checked) {
-        document.querySelectorAll(".keyboardSection__keyboard__keyboard div").forEach(function(el) {
-            if (el.childNodes.length != 1) return;
-            let elId = el.id;
-            let zone = keycodesZones[elId];
-            let theme = localStorage.getItem("theme");
-
-            el.style.backgroundColor = keyboardBacklightConfig[theme][zone];
-            
-        });
-        hightlightHandFinger(document.querySelector(".showingText__activeWord").innerText[0]);
-        document.querySelector(".keyboardSection__keyboard__Hands").style.opacity = 1;
-    } else {
-        document.querySelectorAll(".keyboardSection__keyboard__keyboard div").forEach(function(el) {
-            if (el.childNodes.length != 1) return;
-            el.style.backgroundColor = null;
-        });
-        document.querySelector(".keyboardSection__keyboard__Hands").style.opacity = 0;
-    }
+    setKeyboardBacklight(this.checked);
+    hightlightHandFinger(document.querySelector(".showingText__activeWord").innerText[0]);
 });
 
 
