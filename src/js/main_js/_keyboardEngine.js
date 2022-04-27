@@ -26,6 +26,7 @@ Object.keys(keyboardBacklightConfig.default).forEach((finger) => {
 });
 
 function hightlightHandFinger(ch) {
+    console.log(ch);
     document.querySelectorAll(".keyboardSection__keyboard__leftHand__finger").forEach((finger) => {finger.style.opacity = null;});
     document.querySelectorAll(".keyboardSection__keyboard__rightHand__finger").forEach((finger) => {finger.style.opacity = null;});
 

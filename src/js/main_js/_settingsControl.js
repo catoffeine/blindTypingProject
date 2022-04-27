@@ -1,3 +1,16 @@
+const keyboardBacklight_input = document.querySelector(".settingsKeysBacklight");
+const keyboardVisibility_input = document.querySelector(".settingsShowKeyboard");
+
+keyboardBacklight_input.addEventListener("change", function() {
+    setKeyboardBacklight(this.checked);
+    hightlightHandFinger(document.querySelector(".showingText__activeWord").innerText[0]);
+});
+
+keyboardVisibility_input.addEventListener("change", function() {
+    setKeyboardVisibility(this.checked);
+});
+
+
 let keyClass = ".keyboardSection__keyboard__keyboard div",
 handClass = ".keyboardSection__keyboard__Hands";
 
@@ -5,6 +18,7 @@ let mainSettingsStorageName = "mainSettings";
 
 let mainSettings = {
     keyboardBacklight: false,
+    handsVisibility: false,
     showProgressBar: false,
     showKeyboard: false,
     showSpeed: false,
@@ -38,25 +52,57 @@ function backlightSwitch() {
             debug.log(0, "Hand class is null, class Settings, function backlightSwitch");
             return;
         }
-        hands.style.opacity = 1;
+        // hands.style.opacity = 1;
     } else {
         document.querySelectorAll(keyClass).forEach(function(el) {
             if (el.childNodes.length != 1) return;
             el.style.backgroundColor = null;
         }); 
-        hands.style.opacity = 0;
+        // hands.style.opacity = 0;
     }
     
 }
+
+function handsSwitch() {
+    let hands = document.querySelector(handClass);
+    if (mainSettings.handsVisibility) hands.style.opacity = 1;
+     else hands.style.opacity = 0;
+}
+
+function keyboardSwitch() {
+    document.querySelector(".settingsShowKeyboard input").checked = mainSettings.showKeyboard;
+    if (mainSettings.showKeyboard) {
+        document.querySelector('.keyboardSection__keyboard__keyboard').style.opacity = 1;
+        setHandsVisibility(true);
+    } else {
+        document.querySelector('.keyboardSection__keyboard__keyboard').style.opacity = 0;
+        setHandsVisibility(false);
+    }
+}
+
 function setKeyboardBacklight(isOn) {
     mainSettings.keyboardBacklight = isOn;
     backlightSwitch();
     localStorage.setItem(mainSettingsStorageName, JSON.stringify(mainSettings));
 }
 
-function applySettings() {
-    backlightSwitch();
+function setHandsVisibility(isOn) {
+    if (!mainSettings.keyboardBacklight) mainSettings.handsVisibility = false;
+    else mainSettings.handsVisibility = isOn;
+    handsSwitch();
+    localStorage.setItem(mainSettingsStorageName, JSON.stringify(mainSettings));
 }
+
+function setKeyboardVisibility(isOn) {
+    mainSettings.showKeyboard = isOn;
+    keyboardSwitch();
+    localStorage.setItem(mainSettingsStorageName, JSON.stringify(mainSettings));
+
+} 
+
+// function applySettings() {
+//     backlightSwitch();
+// }
 
 
 let hamburgerSettingsBtn = document.querySelector(".mainSectionContainer__settings__hamburgerButton");
@@ -146,11 +192,6 @@ SelectObjects.forEach((item) => item.onclick = function() {
     item.classList.toggle("mainSectionContainer__settings__container__item__dropList__button__select__active");
 });
 
-
-document.querySelector(".settingsKeysBacklight input").addEventListener("change", function() {
-    setKeyboardBacklight(this.checked);
-    hightlightHandFinger(document.querySelector(".showingText__activeWord").innerText[0]);
-});
 
 
 

@@ -1,13 +1,20 @@
 let lessons = {
     beginning: {
-        middleRow: 
-        ["aa ss dd ff jj kk ll ;;",
-        "as as df df jk jk l; l;",
-        "as as df df jk jk l; l;",
-        "sa sa fd fd kj kj ;l ;l",
-        "jkl; jkl; asdf asdf",
-        "fdsa fdsa ;lkj ;lkj",
-        "asdf asdf jkl; jkl;"],
+        middleRow: {
+        text:
+            ["aa ss dd ff jj kk ll ;;",
+            "as as df df jk jk l; l;",
+            "as as df df jk jk l; l;",
+            "sa sa fd fd kj kj ;l ;l",
+            "jkl; jkl; asdf asdf",
+            "fdsa fdsa ;lkj ;lkj",
+            "asdf asdf jkl; jkl;"],
+        settings: {
+            keyboardBacklight: true,
+            keyboardHands: true,
+            showKeyboard: true,
+        }
+        },
         newKeys1:
         ["ad ad jk jk ad ad jk jk",
         "jljl adad jljl adad",

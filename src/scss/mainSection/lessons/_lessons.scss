@@ -8,13 +8,15 @@
         min-width: 140px;
         height: 100%;
         border: 2px solid black;
+        overflow-y: hidden;
 
         &__flexContainer {
             display: flex;
             justify-content: center;
             align-content: center;
             width: 100%;
-            max-height: 650px;
+            // max-height: 500px;
+            max-height: 80%;
             transition: 0.4s all ease-in-out;
             overflow-y: scroll;
             scrollbar-width: none;

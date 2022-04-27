@@ -697,6 +697,7 @@ html {
   min-width: 140px;
   height: 100%;
   border: 2px solid black;
+  overflow-y: hidden;
 }
 
 .mainSectionContainer__lessons__flexContainer {
@@ -709,7 +710,7 @@ html {
   -ms-flex-line-pack: center;
       align-content: center;
   width: 100%;
-  max-height: 650px;
+  max-height: 80%;
   -webkit-transition: 0.4s all ease-in-out;
   -o-transition: 0.4s all ease-in-out;
   transition: 0.4s all ease-in-out;

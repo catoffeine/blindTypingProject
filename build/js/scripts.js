@@ -113,14 +113,21 @@ let keyboardBacklightConfig = {
 };
 let lessons = {
     beginning: {
-        middleRow: 
-        ["aa ss dd ff jj kk ll ;;",
-        "as as df df jk jk l; l;",
-        "as as df df jk jk l; l;",
-        "sa sa fd fd kj kj ;l ;l",
-        "jkl; jkl; asdf asdf",
-        "fdsa fdsa ;lkj ;lkj",
-        "asdf asdf jkl; jkl;"],
+        middleRow: {
+        text:
+            ["aa ss dd ff jj kk ll ;;",
+            "as as df df jk jk l; l;",
+            "as as df df jk jk l; l;",
+            "sa sa fd fd kj kj ;l ;l",
+            "jkl; jkl; asdf asdf",
+            "fdsa fdsa ;lkj ;lkj",
+            "asdf asdf jkl; jkl;"],
+        settings: {
+            keyboardBacklight: true,
+            keyboardHands: true,
+            showKeyboard: true,
+        }
+        },
         newKeys1:
         ["ad ad jk jk ad ad jk jk",
         "jljl adad jljl adad",
@@ -260,22 +267,35 @@ function changeTypingLan(newLan) {
 class Lesson {
     constructor(currentLesson, currentPartLesson) {
         // this.lessonID = lesson;
-        this.lesson = currentLesson;
-        this.partLesson = currentPartLesson;
+        this.lessonNumber = currentLesson;
+        this.partLessonNumber = currentPartLesson;
 
         this.currentPart = 0;
         this.lessonArray = [];
         this.loadLesson();
+        this.loadSettings();
     }
     showLesson() {
+        console.log("_____________");
+        console.log(this.lessonNumber);
+        console.log(this.partLessonNumber);
         console.log(this.lesson);
-        console.log(this.partLesson);
         console.log(this.lessonArray);
+        console.log(this.lessonSettings);
+        console.log("_____________");
     }
     loadLesson() {
-        // console.log(this.lesson);
-        // console.log(Object.keys(lessons[(Object.keys(lessons)[this.lesson]).toString()]));
-        this.lessonArray = Object.keys(lessons[Object.keys(lessons)[this.lesson].toString()])[this.partLesson];
+        this.lesson = Object.values(lessons[Object.keys(lessons)[this.lessonNumber].toString()])[this.partLessonNumber];
+        this.lessonArray = this.lesson.text;
+        this.lessonSettings = this.lesson.settings;
+    }
+    continueLesson() {
+        this.currentPart++;
+    }
+    loadSettings() {
+        setKeyboardBacklight(this.lessonSettings.keyboardBacklight);
+        setHandsVisibility(this.lessonSettings.keyboardHands);
+        setKeyboardVisibility(this.lessonSettings.showKeyboard);
     }
 };
 
@@ -288,6 +308,7 @@ let mainSettingsStorageName = "mainSettings";
 
 let mainSettings = {
     keyboardBacklight: false,
+    handsVisibility: false,
     showProgressBar: false,
     showKeyboard: false,
     showSpeed: false,
@@ -321,25 +342,57 @@ function backlightSwitch() {
             debug.log(0, "Hand class is null, class Settings, function backlightSwitch");
             return;
         }
-        hands.style.opacity = 1;
+        // hands.style.opacity = 1;
     } else {
         document.querySelectorAll(keyClass).forEach(function(el) {
             if (el.childNodes.length != 1) return;
             el.style.backgroundColor = null;
         }); 
-        hands.style.opacity = 0;
+        // hands.style.opacity = 0;
     }
     
 }
+
+function handsSwitch() {
+    let hands = document.querySelector(handClass);
+    if (mainSettings.handsVisibility) hands.style.opacity = 1;
+     else hands.style.opacity = 0;
+}
+
+function keyboardSwitch() {
+    document.querySelector(".settingsShowKeyboard input").checked = mainSettings.showKeyboard;
+    if (mainSettings.showKeyboard) {
+        document.querySelector('.keyboardSection__keyboard__keyboard').style.opacity = 1;
+        setHandsVisibility(true);
+    } else {
+        document.querySelector('.keyboardSection__keyboard__keyboard').style.opacity = 0;
+        setHandsVisibility(false);
+    }
+}
+
 function setKeyboardBacklight(isOn) {
     mainSettings.keyboardBacklight = isOn;
     backlightSwitch();
     localStorage.setItem(mainSettingsStorageName, JSON.stringify(mainSettings));
 }
 
-function applySettings() {
-    backlightSwitch();
+function setHandsVisibility(isOn) {
+    if (!mainSettings.keyboardBacklight) mainSettings.handsVisibility = false;
+    else mainSettings.handsVisibility = isOn;
+    handsSwitch();
+    localStorage.setItem(mainSettingsStorageName, JSON.stringify(mainSettings));
 }
+
+function setKeyboardVisibility(isOn) {
+    mainSettings.showKeyboard = isOn;
+    keyboardSwitch();
+    localStorage.setItem(mainSettingsStorageName, JSON.stringify(mainSettings));
+
+} 
+
+// function applySettings() {
+//     backlightSwitch();
+// }
 
 
 let hamburgerSettingsBtn = document.querySelector(".mainSectionContainer__settings__hamburgerButton");
@@ -435,6 +488,9 @@ document.querySelector(".settingsKeysBacklight input").addEventListener("change"
     hightlightHandFinger(document.querySelector(".showingText__activeWord").innerText[0]);
 });
 
+document.querySelector(".settingsShowKeyboard input").addEventListener("change", function() {
+    setKeyboardVisibility(this.checked);
+});
 
 
 
@@ -613,6 +669,7 @@ Object.keys(keyboardBacklightConfig.default).forEach((finger) => {
 });
 
 function hightlightHandFinger(ch) {
+    console.log(ch);
     document.querySelectorAll(".keyboardSection__keyboard__leftHand__finger").forEach((finger) => {finger.style.opacity = null;});
     document.querySelectorAll(".keyboardSection__keyboard__rightHand__finger").forEach((finger) => {finger.style.opacity = null;});
 
@@ -812,4 +869,4 @@ if (localStorage.getItem('typingLan') == null) typingLan = 'QWERTY/RU'; //byDefa
 else typingLan = localStorage.getItem('typingLan');
 changeTypingLan(typingLan);
 setTheme();
-applySettings();
+// applySettings();

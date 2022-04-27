@@ -4,4 +4,4 @@ if (localStorage.getItem('typingLan') == null) typingLan = 'QWERTY/RU'; //byDefa
 else typingLan = localStorage.getItem('typingLan');
 changeTypingLan(typingLan);
 setTheme();
-applySettings();
+// applySettings();

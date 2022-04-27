@@ -1,21 +1,34 @@
 class Lesson {
     constructor(currentLesson, currentPartLesson) {
         // this.lessonID = lesson;
-        this.lesson = currentLesson;
-        this.partLesson = currentPartLesson;
+        this.lessonNumber = currentLesson;
+        this.partLessonNumber = currentPartLesson;
 
         this.currentPart = 0;
         this.lessonArray = [];
         this.loadLesson();
+        this.loadSettings();
     }
     showLesson() {
+        console.log("_____________");
+        console.log(this.lessonNumber);
+        console.log(this.partLessonNumber);
         console.log(this.lesson);
-        console.log(this.partLesson);
         console.log(this.lessonArray);
+        console.log(this.lessonSettings);
+        console.log("_____________");
     }
     loadLesson() {
-        // console.log(this.lesson);
-        // console.log(Object.keys(lessons[(Object.keys(lessons)[this.lesson]).toString()]));
-        this.lessonArray = Object.keys(lessons[Object.keys(lessons)[this.lesson].toString()])[this.partLesson];
+        this.lesson = Object.values(lessons[Object.keys(lessons)[this.lessonNumber].toString()])[this.partLessonNumber];
+        this.lessonArray = this.lesson.text;
+        this.lessonSettings = this.lesson.settings;
+    }
+    continueLesson() {
+        this.currentPart++;
+    }
+    loadSettings() {
+        setKeyboardBacklight(this.lessonSettings.keyboardBacklight);
+        setHandsVisibility(this.lessonSettings.keyboardHands);
+        setKeyboardVisibility(this.lessonSettings.showKeyboard);
     }
 };
