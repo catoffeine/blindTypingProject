@@ -3,15 +3,33 @@ let keyboardInputText = document.querySelector(".keyboardSection__writeText__inp
 
 let excludeWords = ["shift", "tab", "capslock", "backspace", "space", "alt", "win", "fn", "ps", "enter", "ctrl"];
 
+
 let showingText_text = document.querySelector(".showingText__text");
 let showingText_textArray = showingText_text.innerText.split(" ");
 let showingText_active = document.querySelector(".showingText__activeWord");
 let showingText_written = document.querySelector(".showingText__written");
+let showingText_writtenHidden = document.querySelector(".showingText__written__hidden");
 
 let inputText__dontTouch = document.querySelector(".keyboardSection__writeText__dontTouch");
 
-let keyboardLesson = new Lesson(currentLesson, currentPartLesson);
-keyboardLesson.showLesson();
+let lessonsDropDownItems = document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__item");
+
+for (let i = 0; i < lessonsDropDownItems.length; ++i) {
+    lessonsDropDownItems[i].onclick = function() {
+        lessonsDropDownItems[i].parentElement.classList.toggle("mainSectionContainer__lessons__flexContainer__menu__item_active");
+        let blockHeightSubmenu = lessonsDropDownItems[i].parentElement.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem").length * 50;
+
+        if (lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu") != null) {
+            lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu")
+            .style.height = blockHeightSubmenu + "px";
+        } else {
+            lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__submenu")
+            .style.height = 0 + "px";
+        }        
+    }
+}
+
+lessonsDropDownItems[currentLesson].onclick();
 
 
 Object.keys(keyboardBacklightConfig.default).forEach((finger) => {
@@ -62,14 +80,22 @@ function hightlightHandFinger(ch) {
 }
 
 function getNextActiveWord() {
+    console.log(showingText_textArray);
+    if (showingText_textArray.length == 0) {
+        showingText_writtenHidden.innerHTML += showingText_written.innerHTML;
+        showingText_written.innerHTML = "";
+        keyboardLesson.continueLesson();
+        showingText_textArray = showingText_text.innerText.split(" ");
+    }
     showingText_active.innerHTML = showingText_textArray[0] + " ";
     showingText_textArray.shift();
     showingText_text.innerHTML = showingText_textArray.join(" ");
     hightlightHandFinger(showingText_active.innerText[0]);
     if (showingText_written.innerText != '') keyboardInputText.placeholder = '';
 }
-getNextActiveWord();
 
+
+getNextActiveWord();
 
 let width = parseInt(getComputedStyle(keyboardRunningText).getPropertyValue('width'));
 console.log(width / 2 / 18);
@@ -123,7 +149,11 @@ function getSpanWrapText(correctWord, inputWord) {
 keyboardInputText.addEventListener("input", function() {
     let currentInputWord = keyboardInputText.value.toString();
     let currentWord = showingText_active.innerText;
-
+    
+    if (currentInputWord == ' ') {
+        keyboardInputText.value = '';
+        return;
+    }
     if (currentInputWord[currentInputWord.length - 1] == ' ') {
         hightlightHandFinger(' ');
         let spanCorrectionText = getSpanWrapText(currentWord.substr(0, currentWord.length - 1), currentInputWord.substr(0, currentInputWord.length - 1)) + ' ';
@@ -134,29 +164,7 @@ keyboardInputText.addEventListener("input", function() {
     if (currentInputWord.length < currentWord.length) {
         hightlightHandFinger(currentWord[currentInputWord.length]);
     }
-
-    // if (inputText.length == 0 || currentInputWord.length > currentWord.length) return;
-
-    // console.log("Comparing " + inputCh + " with " + currentCh);
-    
-    
-
-    // let element = this.value[this.value.length - 1];
-    // console.log(element);
-    // document.querySelectorAll(".keyboardSection__keyboard__keyboard div").forEach(function(el) {
-    //     if (el.childNodes.length != 1) return;
-        
-    //     if (element == " ")  {
-    //         document.querySelector(".keyboardSection__keyboard__keyboard__spaceKey").style.backgroundColor = "cyan";
-    //         return;
-    //     }
-    //     if (el.innerText.toLowerCase().indexOf(element) != -1 && !excludeWords.includes(el.innerText.toLowerCase())) {
-    //         let elId = el.id;
-    //         let zone = keycodesZones[elId];
-    //         let theme = localStorage.getItem("theme");
-
-    //         el.style.backgroundColor = keyboardBacklightConfig[theme][zone];
-    //     }
-    // })
 });
+
+
 

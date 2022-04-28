@@ -76,10 +76,10 @@ function changeTypingLan(newLan) {
 }
 //Language choose _BEGIN
 
-let languages = ["RU", "EN"];
+let languages = ["EN", "RU"];
 let languages_html = {
-    "RU": "Русский",
-    "EN": "English"
+    "EN": "English",
+    "RU": "Русский"
 };
 
 document.querySelector(".language_modal .language").value = 0;

@@ -805,6 +805,7 @@ html {
 }
 
 .mainSectionContainer__lessons__flexContainer__menu__subitem {
+  cursor: pointer;
   height: 50px;
   width: 80%;
   text-align: left;
@@ -1117,6 +1118,9 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transition: 0.4s opacity ease-in-out;
+  -o-transition: 0.4s opacity ease-in-out;
+  transition: 0.4s opacity ease-in-out;
 }
 
 .keyboardSection__keyboard__Hands {
@@ -1311,6 +1315,10 @@ html {
 .keyboardSection__keyboard__keyboard__spaceKey {
     width: 190px;
 } */
+
+.showingText__activeWord {
+  color: #7d96bb;
+}
 
 .keyboardSection__showingText {
   color: #d2d2d2;

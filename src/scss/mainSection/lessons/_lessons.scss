@@ -71,6 +71,7 @@
                     flex-direction: column;
                 }
                 &__subitem {
+                    cursor: pointer;
                     height: 50px;
                     width: 80%;
                     text-align: left;

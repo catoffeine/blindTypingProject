@@ -112,89 +112,131 @@ let keyboardBacklightConfig = {
     }
 };
 let lessons = {
-    beginning: {
+    Lesson1: {
         middleRow: {
-        text:
-            ["aa ss dd ff jj kk ll ;;",
-            "as as df df jk jk l; l;",
-            "as as df df jk jk l; l;",
-            "sa sa fd fd kj kj ;l ;l",
-            "jkl; jkl; asdf asdf",
-            "fdsa fdsa ;lkj ;lkj",
-            "asdf asdf jkl; jkl;"],
-        settings: {
-            keyboardBacklight: true,
-            keyboardHands: true,
-            showKeyboard: true,
-        }
+            subLessonName: "middle row",
+            text:
+                ["aa ss dd ff jj kk ll ;;",
+                "as as df df jk jk l; l;",
+                "as as df df jk jk l; l;",
+                "sa sa fd fd kj kj ;l ;l",
+                "jkl; jkl; asdf asdf",
+                "fdsa fdsa ;lkj ;lkj",
+                "asdf asdf jkl; jkl;"],
+            settings: {
+                keyboardBacklight: true,
+                showKeyboard: true,
+                showSpeed: true,
+            }
         },
-        newKeys1:
-        ["ad ad jk jk ad ad jk jk",
-        "jljl adad jljl adad",
-        "sfsf adad jljl sfsf",
-        "fsfs dada ljlj fsfs",
-        "fsfs adad jllj sffs",
-        "jkfd dfkj kjdf fdjk",
-        "affa j;;j jkfd l;sa",
-        "afds j;lk jkj; ;jad"],
-        newKeys2:
-        ["adfs adfs jlk; jlk;",
-        "ajsk ajsk ;lfd ;lfd",
-        "afsd afsd j;kl j;kl",
-        "jfa; jfa; ;afj ;afj",
-        "slsl kdkd jfjf ;a;a",
-        "akak sjsj dkdk alal",
-        "aslk dfkj aslk dfkj",
-        "fjkd fkjd fkjd fjkd",
-        "a;ls ls;a ;jlk j;lk",
-        "f;a; ja;a ks;a ;ajs"],
-        newKeys3:
-        ["lsda lfds jfal jfal",
-        "laks skda sdas alla",
-        "fsls slfk slfk fsls",
-        "alsk alsk ddak ddaj",
-        "aj;; jka; ;jka ;;ja",
-        "fja; fja; akdl aks;",
-        "aslk dfkj aslk askj",
-        "fjkl a;sl sla; fl;s",
-        "fsl; ;als jfkd jfkd",
-        "ajsl l;al asjd ajdk"],
-        keyTest1:
-        ["ask ask ask ask",
-        "add add add add",
-        "dad dad dad dad",
-        "fas fas fas fas",
-        "dsd dsd dsd dsd",
-        "lkj lkj lkj lkj",
-        "fad fad fad fad",
-        "all all all all",
-        "ala ala ala ala",
-        "sad sad sad sad",
-        "flak flak flak flak",
-        "flask flask flask flask",
-        "fall fall fall fall",
-        "alas alas alas alas",
-        "salad salad salad salad",
-        "alfala alfala alfala aflala",
-        "sals sals sals sals sals"],
-        wordTest1:
-        ["all ask fall ask",
-        "dad ask fall adds",
-        "adds salad flask all",
-        "daff all salad salsa",
-        "sals; flack; ;slak dad",
-        "asks salad; fall sad",
-        "alfa ;alfa salad falls",
-        "allas all sad; ask fad;",
-        "all fads fad salsa;",
-        "las; salad allas sals",
-        "alas daff flask fask",
-        "sass lad lads fask",
-        "as salsa las; alas",
-        "adds fads lass sass",
-        "adj adk all sad adds",
-        "asks falls dad all",
-        "laff daffs alls sass"],
+        newKeys1: {
+            subLessonName: "new Keys 1",
+            text:
+            ["ad ad jk jk ad ad jk jk",
+            "jljl adad jljl adad",
+            "sfsf adad jljl sfsf",
+            "fsfs dada ljlj fsfs",
+            "fsfs adad jllj sffs",
+            "jkfd dfkj kjdf fdjk",
+            "affa j;;j jkfd l;sa",
+            "afds j;lk jkj; ;jad"],
+            settings: {
+                keyboardBacklight: false,
+                showKeyboard: false,
+                showSpeed: true,
+            }
+        },
+        newKeys2: {
+            subLessonName: "new Keys 2",
+            text:
+            ["adfs adfs jlk; jlk;",
+            "ajsk ajsk ;lfd ;lfd",
+            "afsd afsd j;kl j;kl",
+            "jfa; jfa; ;afj ;afj",
+            "slsl kdkd jfjf ;a;a",
+            "akak sjsj dkdk alal",
+            "aslk dfkj aslk dfkj",
+            "fjkd fkjd fkjd fjkd",
+            "a;ls ls;a ;jlk j;lk",
+            "f;a; ja;a ks;a ;ajs"],
+            settings: {
+                keyboardBacklight: true,
+                showKeyboard: true,
+                showSpeed: true,
+            }
+        },
+        newKeys3: {
+            subLessonName: "new Keys 3",
+            text:
+            ["lsda lfds jfal jfal",
+            "laks skda sdas alla",
+            "fsls slfk slfk fsls",
+            "alsk alsk ddak ddaj",
+            "aj;; jka; ;jka ;;ja",
+            "fja; fja; akdl aks;",
+            "aslk dfkj aslk askj",
+            "fjkl a;sl sla; fl;s",
+            "fsl; ;als jfkd jfkd",
+            "ajsl l;al asjd ajdk"],
+            settings: {
+                keyboardBacklight: true,
+                showKeyboard: true,
+                showSpeed: true,
+            }
+        },
+        keyTest1: {
+            subLessonName: "key Test 1",
+            text:
+            ["ask ask ask ask",
+            "add add add add",
+            "dad dad dad dad",
+            "fas fas fas fas",
+            "dsd dsd dsd dsd",
+            "lkj lkj lkj lkj",
+            "fad fad fad fad",
+            "all all all all",
+            "ala ala ala ala",
+            "sad sad sad sad",
+            "flak flak flak flak",
+            "flask flask flask flask",
+            "fall fall fall fall",
+            "alas alas alas alas",
+            "salad salad salad salad",
+            "alfala alfala alfala aflala",
+            "sals sals sals sals sals"],
+            settings: {
+                keyboardBacklight: true,
+                showKeyboard: true,
+                showSpeed: true,
+            }
+        },
+        wordTest1: {
+            subLessonName: "word Test 1",
+            text:
+            ["all ask fall ask",
+            "dad ask fall adds",
+            "adds salad flask all",
+            "daff all salad salsa",
+            "sals; flack; ;slak dad",
+            "asks salad; fall sad",
+            "alfa ;alfa salad falls",
+            "allas all sad; ask fad;",
+            "all fads fad salsa;",
+            "las; salad allas sals",
+            "alas daff flask fask",
+            "sass lad lads fask",
+            "as salsa las; alas",
+            "adds fads lass sass",
+            "adj adk all sad adds",
+            "asks falls dad all",
+            "laff daffs alls sass"],
+            settings: {
+                keyboardBacklight: true,
+                showKeyboard: true,
+                showSpeed: true,
+            }
+        },
+        lessonName: "Lesson1. Middle row",
     }
 }
 
@@ -265,15 +307,22 @@ function changeTypingLan(newLan) {
     }
 }
 class Lesson {
-    constructor(currentLesson, currentPartLesson) {
+    constructor(currentLesson, currentPartLesson, lessonsConfig, domElementToRender = document.querySelector(".mainSectionContainer__lessons__flexContainer__menu")) {
+        this.domElement = domElementToRender;
+        this.changeLessonConfig(lessonsConfig);
+        this.renderDOMLessons();
         // this.lessonID = lesson;
         this.lessonNumber = currentLesson;
         this.partLessonNumber = currentPartLesson;
+        this.stringDOM = document.querySelector(".showingText__text");
+        this.stringPrepareDOM = document.querySelector(".showingText__text__prepare");
+        
 
         this.currentPart = 0;
         this.lessonArray = [];
+        
         this.loadLesson();
-        this.loadSettings();
+        
     }
     showLesson() {
         console.log("_____________");
@@ -284,23 +333,86 @@ class Lesson {
         console.log(this.lessonSettings);
         console.log("_____________");
     }
+    changeLessonConfig(newLessonsConfig) {
+        this.lessonsConfig = newLessonsConfig;
+    }
     loadLesson() {
-        this.lesson = Object.values(lessons[Object.keys(lessons)[this.lessonNumber].toString()])[this.partLessonNumber];
+        this.lesson = Object.values(this.lessonsConfig[Object.keys(this.lessonsConfig)[this.lessonNumber].toString()])[this.partLessonNumber];
         this.lessonArray = this.lesson.text;
         this.lessonSettings = this.lesson.settings;
+        this.loadSettings();
+        this.loadStringLesson();
+    }
+    loadStringLesson() {
+        this.stringDOM.innerHTML = this.getString();
+        this.stringPrepareDOM.innerHTML = this.getStringToPrepare();
     }
     continueLesson() {
         this.currentPart++;
+        this.loadStringLesson();
     }
     loadSettings() {
-        setKeyboardBacklight(this.lessonSettings.keyboardBacklight);
-        setHandsVisibility(this.lessonSettings.keyboardHands);
-        setKeyboardVisibility(this.lessonSettings.showKeyboard);
+        Object.keys(this.lessonSettings).forEach(item => {
+            mainSettings[item] = this.lessonSettings[item];
+        });
+        mainSettingsUpdate();
+    }
+    getString() {
+        if (this.currentPart >= this.lessonArray.length) {
+            console.log("Lesson has been ended");
+            return "End of the lesson";
+        }
+        return this.lessonArray[this.currentPart];
+    }
+    getStringToPrepare() {
+        debug.log(2, "this.lessonArray[" + +(+this.currentPart + 1) + "] is " + this.lessonArray[this.currentPart + 1]);
+        if (this.currentPart + 1 >= this.lessonArray.length) return "";
+        return this.lessonArray[this.currentPart + 1];
+    }
+    renderDOMLessons() {
+        let domString = '<div class="mainSectionContainer__lessons__flexContainer__menu__dropDownItem">';
+        Object.keys(this.lessonsConfig).forEach(item => {
+            domString += '<div class=" mainSectionContainer__lessons__flexContainer__menu__item" data-tilt><i class="fal fa-angle-right"></i>';
+            domString += this.lessonsConfig[item].lessonName;
+            domString += '</div>';
+
+            domString += '<div class="mainSectionContainer__lessons__flexContainer__submenu">';
+
+            Object.keys(this.lessonsConfig[item]).forEach(subItem => {
+                if (subItem == 'lessonName') return;
+                // console.log(this.lessonsConfig[item]);
+                let subLesson_name = this.lessonsConfig[item][subItem].subLessonName;
+                domString += '<div class="mainSectionContainer__lessons__flexContainer__menu__subitem" data-tilt><div id="';
+                domString += subLesson_name;
+                domString += '" class="mainSectionContainer__lessons__flexContainer__menu__subitem__text">';
+                domString += subLesson_name;
+                domString += '</div></div>';
+            });
+
+            domString += '</div></div>';
+        });
+        this.domElement.innerHTML = domString;
     }
 };
 
+{/*
+ <div class="mainSectionContainer__lessons__flexContainer__menu__dropDownItem">
+    <div class=" mainSectionContainer__lessons__flexContainer__menu__item" data-tilt><i class="fal fa-angle-right"></i>Lesson 1. Middle row</div>
+    <div class="mainSectionContainer__lessons__flexContainer__submenu">
+        <div class="mainSectionContainer__lessons__flexContainer__menu__subitem" data-tilt><div id="middleRow" class="mainSectionContainer__lessons__flexContainer__menu__subitem__text">Middle row</div></div>
+        <div class="mainSectionContainer__lessons__flexContainer__menu__subitem" data-tilt><div id="newKeys1" class="mainSectionContainer__lessons__flexContainer__menu__subitem__text">New Keys 1</div></div>
+        <div class="mainSectionContainer__lessons__flexContainer__menu__subitem" data-tilt><div id="newKeys2" class="mainSectionContainer__lessons__flexContainer__menu__subitem__text">New Keys 2</div></div>
+        <div class="mainSectionContainer__lessons__flexContainer__menu__subitem" data-tilt><div id="newKeys3" class="mainSectionContainer__lessons__flexContainer__menu__subitem__text">New Keys 3</div></div>
+        <div class="mainSectionContainer__lessons__flexContainer__menu__subitem" data-tilt><div id="keyTest1" class="mainSectionContainer__lessons__flexContainer__menu__subitem__text">Key practice</div></div>
+        <div class="mainSectionContainer__lessons__flexContainer__menu__subitem" data-tilt><div id="wordTest1" class="mainSectionContainer__lessons__flexContainer__menu__subitem__text">Word practice</div></div>
+    </div>
+</div> 
+*/}
+
 
 //Main scripts
+const keyboardBacklight_input = document.querySelector(".settingsKeysBacklight input");
+const keyboardVisibility_input = document.querySelector(".settingsShowKeyboard input");
 let keyClass = ".keyboardSection__keyboard__keyboard div",
 handClass = ".keyboardSection__keyboard__Hands";
 
@@ -308,7 +420,6 @@ let mainSettingsStorageName = "mainSettings";
 
 let mainSettings = {
     keyboardBacklight: false,
-    handsVisibility: false,
     showProgressBar: false,
     showKeyboard: false,
     showSpeed: false,
@@ -319,8 +430,6 @@ if (localStorage.getItem(mainSettingsStorageName) == null) {
 } else {
     mainSettings = JSON.parse(localStorage.getItem(mainSettingsStorageName));
 }
-
-debug.log(2, mainSettings);
 
 function backlightSwitch() {
     document.querySelector(".settingsKeysBacklight input").checked = mainSettings.keyboardBacklight;
@@ -342,46 +451,48 @@ function backlightSwitch() {
             debug.log(0, "Hand class is null, class Settings, function backlightSwitch");
             return;
         }
-        // hands.style.opacity = 1;
+
+        hands.style.opacity = 1;
+
+        
     } else {
         document.querySelectorAll(keyClass).forEach(function(el) {
             if (el.childNodes.length != 1) return;
             el.style.backgroundColor = null;
         }); 
-        // hands.style.opacity = 0;
+        hands.style.opacity = 0;
     }
     
 }
 
-function handsSwitch() {
-    let hands = document.querySelector(handClass);
-    if (mainSettings.handsVisibility) hands.style.opacity = 1;
-     else hands.style.opacity = 0;
-}
-
-function keyboardSwitch() {
-    document.querySelector(".settingsShowKeyboard input").checked = mainSettings.showKeyboard;
-    if (mainSettings.showKeyboard) {
-        document.querySelector('.keyboardSection__keyboard__keyboard').style.opacity = 1;
-        setHandsVisibility(true);
-    } else {
-        document.querySelector('.keyboardSection__keyboard__keyboard').style.opacity = 0;
-        setHandsVisibility(false);
-    }
-}
-
 function setKeyboardBacklight(isOn) {
+    console.log(isOn);
     mainSettings.keyboardBacklight = isOn;
     backlightSwitch();
     localStorage.setItem(mainSettingsStorageName, JSON.stringify(mainSettings));
 }
 
-function setHandsVisibility(isOn) {
-    if (!mainSettings.keyboardBacklight) mainSettings.handsVisibility = false;
-    else mainSettings.handsVisibility = isOn;
-    handsSwitch();
-    localStorage.setItem(mainSettingsStorageName, JSON.stringify(mainSettings));
+
+function keyboardSwitch() {
+    document.querySelector(".settingsShowKeyboard input").checked = mainSettings.showKeyboard;
+    if (mainSettings.showKeyboard) {
+        document.querySelector('.keyboardSection__keyboard').style.display = "flex";
+        setTimeout(() => {
+            document.querySelector('.keyboardSection__keyboard').style.opacity = 1;
+        }, 50);
+        keyboardBacklight_input.disabled = false;
+    } else {
+        document.querySelector('.keyboardSection__keyboard').style.opacity = 0;
+        setTimeout(() => {
+            document.querySelector('.keyboardSection__keyboard').style.display = "none";
+        }, 500);
+        // document.querySelector('.keyboardSection__keyboard__keyboard').style.opacity = 0;1
+        keyboardBacklight_input.checked = false;
+        keyboardBacklight_input.disabled = true;
+        setKeyboardBacklight(false);
+    }
 }
+
 
 function setKeyboardVisibility(isOn) {
     mainSettings.showKeyboard = isOn;
@@ -390,9 +501,21 @@ function setKeyboardVisibility(isOn) {
 
 } 
 
-// function applySettings() {
-//     backlightSwitch();
-// }
+function mainSettingsUpdate() {
+    setKeyboardBacklight(mainSettings.keyboardBacklight);
+    setKeyboardVisibility(mainSettings.showKeyboard);
+}
+
+//INPUTS CHANGE
+keyboardBacklight_input.addEventListener("change", function() {
+    setKeyboardBacklight(this.checked);
+    hightlightHandFinger(document.querySelector(".showingText__activeWord").innerText[0]);
+});
+
+keyboardVisibility_input.addEventListener("change", function() {
+    setKeyboardVisibility(this.checked);
+});
+//INPUTS CHANGE
 
 
 let hamburgerSettingsBtn = document.querySelector(".mainSectionContainer__settings__hamburgerButton");
@@ -406,15 +529,6 @@ closeBtnSettings.onclick = function() {
     document.querySelector(".mainSectionContainer__settings").classList.toggle("mainSectionContainer__settings__hamburgerButton__active");
 }
 
-// let settingsNativeLan = document.querySelector(".mainSectionContainer__settings__container__item__dropList_keyboardLang select:nth-child(1)");
-// settingsNativeLan.value = "";
-
-// settingsNativeLan.onchange = function() {
-//     settingsNativeLan.style.backgroundImage = `url("/images/lanChoosing/${settingsNativeLan.value.toUpperCase()}Lan.svg")`;
-//     settingsNativeLan.value = "";
-// }
-
-// let langArray = [];
 let nativeLangArray = ["RU", "EN"];
 let touchLangArray = ["RU", "EN"];
 let valSoundArray = ["a", "b", "c"];
@@ -481,72 +595,6 @@ touchLangArray.forEach(value => ulHandler(value, URLObjects, "language", ULNamed
 SelectObjects.forEach((item) => item.onclick = function() {
     item.classList.toggle("mainSectionContainer__settings__container__item__dropList__button__select__active");
 });
-
-
-document.querySelector(".settingsKeysBacklight input").addEventListener("change", function() {
-    setKeyboardBacklight(this.checked);
-    hightlightHandFinger(document.querySelector(".showingText__activeWord").innerText[0]);
-});
-
-document.querySelector(".settingsShowKeyboard input").addEventListener("change", function() {
-    setKeyboardVisibility(this.checked);
-});
-
-
-
-// document.querySelector(".mainSectionContainer__settings__container__item__dropList_soundChanger ul").innerHTML = langArray;
-
-// $('.mainSectionContainer__settings__container__item__dropList_soundChanger ul').html(langArray);
-
-
-
-// $('.mainSectionContainer__settings__container__item__dropList_soundChanger button').html(langArray[0]);
-// $('.mainSectionContainer__settings__container__item__dropList_soundChanger button').attr('value', 'en');
-
-// document.querySelectorAll(".mainSectionContainer__settings__container__item__dropList_soundChanger option").forEach(function(item, i){
-//     let image = `/images/lanChoosing/${valLangArray[i].toUpperCase()}Lan.svg`;
-//     let value = valLangArray[i];
-//     console.log("value is " + value);
-//     let imgClass = 'mainSectionContainer__settings__container__item__dropList__button__select__ulContainer_img';
-//     let newItem = '<li><img class="' + imgClass + '" src="'+ image +'" alt="" value="'+ value +'"/></li>';
-//     langArray.push(newItem);
-// });
-
-
-
-// document.querySelectorAll(".mainSectionContainer__settings__container__item__dropList_soundChanger ul li").forEach(onclick = function(item, i) {
-//     console.dir(item);
-//     let img = item.getElementsByTagName('img')[0].src;
-//     console.log("img is " + img);
-//     let value = item.getElementsByTagName('img')[0].value;
-    
-//     let newItem = '<li><img src="'+ img +'" alt="" /></li>';
-//     $('.mainSectionContainer__settings__container__item__dropList_soundChanger button').html(newItem);
-//     $('.mainSectionContainer__settings__container__item__dropList_soundChanger button').attr('value', value);
-//     $(".mainSectionContainer__settings__container__item__dropList__button__select__ulContainer").toggle();
-// })
-
-// document.querySelector(".mainSectionContainer__settings__container__item__dropList_soundChanger button").onclick = function() {
-//     $(".mainSectionContainer__settings__container__item__dropList__button__select__ulContainer").toggle();
-// }
-$('.mainSectionContainer__lessons__flexContainer__menu__item').tilt({
-    glare: true,
-    maxGlare: 0.05,
-    scale: 1.05,
-    easing: "cubic-bezier(.03,.98,.52,.99)",
-    maxTilt: 15,
-})
-
-$('.mainSectionContainer__lessons__flexContainer__menu__subitem').tilt({
-    glare: true,
-    maxGlare: 0.05,
-    easing: "cubic-bezier(.03,.98,.52,.99)",
-})
-
-$('.languageList_modal ul').tilt({
-    glare: true,
-    maxGlare: 0.05,
-})
 'use strict';
 
 let currentLesson;
@@ -567,22 +615,8 @@ if (localStorage.getItem("currentLessonPart") == null) {
     currentPartLesson = localStorage.getItem("currentLessonPart");
 }
 
-let lessonsDropDownItems = document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__item");
-
-for (let i = 0; i < lessonsDropDownItems.length; ++i) {
-    lessonsDropDownItems[i].onclick = function() {
-        lessonsDropDownItems[i].parentElement.classList.toggle("mainSectionContainer__lessons__flexContainer__menu__item_active");
-        let blockHeightSubmenu = lessonsDropDownItems[i].parentElement.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem").length * 50;
-
-        if (lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu") != null) {
-            lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu")
-            .style.height = blockHeightSubmenu + "px";
-        } else {
-            lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__submenu")
-            .style.height = 0 + "px";
-        }        
-    }
-}
+let domLesson = document.querySelector(".mainSectionContainer__lessons__flexContainer__menu");
+let keyboardLesson = new Lesson(currentLesson, currentPartLesson, lessons, domLesson);
 
 function switchLesson(currentLesson, currentPartLesson) {
     localStorage.setItem("currentLesson", currentLesson);
@@ -597,7 +631,6 @@ function switchLesson(currentLesson, currentPartLesson) {
     
 }
 
-lessonsDropDownItems[currentLesson].onclick();
 switchLesson(currentLesson, currentPartLesson);
 
 document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__submenu").forEach((item, itemInd) => {
@@ -646,15 +679,33 @@ let keyboardInputText = document.querySelector(".keyboardSection__writeText__inp
 
 let excludeWords = ["shift", "tab", "capslock", "backspace", "space", "alt", "win", "fn", "ps", "enter", "ctrl"];
 
+
 let showingText_text = document.querySelector(".showingText__text");
 let showingText_textArray = showingText_text.innerText.split(" ");
 let showingText_active = document.querySelector(".showingText__activeWord");
 let showingText_written = document.querySelector(".showingText__written");
+let showingText_writtenHidden = document.querySelector(".showingText__written__hidden");
 
 let inputText__dontTouch = document.querySelector(".keyboardSection__writeText__dontTouch");
 
-let keyboardLesson = new Lesson(currentLesson, currentPartLesson);
-keyboardLesson.showLesson();
+let lessonsDropDownItems = document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__item");
+
+for (let i = 0; i < lessonsDropDownItems.length; ++i) {
+    lessonsDropDownItems[i].onclick = function() {
+        lessonsDropDownItems[i].parentElement.classList.toggle("mainSectionContainer__lessons__flexContainer__menu__item_active");
+        let blockHeightSubmenu = lessonsDropDownItems[i].parentElement.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem").length * 50;
+
+        if (lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu") != null) {
+            lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu")
+            .style.height = blockHeightSubmenu + "px";
+        } else {
+            lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__submenu")
+            .style.height = 0 + "px";
+        }        
+    }
+}
+
+lessonsDropDownItems[currentLesson].onclick();
 
 
 Object.keys(keyboardBacklightConfig.default).forEach((finger) => {
@@ -705,14 +756,22 @@ function hightlightHandFinger(ch) {
 }
 
 function getNextActiveWord() {
+    console.log(showingText_textArray);
+    if (showingText_textArray.length == 0) {
+        showingText_writtenHidden.innerHTML += showingText_written.innerHTML;
+        showingText_written.innerHTML = "";
+        keyboardLesson.continueLesson();
+        showingText_textArray = showingText_text.innerText.split(" ");
+    }
     showingText_active.innerHTML = showingText_textArray[0] + " ";
     showingText_textArray.shift();
     showingText_text.innerHTML = showingText_textArray.join(" ");
     hightlightHandFinger(showingText_active.innerText[0]);
     if (showingText_written.innerText != '') keyboardInputText.placeholder = '';
 }
-getNextActiveWord();
 
+
+getNextActiveWord();
 
 let width = parseInt(getComputedStyle(keyboardRunningText).getPropertyValue('width'));
 console.log(width / 2 / 18);
@@ -766,7 +825,11 @@ function getSpanWrapText(correctWord, inputWord) {
 keyboardInputText.addEventListener("input", function() {
     let currentInputWord = keyboardInputText.value.toString();
     let currentWord = showingText_active.innerText;
-
+    
+    if (currentInputWord == ' ') {
+        keyboardInputText.value = '';
+        return;
+    }
     if (currentInputWord[currentInputWord.length - 1] == ' ') {
         hightlightHandFinger(' ');
         let spanCorrectionText = getSpanWrapText(currentWord.substr(0, currentWord.length - 1), currentInputWord.substr(0, currentInputWord.length - 1)) + ' ';
@@ -777,41 +840,37 @@ keyboardInputText.addEventListener("input", function() {
     if (currentInputWord.length < currentWord.length) {
         hightlightHandFinger(currentWord[currentInputWord.length]);
     }
-
-    // if (inputText.length == 0 || currentInputWord.length > currentWord.length) return;
-
-    // console.log("Comparing " + inputCh + " with " + currentCh);
-    
-    
-
-    // let element = this.value[this.value.length - 1];
-    // console.log(element);
-    // document.querySelectorAll(".keyboardSection__keyboard__keyboard div").forEach(function(el) {
-    //     if (el.childNodes.length != 1) return;
-        
-    //     if (element == " ")  {
-    //         document.querySelector(".keyboardSection__keyboard__keyboard__spaceKey").style.backgroundColor = "cyan";
-    //         return;
-    //     }
-    //     if (el.innerText.toLowerCase().indexOf(element) != -1 && !excludeWords.includes(el.innerText.toLowerCase())) {
-    //         let elId = el.id;
-    //         let zone = keycodesZones[elId];
-    //         let theme = localStorage.getItem("theme");
-
-    //         el.style.backgroundColor = keyboardBacklightConfig[theme][zone];
-    //     }
-    // })
 });
 
 
 
+
+$('.mainSectionContainer__lessons__flexContainer__menu__item').tilt({
+    glare: true,
+    maxGlare: 0.05,
+    scale: 1.05,
+    easing: "cubic-bezier(.03,.98,.52,.99)",
+    maxTilt: 15,
+})
+
+$('.mainSectionContainer__lessons__flexContainer__menu__subitem').tilt({
+    glare: true,
+    maxGlare: 0.05,
+    easing: "cubic-bezier(.03,.98,.52,.99)",
+})
+
+$('.languageList_modal ul').tilt({
+    glare: true,
+    maxGlare: 0.05,
+})
+
 //main_js/storingInfo.js?
 //Language choose _BEGIN
 
-let languages = ["RU", "EN"];
+let languages = ["EN", "RU"];
 let languages_html = {
-    "RU": "Русский",
-    "EN": "English"
+    "EN": "English",
+    "RU": "Русский"
 };
 
 document.querySelector(".language_modal .language").value = 0;
@@ -865,7 +924,7 @@ document.querySelector(".header__mainLanguage").addEventListener("click", functi
 //OnStart scripts
 
 let typingLan;
-if (localStorage.getItem('typingLan') == null) typingLan = 'QWERTY/RU'; //byDefault
+if (localStorage.getItem('typingLan') == null) typingLan = 'QWERTY/EN'; //byDefault
 else typingLan = localStorage.getItem('typingLan');
 changeTypingLan(typingLan);
 setTheme();

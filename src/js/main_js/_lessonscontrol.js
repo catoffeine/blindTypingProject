@@ -18,22 +18,8 @@ if (localStorage.getItem("currentLessonPart") == null) {
     currentPartLesson = localStorage.getItem("currentLessonPart");
 }
 
-let lessonsDropDownItems = document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__item");
-
-for (let i = 0; i < lessonsDropDownItems.length; ++i) {
-    lessonsDropDownItems[i].onclick = function() {
-        lessonsDropDownItems[i].parentElement.classList.toggle("mainSectionContainer__lessons__flexContainer__menu__item_active");
-        let blockHeightSubmenu = lessonsDropDownItems[i].parentElement.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem").length * 50;
-
-        if (lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu") != null) {
-            lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu")
-            .style.height = blockHeightSubmenu + "px";
-        } else {
-            lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__submenu")
-            .style.height = 0 + "px";
-        }        
-    }
-}
+let domLesson = document.querySelector(".mainSectionContainer__lessons__flexContainer__menu");
+let keyboardLesson = new Lesson(currentLesson, currentPartLesson, lessons, domLesson);
 
 function switchLesson(currentLesson, currentPartLesson) {
     localStorage.setItem("currentLesson", currentLesson);
@@ -48,7 +34,6 @@ function switchLesson(currentLesson, currentPartLesson) {
     
 }
 
-lessonsDropDownItems[currentLesson].onclick();
 switchLesson(currentLesson, currentPartLesson);
 
 document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__submenu").forEach((item, itemInd) => {
