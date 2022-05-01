@@ -240,6 +240,135 @@ let lessons = {
     }
 }
 
+let lessons_ru = {
+    Lesson1: {
+        middleRow: {
+            subLessonName: "middle row",
+            text:
+                ["аа ыы вв аа фф оо лл дд",
+                "as as df df jk jk l; l;",
+                "as as df df jk jk l; l;",
+                "sa sa fd fd kj kj ;l ;l",
+                "jkl; jkl; asdf asdf",
+                "fdsa fdsa ;lkj ;lkj",
+                "asdf asdf jkl; jkl;"],
+            settings: {
+                keyboardBacklight: true,
+                showKeyboard: true,
+                showSpeed: true,
+            }
+        },
+        newKeys1: {
+            subLessonName: "new Keys 1",
+            text:
+            ["ad ad jk jk ad ad jk jk",
+            "jljl adad jljl adad",
+            "sfsf adad jljl sfsf",
+            "fsfs dada ljlj fsfs",
+            "fsfs adad jllj sffs",
+            "jkfd dfkj kjdf fdjk",
+            "affa j;;j jkfd l;sa",
+            "afds j;lk jkj; ;jad"],
+            settings: {
+                keyboardBacklight: false,
+                showKeyboard: false,
+                showSpeed: true,
+            }
+        },
+        newKeys2: {
+            subLessonName: "new Keys 2",
+            text:
+            ["adfs adfs jlk; jlk;",
+            "ajsk ajsk ;lfd ;lfd",
+            "afsd afsd j;kl j;kl",
+            "jfa; jfa; ;afj ;afj",
+            "slsl kdkd jfjf ;a;a",
+            "akak sjsj dkdk alal",
+            "aslk dfkj aslk dfkj",
+            "fjkd fkjd fkjd fjkd",
+            "a;ls ls;a ;jlk j;lk",
+            "f;a; ja;a ks;a ;ajs"],
+            settings: {
+                keyboardBacklight: true,
+                showKeyboard: true,
+                showSpeed: true,
+            }
+        },
+        newKeys3: {
+            subLessonName: "new Keys 3",
+            text:
+            ["lsda lfds jfal jfal",
+            "laks skda sdas alla",
+            "fsls slfk slfk fsls",
+            "alsk alsk ddak ddaj",
+            "aj;; jka; ;jka ;;ja",
+            "fja; fja; akdl aks;",
+            "aslk dfkj aslk askj",
+            "fjkl a;sl sla; fl;s",
+            "fsl; ;als jfkd jfkd",
+            "ajsl l;al asjd ajdk"],
+            settings: {
+                keyboardBacklight: true,
+                showKeyboard: true,
+                showSpeed: true,
+            }
+        },
+        keyTest1: {
+            subLessonName: "key Test 1",
+            text:
+            ["ask ask ask ask",
+            "add add add add",
+            "dad dad dad dad",
+            "fas fas fas fas",
+            "dsd dsd dsd dsd",
+            "lkj lkj lkj lkj",
+            "fad fad fad fad",
+            "all all all all",
+            "ala ala ala ala",
+            "sad sad sad sad",
+            "flak flak flak flak",
+            "flask flask flask flask",
+            "fall fall fall fall",
+            "alas alas alas alas",
+            "salad salad salad salad",
+            "alfala alfala alfala aflala",
+            "sals sals sals sals sals"],
+            settings: {
+                keyboardBacklight: true,
+                showKeyboard: true,
+                showSpeed: true,
+            }
+        },
+        wordTest1: {
+            subLessonName: "word Test 1",
+            text:
+            ["all ask fall ask",
+            "dad ask fall adds",
+            "adds salad flask all",
+            "daff all salad salsa",
+            "sals; flack; ;slak dad",
+            "asks salad; fall sad",
+            "alfa ;alfa salad falls",
+            "allas all sad; ask fad;",
+            "all fads fad salsa;",
+            "las; salad allas sals",
+            "alas daff flask fask",
+            "sass lad lads fask",
+            "as salsa las; alas",
+            "adds fads lass sass",
+            "adj adk all sad adds",
+            "asks falls dad all",
+            "laff daffs alls sass"],
+            settings: {
+                keyboardBacklight: true,
+                showKeyboard: true,
+                showSpeed: true,
+            }
+        },
+        lessonName: "Lesson1. Middle row",
+    }
+}
+
 //modules
 class Debugger {
     constructor(debug = false, debugLevel = 0) {
@@ -307,13 +436,16 @@ function changeTypingLan(newLan) {
     }
 }
 class Lesson {
-    constructor(currentLesson, currentPartLesson, lessonsConfig, domElementToRender = document.querySelector(".mainSectionContainer__lessons__flexContainer__menu")) {
+    constructor(lessonsConfig, domElementToRender = document.querySelector(".mainSectionContainer__lessons__flexContainer__menu")) {
+        this.lessonNumber = localStorage.getItem("currentLesson") || 0;
+        this.partLessonNumber = localStorage.getItem("currentLessonPart") || 0;
         this.domElement = domElementToRender;
+
+        
         this.changeLessonConfig(lessonsConfig);
         this.renderDOMLessons();
         // this.lessonID = lesson;
-        this.lessonNumber = currentLesson;
-        this.partLessonNumber = currentPartLesson;
+        
         this.stringDOM = document.querySelector(".showingText__text");
         this.stringPrepareDOM = document.querySelector(".showingText__text__prepare");
         
@@ -369,6 +501,7 @@ class Lesson {
         if (this.currentPart + 1 >= this.lessonArray.length) return "";
         return this.lessonArray[this.currentPart + 1];
     }
+    
     renderDOMLessons() {
         let domString = '<div class="mainSectionContainer__lessons__flexContainer__menu__dropDownItem">';
         Object.keys(this.lessonsConfig).forEach(item => {
@@ -392,6 +525,70 @@ class Lesson {
             domString += '</div></div>';
         });
         this.domElement.innerHTML = domString;
+        this.DOMLessonsOnclickAdd();
+        this.DOMLessonsAnimationTilt();
+    }
+    DOMLessonsOnclickAdd() {
+        let lessonsDropDownItems = document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__item");
+
+        for (let i = 0; i < lessonsDropDownItems.length; ++i) {
+            lessonsDropDownItems[i].onclick = function() {
+                lessonsDropDownItems[i].parentElement.classList.toggle("mainSectionContainer__lessons__flexContainer__menu__item_active");
+                let blockHeightSubmenu = lessonsDropDownItems[i].parentElement.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem").length * 50;
+
+                if (lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu") != null) {
+                    lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu")
+                    .style.height = blockHeightSubmenu + "px";
+                } else {
+                    lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__submenu")
+                    .style.height = 0 + "px";
+                }        
+            }
+        }
+        lessonsDropDownItems[this.lessonNumber].onclick();
+
+        let lessonObj = this;
+
+        document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__submenu").forEach((item, itemInd) => {
+            let itemIndex = itemInd;
+            item.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem__text").forEach((subItem, subitemInd) => {
+                subItem.addEventListener("click", function() {
+                    lessonObj.partLessonNumber = subitemInd;
+                    lessonObj.lessonNumber = itemIndex;
+                    lessonObj.switchLesson();
+                    
+                    debug.log(2, "currentPartLesson is " + lessonObj.partLessonNumber);
+                    debug.log(2, "currentLesson is " + lessonObj.lessonNumber);
+                });
+            });
+        });
+        this.switchLesson();
+    }
+    DOMLessonsAnimationTilt() {
+        $('.mainSectionContainer__lessons__flexContainer__menu__item').tilt({
+            glare: true,
+            maxGlare: 0.05,
+            scale: 1.05,
+            easing: "cubic-bezier(.03,.98,.52,.99)",
+            maxTilt: 15,
+        })
+        
+        $('.mainSectionContainer__lessons__flexContainer__menu__subitem').tilt({
+            glare: true,
+            maxGlare: 0.05,
+            easing: "cubic-bezier(.03,.98,.52,.99)",
+        })
+    }
+    switchLesson() {
+        localStorage.setItem("currentLesson", this.lessonNumber);
+        localStorage.setItem("currentLessonPart", this.partLessonNumber);
+        console.log(this.lessonNumber + ' ' + this.partLessonNumber);
+        document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem__active").forEach((el) => {
+            el.classList.toggle("mainSectionContainer__lessons__flexContainer__menu__subitem__active");
+        });
+        
+        let currentLesson_subItem = document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__submenu")[this.lessonNumber].querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem__text")[this.partLessonNumber];
+        currentLesson_subItem.classList.toggle("mainSectionContainer__lessons__flexContainer__menu__subitem__active");
     }
 };
 
@@ -423,6 +620,8 @@ let mainSettings = {
     showProgressBar: false,
     showKeyboard: false,
     showSpeed: false,
+    typingLayout: null,
+    typingLan: null,
     theme: "dark",
 };
 if (localStorage.getItem(mainSettingsStorageName) == null) {
@@ -430,6 +629,29 @@ if (localStorage.getItem(mainSettingsStorageName) == null) {
 } else {
     mainSettings = JSON.parse(localStorage.getItem(mainSettingsStorageName));
 }
+
+function mainSettingsLocalStorageUpdate() {
+    localStorage.setItem(mainSettingsStorageName, JSON.stringify(mainSettings));
+}
+
+if (mainSettings.typingLan == null) {
+    mainSettings.typingLan = localStorage.getItem('nativeLan');
+}
+if (mainSettings.typingLayout == null) {
+    mainSettings.typingLayout = 'QWERTY';
+}
+
+mainSettingsLocalStorageUpdate();
+
+let domLesson = document.querySelector(".mainSectionContainer__lessons__flexContainer__menu");
+let configLessons;
+if (mainSettings.typingLan == 'EN') {
+    configLessons = lessons;
+} else {
+    configLessons = lessons_ru;
+}
+
+let keyboardLesson = new Lesson(configLessons, domLesson);
 
 function backlightSwitch() {
     document.querySelector(".settingsKeysBacklight input").checked = mainSettings.keyboardBacklight;
@@ -469,7 +691,7 @@ function setKeyboardBacklight(isOn) {
     console.log(isOn);
     mainSettings.keyboardBacklight = isOn;
     backlightSwitch();
-    localStorage.setItem(mainSettingsStorageName, JSON.stringify(mainSettings));
+    mainSettingsLocalStorageUpdate();
 }
 
 
@@ -497,14 +719,21 @@ function keyboardSwitch() {
 function setKeyboardVisibility(isOn) {
     mainSettings.showKeyboard = isOn;
     keyboardSwitch();
-    localStorage.setItem(mainSettingsStorageName, JSON.stringify(mainSettings));
-
+    mainSettingsLocalStorageUpdate();
 } 
+
+function setKeyboardTypingLan() {
+    console.log(mainSettings.typingLan);
+    changeTypingLan(mainSettings.typingLayout + '/' + mainSettings.typingLan);
+    mainSettingsLocalStorageUpdate();
+}
 
 function mainSettingsUpdate() {
     setKeyboardBacklight(mainSettings.keyboardBacklight);
     setKeyboardVisibility(mainSettings.showKeyboard);
 }
+
+
 
 //INPUTS CHANGE
 keyboardBacklight_input.addEventListener("change", function() {
@@ -529,6 +758,10 @@ closeBtnSettings.onclick = function() {
     document.querySelector(".mainSectionContainer__settings").classList.toggle("mainSectionContainer__settings__hamburgerButton__active");
 }
 
+// function changeLanTyping() {
+
+// }
+
 let nativeLangArray = ["RU", "EN"];
 let touchLangArray = ["RU", "EN"];
 let valSoundArray = ["a", "b", "c"];
@@ -541,7 +774,8 @@ let URLObjects = {
 }
 
 // /images/lanChoosing/
-function ulHandler(value, objects, type, element, listType) {
+function ulHandler(value, objects, type, element) {
+    //lan instead of value.toUpperCase
     let imageSrc = objects[type] + value.toUpperCase();
     switch(type) {
         case 'language': {
@@ -554,14 +788,25 @@ function ulHandler(value, objects, type, element, listType) {
         }
     }
     
-    let newItem = '<li value="' + value + '"><img src="'+ imageSrc +'" onError=\"this.src=\"\"\"/></li>';
+    let newItem = '<li id="' + value + '"><img src="'+ imageSrc +'" onError=\"this.src=\"\"\"/></li>';
     element.innerHTML += newItem;
     // let ulitems = element.lastElementChild;
     let ulitems = element.children;
+    // console.log(ulitems);
+
     // let li = ulitems[ulitems.length - 1];
     // console.dir(ulitems);
     // console.log(value);
     let btn = element.parentNode.children[0];
+    if (type == 'language') {
+        let lan = mainSettings.typingLan;
+        btn.value = lan;
+        // console.log(btn.querySelector('img'));
+        // console.log(btn.querySelector('img'));
+        btn.querySelector('img').src = imageSrc;
+        // console.log(btn.querySelector('img'));
+    }
+    
     // li.addEventListener("click", function() {
     //     btn.innerHTML = li.innerHTML;
     //     btn.value = li.value;
@@ -570,12 +815,15 @@ function ulHandler(value, objects, type, element, listType) {
     for (let item of ulitems) {
         item.addEventListener("click", function() {
             btn.innerHTML = item.innerHTML;
-            btn.value = item.value;
-            console.log(item.value);
-
+            btn.value = this.id;
+            if (type == 'language') {
+                mainSettings.typingLan = this.id;
+                setKeyboardTypingLan();
+            }
         });
-        console.log("hi");
+        // console.log("hi");
     };
+
 }
 
 ULObjects.forEach(function(item) {
@@ -583,8 +831,8 @@ ULObjects.forEach(function(item) {
 });
 
 // valSoundArray.forEach(value => ulHandler(value, URLObjects, "keySound", ULObjects[0]));
-nativeLangArray.forEach(value => ulHandler(value, URLObjects, "language", ULNamedObjects.nativeLan, "nativeLan"));
-touchLangArray.forEach(value => ulHandler(value, URLObjects, "language", ULNamedObjects.touchLan, "touchLan"));
+nativeLangArray.forEach(value => ulHandler(value, URLObjects, "language", ULNamedObjects.nativeLan));
+touchLangArray.forEach(value => ulHandler(value, URLObjects, "language", ULNamedObjects.touchLan));
 
 // for (let i = 0; i < SelectObjects.length; ++i) {
 //     SelectObjects[i].onclick = function() {
@@ -597,55 +845,54 @@ SelectObjects.forEach((item) => item.onclick = function() {
 });
 'use strict';
 
-let currentLesson;
-let currentPartLesson;
-let currentLessonID;
+// let currentLesson;
+// let currentPartLesson;
+// let currentLessonID;
 
-if (localStorage.getItem("currentLesson") == null) {
-    currentLesson = 0;
-    localStorage.setItem("currentLesson", currentLesson.toString())
-} else {
-    currentLesson = localStorage.getItem("currentLesson");
-}
+// if (localStorage.getItem("currentLesson") == null) {
+//     currentLesson = 0;
+//     localStorage.setItem("currentLesson", currentLesson.toString())
+// } else {
+//     currentLesson = localStorage.getItem("currentLesson");
+// }
 
-if (localStorage.getItem("currentLessonPart") == null) {
-    currentPartLesson = 0;
-    localStorage.setItem("currentLessonPart", currentPartLesson.toString())
-} else {
-    currentPartLesson = localStorage.getItem("currentLessonPart");
-}
+// if (localStorage.getItem("currentLessonPart") == null) {
+//     currentPartLesson = 0;
+//     localStorage.setItem("currentLessonPart", currentPartLesson.toString())
+// } else {
+//     currentPartLesson = localStorage.getItem("currentLessonPart");
+// }
 
-let domLesson = document.querySelector(".mainSectionContainer__lessons__flexContainer__menu");
-let keyboardLesson = new Lesson(currentLesson, currentPartLesson, lessons, domLesson);
 
-function switchLesson(currentLesson, currentPartLesson) {
-    localStorage.setItem("currentLesson", currentLesson);
-    localStorage.setItem("currentLessonPart", currentPartLesson);
-    document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem__active").forEach((el) => {
-        el.classList.toggle("mainSectionContainer__lessons__flexContainer__menu__subitem__active");
-    });
+
+// function switchLesson(currentLesson, currentPartLesson) {
+//     localStorage.setItem("currentLesson", currentLesson);
+//     localStorage.setItem("currentLessonPart", currentPartLesson);
+//     document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem__active").forEach((el) => {
+//         el.classList.toggle("mainSectionContainer__lessons__flexContainer__menu__subitem__active");
+//     });
     
-    let currentLesson_subItem = document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__submenu")[currentLesson].querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem__text")[currentPartLesson];
-    currentLesson_subItem.classList.toggle("mainSectionContainer__lessons__flexContainer__menu__subitem__active");
-    currentLessonID = currentLesson_subItem.id;
+//     let currentLesson_subItem = document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__submenu")[currentLesson].querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem__text")[currentPartLesson];
+//     currentLesson_subItem.classList.toggle("mainSectionContainer__lessons__flexContainer__menu__subitem__active");
+//     currentLessonID = currentLesson_subItem.id;
     
-}
+// }
 
-switchLesson(currentLesson, currentPartLesson);
+// switchLesson(currentLesson, currentPartLesson);
 
-document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__submenu").forEach((item, itemInd) => {
-    let itemIndex = itemInd;
-    item.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem__text").forEach((subItem, subitemInd) => {
-        subItem.addEventListener("click", function() {
-            currentPartLesson = subitemInd;
-            currentLesson = itemIndex;
-            currentLessonID = this.id;
-            switchLesson(currentLesson, currentPartLesson);
-            debug.log(2, "currentLesson is " + currentLesson);
-            debug.log(2, "currentLesson is " + currentPartLesson);
-        });
-    });
-});
+// document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__submenu").forEach((item, itemInd) => {
+//     let itemIndex = itemInd;
+//     item.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem__text").forEach((subItem, subitemInd) => {
+//         subItem.addEventListener("click", function() {
+//             currentPartLesson = subitemInd;
+//             currentLesson = itemIndex;
+//             currentLessonID = this.id;
+//             switchLesson(currentLesson, currentPartLesson);
+//             debug.log(2, "currentLesson is " + currentLesson);
+//             debug.log(2, "currentLesson is " + currentPartLesson);
+//         });
+//     });
+// });
 
 let musicPausePlay = document.querySelector(".musicSection__pausePlay");
 
@@ -688,24 +935,24 @@ let showingText_writtenHidden = document.querySelector(".showingText__written__h
 
 let inputText__dontTouch = document.querySelector(".keyboardSection__writeText__dontTouch");
 
-let lessonsDropDownItems = document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__item");
+// let lessonsDropDownItems = document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__item");
 
-for (let i = 0; i < lessonsDropDownItems.length; ++i) {
-    lessonsDropDownItems[i].onclick = function() {
-        lessonsDropDownItems[i].parentElement.classList.toggle("mainSectionContainer__lessons__flexContainer__menu__item_active");
-        let blockHeightSubmenu = lessonsDropDownItems[i].parentElement.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem").length * 50;
+// for (let i = 0; i < lessonsDropDownItems.length; ++i) {
+//     lessonsDropDownItems[i].onclick = function() {
+//         lessonsDropDownItems[i].parentElement.classList.toggle("mainSectionContainer__lessons__flexContainer__menu__item_active");
+//         let blockHeightSubmenu = lessonsDropDownItems[i].parentElement.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem").length * 50;
 
-        if (lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu") != null) {
-            lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu")
-            .style.height = blockHeightSubmenu + "px";
-        } else {
-            lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__submenu")
-            .style.height = 0 + "px";
-        }        
-    }
-}
+//         if (lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu") != null) {
+//             lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu")
+//             .style.height = blockHeightSubmenu + "px";
+//         } else {
+//             lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__submenu")
+//             .style.height = 0 + "px";
+//         }        
+//     }
+// }
 
-lessonsDropDownItems[currentLesson].onclick();
+// lessonsDropDownItems[currentLesson].onclick();
 
 
 Object.keys(keyboardBacklightConfig.default).forEach((finger) => {
@@ -845,20 +1092,6 @@ keyboardInputText.addEventListener("input", function() {
 
 
 
-$('.mainSectionContainer__lessons__flexContainer__menu__item').tilt({
-    glare: true,
-    maxGlare: 0.05,
-    scale: 1.05,
-    easing: "cubic-bezier(.03,.98,.52,.99)",
-    maxTilt: 15,
-})
-
-$('.mainSectionContainer__lessons__flexContainer__menu__subitem').tilt({
-    glare: true,
-    maxGlare: 0.05,
-    easing: "cubic-bezier(.03,.98,.52,.99)",
-})
-
 $('.languageList_modal ul').tilt({
     glare: true,
     maxGlare: 0.05,
@@ -923,9 +1156,10 @@ document.querySelector(".header__mainLanguage").addEventListener("click", functi
 
 //OnStart scripts
 
-let typingLan;
-if (localStorage.getItem('typingLan') == null) typingLan = 'QWERTY/EN'; //byDefault
-else typingLan = localStorage.getItem('typingLan');
-changeTypingLan(typingLan);
+// let typingLan;
+// if (localStorage.getItem('typingLan') == null) typingLan = 'QWERTY/EN'; //byDefault
+// else typingLan = localStorage.getItem('typingLan');
+// changeTypingLan(typingLan);
+setKeyboardTypingLan();
 setTheme();
 // applySettings();

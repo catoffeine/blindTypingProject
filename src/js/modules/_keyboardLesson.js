@@ -1,11 +1,14 @@
 class Lesson {
-    constructor(currentLesson, currentPartLesson, lessonsConfig, domElementToRender = document.querySelector(".mainSectionContainer__lessons__flexContainer__menu")) {
+    constructor(lessonsConfig, domElementToRender = document.querySelector(".mainSectionContainer__lessons__flexContainer__menu")) {
+        this.lessonNumber = localStorage.getItem("currentLesson") || 0;
+        this.partLessonNumber = localStorage.getItem("currentLessonPart") || 0;
         this.domElement = domElementToRender;
+
+        
         this.changeLessonConfig(lessonsConfig);
         this.renderDOMLessons();
         // this.lessonID = lesson;
-        this.lessonNumber = currentLesson;
-        this.partLessonNumber = currentPartLesson;
+        
         this.stringDOM = document.querySelector(".showingText__text");
         this.stringPrepareDOM = document.querySelector(".showingText__text__prepare");
         
@@ -61,6 +64,7 @@ class Lesson {
         if (this.currentPart + 1 >= this.lessonArray.length) return "";
         return this.lessonArray[this.currentPart + 1];
     }
+    
     renderDOMLessons() {
         let domString = '<div class="mainSectionContainer__lessons__flexContainer__menu__dropDownItem">';
         Object.keys(this.lessonsConfig).forEach(item => {
@@ -84,6 +88,70 @@ class Lesson {
             domString += '</div></div>';
         });
         this.domElement.innerHTML = domString;
+        this.DOMLessonsOnclickAdd();
+        this.DOMLessonsAnimationTilt();
+    }
+    DOMLessonsOnclickAdd() {
+        let lessonsDropDownItems = document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__item");
+
+        for (let i = 0; i < lessonsDropDownItems.length; ++i) {
+            lessonsDropDownItems[i].onclick = function() {
+                lessonsDropDownItems[i].parentElement.classList.toggle("mainSectionContainer__lessons__flexContainer__menu__item_active");
+                let blockHeightSubmenu = lessonsDropDownItems[i].parentElement.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem").length * 50;
+
+                if (lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu") != null) {
+                    lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu")
+                    .style.height = blockHeightSubmenu + "px";
+                } else {
+                    lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__submenu")
+                    .style.height = 0 + "px";
+                }        
+            }
+        }
+        lessonsDropDownItems[this.lessonNumber].onclick();
+
+        let lessonObj = this;
+
+        document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__submenu").forEach((item, itemInd) => {
+            let itemIndex = itemInd;
+            item.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem__text").forEach((subItem, subitemInd) => {
+                subItem.addEventListener("click", function() {
+                    lessonObj.partLessonNumber = subitemInd;
+                    lessonObj.lessonNumber = itemIndex;
+                    lessonObj.switchLesson();
+                    
+                    debug.log(2, "currentPartLesson is " + lessonObj.partLessonNumber);
+                    debug.log(2, "currentLesson is " + lessonObj.lessonNumber);
+                });
+            });
+        });
+        this.switchLesson();
+    }
+    DOMLessonsAnimationTilt() {
+        $('.mainSectionContainer__lessons__flexContainer__menu__item').tilt({
+            glare: true,
+            maxGlare: 0.05,
+            scale: 1.05,
+            easing: "cubic-bezier(.03,.98,.52,.99)",
+            maxTilt: 15,
+        })
+        
+        $('.mainSectionContainer__lessons__flexContainer__menu__subitem').tilt({
+            glare: true,
+            maxGlare: 0.05,
+            easing: "cubic-bezier(.03,.98,.52,.99)",
+        })
+    }
+    switchLesson() {
+        localStorage.setItem("currentLesson", this.lessonNumber);
+        localStorage.setItem("currentLessonPart", this.partLessonNumber);
+        console.log(this.lessonNumber + ' ' + this.partLessonNumber);
+        document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem__active").forEach((el) => {
+            el.classList.toggle("mainSectionContainer__lessons__flexContainer__menu__subitem__active");
+        });
+        
+        let currentLesson_subItem = document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__submenu")[this.lessonNumber].querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem__text")[this.partLessonNumber];
+        currentLesson_subItem.classList.toggle("mainSectionContainer__lessons__flexContainer__menu__subitem__active");
     }
 };
 

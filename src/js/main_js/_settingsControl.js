@@ -10,6 +10,8 @@ let mainSettings = {
     showProgressBar: false,
     showKeyboard: false,
     showSpeed: false,
+    typingLayout: null,
+    typingLan: null,
     theme: "dark",
 };
 if (localStorage.getItem(mainSettingsStorageName) == null) {
@@ -17,6 +19,29 @@ if (localStorage.getItem(mainSettingsStorageName) == null) {
 } else {
     mainSettings = JSON.parse(localStorage.getItem(mainSettingsStorageName));
 }
+
+function mainSettingsLocalStorageUpdate() {
+    localStorage.setItem(mainSettingsStorageName, JSON.stringify(mainSettings));
+}
+
+if (mainSettings.typingLan == null) {
+    mainSettings.typingLan = localStorage.getItem('nativeLan');
+}
+if (mainSettings.typingLayout == null) {
+    mainSettings.typingLayout = 'QWERTY';
+}
+
+mainSettingsLocalStorageUpdate();
+
+let domLesson = document.querySelector(".mainSectionContainer__lessons__flexContainer__menu");
+let configLessons;
+if (mainSettings.typingLan == 'EN') {
+    configLessons = lessons;
+} else {
+    configLessons = lessons_ru;
+}
+
+let keyboardLesson = new Lesson(configLessons, domLesson);
 
 function backlightSwitch() {
     document.querySelector(".settingsKeysBacklight input").checked = mainSettings.keyboardBacklight;
@@ -56,7 +81,7 @@ function setKeyboardBacklight(isOn) {
     console.log(isOn);
     mainSettings.keyboardBacklight = isOn;
     backlightSwitch();
-    localStorage.setItem(mainSettingsStorageName, JSON.stringify(mainSettings));
+    mainSettingsLocalStorageUpdate();
 }
 
 
@@ -84,14 +109,21 @@ function keyboardSwitch() {
 function setKeyboardVisibility(isOn) {
     mainSettings.showKeyboard = isOn;
     keyboardSwitch();
-    localStorage.setItem(mainSettingsStorageName, JSON.stringify(mainSettings));
-
+    mainSettingsLocalStorageUpdate();
 } 
+
+function setKeyboardTypingLan() {
+    console.log(mainSettings.typingLan);
+    changeTypingLan(mainSettings.typingLayout + '/' + mainSettings.typingLan);
+    mainSettingsLocalStorageUpdate();
+}
 
 function mainSettingsUpdate() {
     setKeyboardBacklight(mainSettings.keyboardBacklight);
     setKeyboardVisibility(mainSettings.showKeyboard);
 }
+
+
 
 //INPUTS CHANGE
 keyboardBacklight_input.addEventListener("change", function() {
@@ -116,6 +148,10 @@ closeBtnSettings.onclick = function() {
     document.querySelector(".mainSectionContainer__settings").classList.toggle("mainSectionContainer__settings__hamburgerButton__active");
 }
 
+// function changeLanTyping() {
+
+// }
+
 let nativeLangArray = ["RU", "EN"];
 let touchLangArray = ["RU", "EN"];
 let valSoundArray = ["a", "b", "c"];
@@ -128,7 +164,8 @@ let URLObjects = {
 }
 
 // /images/lanChoosing/
-function ulHandler(value, objects, type, element, listType) {
+function ulHandler(value, objects, type, element) {
+    //lan instead of value.toUpperCase
     let imageSrc = objects[type] + value.toUpperCase();
     switch(type) {
         case 'language': {
@@ -141,14 +178,25 @@ function ulHandler(value, objects, type, element, listType) {
         }
     }
     
-    let newItem = '<li value="' + value + '"><img src="'+ imageSrc +'" onError=\"this.src=\"\"\"/></li>';
+    let newItem = '<li id="' + value + '"><img src="'+ imageSrc +'" onError=\"this.src=\"\"\"/></li>';
     element.innerHTML += newItem;
     // let ulitems = element.lastElementChild;
     let ulitems = element.children;
+    // console.log(ulitems);
+
     // let li = ulitems[ulitems.length - 1];
     // console.dir(ulitems);
     // console.log(value);
     let btn = element.parentNode.children[0];
+    if (type == 'language') {
+        let lan = mainSettings.typingLan;
+        btn.value = lan;
+        // console.log(btn.querySelector('img'));
+        // console.log(btn.querySelector('img'));
+        btn.querySelector('img').src = imageSrc;
+        // console.log(btn.querySelector('img'));
+    }
+    
     // li.addEventListener("click", function() {
     //     btn.innerHTML = li.innerHTML;
     //     btn.value = li.value;
@@ -157,12 +205,15 @@ function ulHandler(value, objects, type, element, listType) {
     for (let item of ulitems) {
         item.addEventListener("click", function() {
             btn.innerHTML = item.innerHTML;
-            btn.value = item.value;
-            console.log(item.value);
-
+            btn.value = this.id;
+            if (type == 'language') {
+                mainSettings.typingLan = this.id;
+                setKeyboardTypingLan();
+            }
         });
-        console.log("hi");
+        // console.log("hi");
     };
+
 }
 
 ULObjects.forEach(function(item) {
@@ -170,8 +221,8 @@ ULObjects.forEach(function(item) {
 });
 
 // valSoundArray.forEach(value => ulHandler(value, URLObjects, "keySound", ULObjects[0]));
-nativeLangArray.forEach(value => ulHandler(value, URLObjects, "language", ULNamedObjects.nativeLan, "nativeLan"));
-touchLangArray.forEach(value => ulHandler(value, URLObjects, "language", ULNamedObjects.touchLan, "touchLan"));
+nativeLangArray.forEach(value => ulHandler(value, URLObjects, "language", ULNamedObjects.nativeLan));
+touchLangArray.forEach(value => ulHandler(value, URLObjects, "language", ULNamedObjects.touchLan));
 
 // for (let i = 0; i < SelectObjects.length; ++i) {
 //     SelectObjects[i].onclick = function() {

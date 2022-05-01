@@ -12,24 +12,24 @@ let showingText_writtenHidden = document.querySelector(".showingText__written__h
 
 let inputText__dontTouch = document.querySelector(".keyboardSection__writeText__dontTouch");
 
-let lessonsDropDownItems = document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__item");
+// let lessonsDropDownItems = document.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__item");
 
-for (let i = 0; i < lessonsDropDownItems.length; ++i) {
-    lessonsDropDownItems[i].onclick = function() {
-        lessonsDropDownItems[i].parentElement.classList.toggle("mainSectionContainer__lessons__flexContainer__menu__item_active");
-        let blockHeightSubmenu = lessonsDropDownItems[i].parentElement.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem").length * 50;
+// for (let i = 0; i < lessonsDropDownItems.length; ++i) {
+//     lessonsDropDownItems[i].onclick = function() {
+//         lessonsDropDownItems[i].parentElement.classList.toggle("mainSectionContainer__lessons__flexContainer__menu__item_active");
+//         let blockHeightSubmenu = lessonsDropDownItems[i].parentElement.querySelectorAll(".mainSectionContainer__lessons__flexContainer__menu__subitem").length * 50;
 
-        if (lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu") != null) {
-            lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu")
-            .style.height = blockHeightSubmenu + "px";
-        } else {
-            lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__submenu")
-            .style.height = 0 + "px";
-        }        
-    }
-}
+//         if (lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu") != null) {
+//             lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__menu__item_active .mainSectionContainer__lessons__flexContainer__submenu")
+//             .style.height = blockHeightSubmenu + "px";
+//         } else {
+//             lessonsDropDownItems[i].parentElement.querySelector(".mainSectionContainer__lessons__flexContainer__submenu")
+//             .style.height = 0 + "px";
+//         }        
+//     }
+// }
 
-lessonsDropDownItems[currentLesson].onclick();
+// lessonsDropDownItems[currentLesson].onclick();
 
 
 Object.keys(keyboardBacklightConfig.default).forEach((finger) => {
