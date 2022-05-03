@@ -10,6 +10,7 @@
 
 //Language choosing
 @import './languageChoose/languageChoose';
+@import './languageChoose/languageChoose_themes';
 @import './mainSection/mainscreen';
 
 //theme switcher styles
@@ -22,6 +23,10 @@
 //keyboard section
 @import './mainSection/keyboard/keyboard';
 @import './mainSection/keyboard/keyboard_themes';
+
+//Result section
+@import './mainSection/resultLesson/resultLesson';
+@import './mainSection/resultLesson/resultLesson_themes';
 
 //settings section
 @import './mainSection/settings/settings';

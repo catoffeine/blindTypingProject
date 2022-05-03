@@ -1,13 +1,13 @@
 body {
     background-color: $backgroundMainDark;
-    color: $textColorDark;
+    // color: $textColorDark;
     text-decoration: none;
     outline: none;
 }
 
 .bright {
     background-color: $backgroundMainBright;
-    color: $textColorBright;
+    // color: $textColorBright;
 }
 
 .logo:hover {
@@ -15,19 +15,44 @@ body {
     box-shadow: 0px;
 }
 
+.bright .logo:hover {
+    background-color: $backgroundMainBright;
+    box-shadow: 0px;
+}
+
 .header__item:hover {
-    background: #31323C;
+    background-color: #31323C;
     box-shadow: 5px 6px 15px #1F1F23;
 }
 
+.bright .header__item:hover {
+    background-color: #f6fbfc;
+    box-shadow: 5px 6px 15px #e2e2e2;
+}
+
+.bright h1, .bright h5 {
+    color: $textColorBright;
+}
+
 h1, h5 {
+    transition: 0.4s color ease-in-out;
     color: $textColorDark;
 }
 
 .header__mainLanguage {
-    background: $backgroundMainDark;
+    background-color: $backgroundMainDark;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
     &:hover {
         box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.25);
+        transition: 0.2s box-shadow ease-in-out;
+    }
+}
+
+.bright .header__mainLanguage {
+    background-color: $backgroundMainBright;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    &:hover {
+        box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.25);
+        transition: 0.2s box-shadow ease-in-out;
     }
 }

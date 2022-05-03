@@ -14,6 +14,8 @@ function setTheme() {
 function changeThemeForward() {
     currentTheme = (currentTheme + 1) % mainThemes.length;
     localStorage.setItem("theme", mainThemes[currentTheme]);
+    keyboardControll.setFingersBacklight(mainThemes[currentTheme]);
+    backlightSwitch();
     setTheme();
 }
 

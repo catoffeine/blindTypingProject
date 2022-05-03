@@ -15,8 +15,17 @@
         flex-direction: column;
         
     }
-    &__keyboards {
-        width: 40%;
+    
+    &__image {
+        height: 500px;
+        width: 50%;
+        background-image: url("../images/IndexPage/Fox/Fox.png");
+        background-repeat: no-repeat;
+        background-size: 90%;
+        background-position: center;
+        @media (max-width: $breakpoint792) {
+            display: none;
+        }
     }
 }
 

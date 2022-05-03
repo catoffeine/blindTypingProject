@@ -1,12 +1,4 @@
-:root {
-    --darkMainColor: #282932;
-    --darkTextColor: #e9e9e9;
-    --darkGrayColor: rgba(160, 160, 160, 0.979);
 
-    --brightMainColor: #E5E5E5;
-    
-    --mainTransitionDuration: 0.4s;
-}
 
 /* language_absolute START */
 .language_absolute {
@@ -15,15 +7,7 @@
     z-index: 100;
     width: 100%;
     height: 100%;
-    transition: var(--mainTransitionDuration) ease-in-out transform;
-}
-
-.language_absolute {
-    background-color: var(--darkMainColor);
-}
-
-.bright .language_absolute {
-    background-color: var(--brightMainColor);
+    transition: 0.4s ease-in-out transform;
 }
 
 .language_absolute_hide {
@@ -49,10 +33,6 @@
     border-radius: 25px;
 }
 
-.language_modal {
-    background-color: var(--darkMainColor);
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.35), -2px -2px 4px rgba(255, 255, 255, 0.04);
-}
 /* language modal window END*/
 
 /* language inner modal window START*/
@@ -71,10 +51,7 @@
     opacity: 1;
 }
 
-.language_modal .language {
-    background-color: var(--darkMainColor);
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.22), -2px -2px 4px rgba(255, 255, 255, 0.05);
-}
+
 
 .language_modal .language img {
     height: 50%;
@@ -85,9 +62,7 @@
     font-size: 18px;
 }
 
-.language_modal .language h4 {
-    color: var(--darkTextColor);
-}
+
 /* language inner modal window END*/
 
 /* language_modal confirm button START*/
@@ -104,13 +79,7 @@
     transition: .4s border ease-in-out;
 }
 
-.language_modal a:hover {
-    border: 1px solid var(--darkGrayColor);
-}
 
-.language_modal a {
-    border-bottom: 1px solid var(--darkGrayColor);
-}
 
 .language_modal a:hover:after {
     opacity: 1;
@@ -154,10 +123,7 @@
     content: attr(data-front);
 }
 
-.language_modal a::before, ::after {
-    background-color: var(--darkMainColor); /* background-color: #383a46; for after */
-    color: var(--darkTextColor);
-}
+
 
 
 
@@ -210,10 +176,6 @@
     width: 100%;
 }
 
-.language_modal .languageList_modal li::after{
-    background-color: rgba(255, 255, 255, 0.055);
-}
-
 .languageList_modal h4 {
     font-family: RobotoLight;
     font-size: 18px;
@@ -225,24 +187,8 @@
     width: 30px;
 }
 
-.language_modal .languageList_modal {
-    background-color: var(--darkMainColor);
-}
-
-.language_modal .languageList_modal li {
-    border-bottom:rgba(160, 160, 160, 0.979) 2px solid;
-    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.35);
-}
-
-.language_modal .languageList_modal li:first-child {
-    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.35);
-}
-
 .language_modal .languageList_modal li:last-of-type {
     border-bottom: none;
 }
 
-.languageList_modal h4 {
-    color: var(--darkTextColor);
-}
 /* languageList_modal END */

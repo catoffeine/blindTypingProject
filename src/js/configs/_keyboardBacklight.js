@@ -91,14 +91,16 @@ let keyboardBacklightConfig = {
         default: "#5B6C70",
     },
     bright: {
-        Lpinkie: "#8F3F3F",
-        Lring: "#B76B40",
+        Lpinkie: "#C84949",
+        Lring: "#D97C48",
         Lmiddle: "#6E8F43",
-        Lindex: "#3F4899",
+        Lindex: "#5963C0",
+        Lthumb: "#4D98A9",
         Rindex: "#446390",
         Rmiddle: "#5B9070",
-        Rring: "#AAAC35",
-        Rpinkie: "#703C83",
-        default: "#5B6C70",
+        Rring: "#CED050",
+        Rpinkie: "#894E9D",
+        Rthumb: "#4D98A9",
+        default: "#4D98A9",
     }
 };

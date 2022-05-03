@@ -12,50 +12,64 @@ let mainSettings = {
     showSpeed: false,
     typingLayout: null,
     typingLan: null,
+    nativeLan: null,
     theme: "dark",
 };
-if (localStorage.getItem(mainSettingsStorageName) == null) {
-    localStorage.setItem(mainSettings.localStorageName, JSON.stringify(mainSettings));
-} else {
-    mainSettings = JSON.parse(localStorage.getItem(mainSettingsStorageName));
-}
 
 function mainSettingsLocalStorageUpdate() {
     localStorage.setItem(mainSettingsStorageName, JSON.stringify(mainSettings));
 }
 
-if (mainSettings.typingLan == null) {
-    mainSettings.typingLan = localStorage.getItem('nativeLan');
-}
-if (mainSettings.typingLayout == null) {
-    mainSettings.typingLayout = 'QWERTY';
+function checkMainSettings() {
+    if (localStorage.getItem(mainSettingsStorageName) == null) {
+        localStorage.setItem(mainSettings.localStorageName, JSON.stringify(mainSettings));
+    } else {
+        mainSettings = JSON.parse(localStorage.getItem(mainSettingsStorageName));
+    }
+    if (mainSettings.nativeLan == null) {
+        if (document.location.href.toString().toLowerCase().includes("_ru")) mainSettings.nativeLan = "RU";
+        else mainSettings.nativeLan = "EN";
+    }
+    if (mainSettings.typingLan == null) mainSettings.typingLan = mainSettings.nativeLan;
+    if (mainSettings.typingLayout == null) mainSettings.typingLayout = "QWERTY";
+    mainSettingsLocalStorageUpdate();
+    console.log("MainSettingsTypingLan is " + mainSettings.typingLan);
+    console.log("MainSettingsNativeLan is " + mainSettings.nativeLan);
+    console.log("MainSettingsTypingLayout is " + mainSettings.typingLayout); 
 }
 
-mainSettingsLocalStorageUpdate();
+checkMainSettings();
+
+
+let stopwatch = new StopWatch();
+let lessonCompleted = new LessonCompletion();
+lessonCompleted.getDOM();
 
 let domLesson = document.querySelector(".mainSectionContainer__lessons__flexContainer__menu");
-let configLessons;
-if (mainSettings.typingLan == 'EN') {
-    configLessons = lessons;
-} else {
-    configLessons = lessons_ru;
-}
 
-let keyboardLesson = new Lesson(configLessons, domLesson);
+let keyboardControll = new KeyboardController();
+
+let keyboardLesson = new Lesson(lessonsConfigs[mainSettings.typingLan], domLesson);
+keyboardLesson.loadLesson();
+
+keyboardControll.onStart();
+
 
 function backlightSwitch() {
     document.querySelector(".settingsKeysBacklight input").checked = mainSettings.keyboardBacklight;
     let hands = document.querySelector(handClass);
     if (mainSettings.keyboardBacklight) {
+        if (!document.querySelector(".keyboardSection__keyboard__keyboard").classList.contains("backlightKeyboardRow__active")) {
+            document.querySelector(".keyboardSection__keyboard__keyboard").classList.toggle("backlightKeyboardRow__active");
+        }
+        
         document.querySelectorAll(keyClass).forEach(function(el) {
             if (el.childNodes.length != 1) return;
             let elId = el.id;
             let zone = keycodesZones[elId];
-            let theme = mainSettings.theme;
-            if (theme == null) {
-                debug.log(0, "Theme error in Settings class, function BacklightSwitch");
-                return;
-            }
+            let theme = localStorage.getItem("theme");
+            if (theme == null) theme = "default";
+            
             el.style.backgroundColor = keyboardBacklightConfig[theme][zone];
             
         });
@@ -73,6 +87,9 @@ function backlightSwitch() {
             el.style.backgroundColor = null;
         }); 
         hands.style.opacity = 0;
+        if (document.querySelector(".keyboardSection__keyboard__keyboard").classList.contains("backlightKeyboardRow__active")) {
+            document.querySelector(".keyboardSection__keyboard__keyboard").classList.toggle("backlightKeyboardRow__active");
+        }
     }
     
 }
@@ -113,8 +130,15 @@ function setKeyboardVisibility(isOn) {
 } 
 
 function setKeyboardTypingLan() {
-    console.log(mainSettings.typingLan);
     changeTypingLan(mainSettings.typingLayout + '/' + mainSettings.typingLan);
+
+    if (keyboardLesson.getLanguage() == mainSettings.typingLan) return;
+    keyboardLesson.setLanguage(mainSettings.typingLan);
+
+    
+    keyboardLesson.changeLessonConfig(lessonsConfigs[mainSettings.typingLan]);
+    keyboardLesson.renderDOMLessons();
+    keyboardLesson.loadLesson();
     mainSettingsLocalStorageUpdate();
 }
 
@@ -128,7 +152,7 @@ function mainSettingsUpdate() {
 //INPUTS CHANGE
 keyboardBacklight_input.addEventListener("change", function() {
     setKeyboardBacklight(this.checked);
-    hightlightHandFinger(document.querySelector(".showingText__activeWord").innerText[0]);
+    keyboardControll.hightlightHandFinger(document.querySelector(".showingText__activeWord").innerText[0]);
 });
 
 keyboardVisibility_input.addEventListener("change", function() {
@@ -152,7 +176,6 @@ closeBtnSettings.onclick = function() {
 
 // }
 
-let nativeLangArray = ["RU", "EN"];
 let touchLangArray = ["RU", "EN"];
 let valSoundArray = ["a", "b", "c"];
 let ULObjects = document.querySelectorAll(".mainSectionContainer__settings__container__item__dropList__button__select ul");
@@ -163,9 +186,7 @@ let URLObjects = {
     "language": "images/lanChoosing/",
 }
 
-// /images/lanChoosing/
 function ulHandler(value, objects, type, element) {
-    //lan instead of value.toUpperCase
     let imageSrc = objects[type] + value.toUpperCase();
     switch(type) {
         case 'language': {
@@ -180,9 +201,7 @@ function ulHandler(value, objects, type, element) {
     
     let newItem = '<li id="' + value + '"><img src="'+ imageSrc +'" onError=\"this.src=\"\"\"/></li>';
     element.innerHTML += newItem;
-    // let ulitems = element.lastElementChild;
     let ulitems = element.children;
-    // console.log(ulitems);
 
     // let li = ulitems[ulitems.length - 1];
     // console.dir(ulitems);
@@ -191,10 +210,7 @@ function ulHandler(value, objects, type, element) {
     if (type == 'language') {
         let lan = mainSettings.typingLan;
         btn.value = lan;
-        // console.log(btn.querySelector('img'));
-        // console.log(btn.querySelector('img'));
-        btn.querySelector('img').src = imageSrc;
-        // console.log(btn.querySelector('img'));
+        btn.querySelector('img').src = objects[type] + lan + "Lan.svg";
     }
     
     // li.addEventListener("click", function() {
@@ -211,7 +227,6 @@ function ulHandler(value, objects, type, element) {
                 setKeyboardTypingLan();
             }
         });
-        // console.log("hi");
     };
 
 }
@@ -221,7 +236,6 @@ ULObjects.forEach(function(item) {
 });
 
 // valSoundArray.forEach(value => ulHandler(value, URLObjects, "keySound", ULObjects[0]));
-nativeLangArray.forEach(value => ulHandler(value, URLObjects, "language", ULNamedObjects.nativeLan));
 touchLangArray.forEach(value => ulHandler(value, URLObjects, "language", ULNamedObjects.touchLan));
 
 // for (let i = 0; i < SelectObjects.length; ++i) {
@@ -233,3 +247,18 @@ touchLangArray.forEach(value => ulHandler(value, URLObjects, "language", ULNamed
 SelectObjects.forEach((item) => item.onclick = function() {
     item.classList.toggle("mainSectionContainer__settings__container__item__dropList__button__select__active");
 });
+
+
+document.querySelector(".result__controll__previous").onclick = function() {
+    keyboardLesson.loadPreviousLesson();
+}
+
+document.querySelector(".result__controll__next").onclick = function() {
+    keyboardLesson.loadNextLesson();
+}
+
+document.querySelector(".result__controll__restart").onclick = function() {
+    keyboardLesson.restartLesson();
+}
+
+

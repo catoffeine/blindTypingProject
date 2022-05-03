@@ -1,0 +1,37 @@
+.result {
+    &__info {
+        color: $textColorDark;
+    }
+    &__controll {
+        &__previous, &__next {
+            background-color: $backgroundMainDark;
+            box-shadow: -2px -2px 5px rgba(255, 255, 255, 0.1), 4px 4px 5px rgba(0, 0, 0, 0.28);
+            color: $textColorDark;
+        }
+        &__restart {
+            background-color: $backgroundMainDark;
+            box-shadow: -2px -2px 5px rgba(255, 255, 255, 0.1), 4px 4px 5px rgba(0, 0, 0, 0.28);
+            color: $textColorDark;
+        }
+    }
+}
+
+.bright {
+    .result {
+        &__info {
+            color: $textColorBright;
+        }
+        &__controll {
+            &__previous, &__next {
+                background-color: $backgroundMainBright;
+                box-shadow: 2px 2px 6px rgba(34, 35, 41, 0.37), -4px -4px 6px #FFFFFF;
+                color: $textColorBright;
+            }
+            &__restart {
+                background-color: $backgroundMainBright;
+                box-shadow: 2px 2px 6px rgba(34, 35, 41, 0.37), -4px -4px 6px #FFFFFF;
+                color: $textColorBright;
+            }
+        }
+    }
+}

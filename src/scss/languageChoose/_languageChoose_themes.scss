@@ -1,0 +1,98 @@
+:root {
+    --darkMainColor: #282932;
+    --darkTextColor: #e9e9e9;
+    --darkGrayColor: rgba(160, 160, 160, 0.979);
+
+    --brightMainColor: #E5E5E5;
+    --brightGrayColor: rgba(255, 255, 255, 0.979);
+    
+    --mainTransitionDuration: 0.4s;
+}
+
+.language_modal {
+    background-color: var(--darkMainColor);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.35), -2px -2px 4px rgba(255, 255, 255, 0.04);
+    .language {
+        background-color: var(--darkMainColor);
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.22), -2px -2px 4px rgba(255, 255, 255, 0.05);
+        h4 {
+            color: var(--darkTextColor);
+        }
+    }
+    a {
+        border-bottom: 1px solid var(--darkGrayColor);
+        &:hover {
+            border: 1px solid var(--darkGrayColor);
+        }
+        &::before, &::after {
+            background-color: var(--darkMainColor); /* background-color: #383a46; for after */
+            color: var(--darkTextColor);
+        }
+    }
+    .languageList_modal {
+        background-color: var(--darkMainColor);
+        li {
+            border-bottom: var(--darkGrayColor) 2px solid;
+            box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.35);
+            &::after {
+                background-color: rgba(255, 255, 255, 0.055);
+            }
+            &:first-child {
+                box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.35);
+            }   
+        }
+        h4 {
+            color: var(--darkTextColor);
+        }
+    }
+    
+}
+
+.language_absolute {
+    background-color: var(--darkMainColor);
+}
+
+.bright {
+    .language_modal {
+        background-color: var(--brightMainColor);
+        box-shadow: -2px -2px 5px #FFFFFF, 4px 4px 5px rgba(0, 0, 0, 0.1);
+        .language {
+            background-color: var(--brightMainColor);
+            box-shadow: -2px -2px 5px #FFFFFF, 4px 4px 5px rgba(0, 0, 0, 0.1);
+            h4 {
+                color: $textColorBright;
+            }
+        }
+        a {
+            border-bottom: 1px solid var(--brightGrayColor);
+            &:hover {
+                border: 1px solid var(--brightGrayColor);
+            }
+            &::before, &::after {
+                background-color: var(--brightMainColor); /* background-color: #383a46; for after */
+                color: $textColorBright;
+            }
+        }
+        .languageList_modal {
+            background-color: var(--brightMainColor);
+            li {
+                // border-bottom:rgba(224, 224, 224, 0.979) 2px solid;
+                box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.35);
+                &::after {
+                    background-color: rgba(47, 53, 75, 0.055);
+                }
+                &:first-child {
+                    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.35);
+                }   
+            }
+            h4 {
+                color: $textColorBright;
+            }
+        }
+        
+    }
+    
+    .language_absolute {
+        background-color: var(--brightMainColor);
+    }
+}
