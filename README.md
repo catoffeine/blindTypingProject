@@ -1,6 +1,9 @@
 This is probably the worst project on my GitHub because of trash code since I was making it for my school project in last couple of weeks in my spare time -_-
 If I'm not too lazy I'll probably rewrite the entire code base, but now it's just in that trash state (design is not too bad in my opinion tho) :/
 
+Not only that, but there're MANY to-do things in the project's current state and the only thing that works is the first three lessons, you can try it yourself here:  
+https://catoffeine.github.io/blindTypingProject/build/  
+
 ![image](https://github.com/catoffeine/blindTypingProject/assets/53396555/711dfbb6-21b6-4774-a568-e8433a01d29b)
 
 ![image](https://github.com/catoffeine/blindTypingProject/assets/53396555/d0c4c733-3be0-442e-b872-f521ec57a062)
